@@ -1,30 +1,29 @@
 ---
 title: Analyze work items and test case data
 titleSuffix: TFS 
-ms.prod: devops
 ms.technology: devops-analytics
 ms.topic: reference
 description: Analyze current or historical data for work items and test cases by using Work Item perspective   
 ms.assetid: c6d0d2da-d63f-4e9c-b92e-50c4605a72ef
-ms.manager: douge
-ms.author: kaelliauthor: KathrynEE
-ms.date: 10/17/17
+ms.author: kaelli
+author: KathrynEE
+ms.date: 10/17/2017
 ---
 
 
 # Analyze and report on work items and test case data using the Work Item perspective
 
-[!INCLUDE [temp](../_shared/tfs-report-platform-version.md)]
+[!INCLUDE [temp](../includes/tfs-report-platform-version.md)]
 
 You can analyze current or historical data for work items and test cases by using the measures, dimensions, and attributes that are defined for the Work Item perspective in the SQL Server Analysis Services cube for Visual Studio Team Foundation Server. A test case is a type of work item that is associated within its own dimension and used specifically to support Microsoft Test Manager. For more information, see [Create your tests](../../test/create-test-cases.md).  
   
  The Work Item perspective is based on the relational tables that enable reporting on work items as either a property of the work item or a linked work item. For more information, see [Work Item History tables](work-item-history-tables.md).  
   
 > [!NOTE]  
-> You can use **Create Report in Microsoft Excel** to create status and trend reports based on a work item query. For more information, see [Create Excel reports from a work item query](../excel/create-status-and-trend-excel-reports.md).  
+> You can use **Create Report in Microsoft Excel** to create status and trend reports based on a work item query. For more information, see [Create Excel reports from a work item query](../create-status-and-trend-excel-reports.md).  
   
 
-![Work Item Measure Group](_img/rpt_wit_mg.png "RPT_WIT_MG")  
+![Work Item Measure Group](media/rpt_wit_mg.png "RPT_WIT_MG")  
 
 By using the Work Item perspective, you can create reports that answer the following questions:  
 - What was the total count of active bugs each day in the last iteration?  
@@ -42,18 +41,18 @@ By using the Work Item perspective, you can create reports that answer the follo
 
 By using PivotChart reports in Excel, you can display the number of bugs that were closed and then reactivated over time, similar to the data in the following illustration.  
   
- ![Bug Reactivations Excel Report](_img/procguid_agileexr.png "ProcGuid_AgileExR")  
+ ![Bug Reactivations Excel Report](media/procguid_agileexr.png "ProcGuid_AgileExR")  
   
- The process templates for [Agile](../../boards/work-items/guidance/agile-process.md) and [CMMI](../../boards/work-items/guidance/cmmi-process.md) include the Bug Reactivations report in Excel. For more information, see [Bug Reactivations](../excel/bug-reactivations-excel-report.md).  
+ The process templates for [Agile](../../boards/work-items/guidance/agile-process.md) and [CMMI](../../boards/work-items/guidance/cmmi-process.md) include the Bug Reactivations report in Excel. For more information, see [Bug Reactivations](/previous-versions/azure/devops/report/excel/bug-reactivations-excel-report).  
   
 ### Select and filter pivot fields  
- ![Pivot Fields for Bug Reactivations Report](_img/alm_rpt_pivot_bugreactivations.png "ALM_RPT_Pivot_BugReactivations")  
+ ![Pivot Fields for Bug Reactivations Report](media/alm_rpt_pivot_bugreactivations.png "ALM_RPT_Pivot_BugReactivations")  
   
  You can create a bug reactivations report by performing the following steps:  
   
 1.  In Excel, connect to the Analysis Services cube for Team Foundation Server, and insert a PivotChart report.  
   
-     For more information, see [Create Excel reports from a work item query](../excel/create-status-and-trend-excel-reports.md).  
+     For more information, see [Create Excel reports from a work item query](../create-status-and-trend-excel-reports.md).  
   
 2.  Open the shortcut menu for the chart, choose **Change Chart Type**, choose **Area**, and then choose **Stacked Area**.  
   
@@ -118,15 +117,15 @@ By using PivotChart reports in Excel, you can display the number of bugs that we
 
 You can use **Date Filters** and **Numeric Filters** to filter a report based on one or more values in this set. These filters appear under the measure group that is labeled **Values**. You can use the selections within each group to filter the set of work items. You should not add them to the PivotTable report directly. Instead, you filter the rows or columns within the PivotTable report by performing the following steps:  
   
-1.  Choose the filter icon for either **Row Labels** or **Column Labels** within the PivotTable report, point to **Value Filters**, and then specify the criteria that you want (for example, **Greater Than**).  
+1. Choose the filter icon for either **Row Labels** or **Column Labels** within the PivotTable report, point to **Value Filters**, and then specify the criteria that you want (for example, **Greater Than**).  
   
-2.  In the first field, choose the date or numeric filter that you want (for example, **Created Date**).  
+2. In the first field, choose the date or numeric filter that you want (for example, **Created Date**).  
   
-3.  In the third field, type the value that meets your filter criteria, and then choose **OK**.  
+3. In the third field, type the value that meets your filter criteria, and then choose **OK**.  
   
-     For example, to display all work items that were created after June 1, 2010, type **6/1/2010**.  
+    For example, to display all work items that were created after June 1, 2010, type **6/1/2010**.  
   
- The following table describes the date filters that you can use to refine the set of work items that a report returns. You can even combine filters.  
+   The following table describes the date filters that you can use to refine the set of work items that a report returns. You can even combine filters.  
   
 
 |**Field name**|**Description**|
@@ -165,20 +164,20 @@ You can use **Date Filters** and **Numeric Filters** to filter a report based on
   
  Attributes appear under display folders in the Test Case and Work Item dimensions. Dimension attributes are organized into folders that are based on the reporting reference name that is assigned in the definition of each type of work item. The following types of mapping occur:  
   
--   Intrinsic fields, which have the "System" prefix, appear directly under the Test Case or Work Item dimension.  
+- Intrinsic fields, which have the "System" prefix, appear directly under the Test Case or Work Item dimension.  
   
--   Other fields appear under folders whose names correspond to the prefixes in the reference names of the fields. For example, fields that have the "Microsoft.VSTS.Common" prefix appear under the folder that is labeled "Microsoft.VSTS.Common."  
+- Other fields appear under folders whose names correspond to the prefixes in the reference names of the fields. For example, fields that have the "Microsoft.VSTS.Common" prefix appear under the folder that is labeled "Microsoft.VSTS.Common."  
   
- For example, work item fields appear under the Work Item dimension, as the following illustration shows. The Linked Work Item and Test Case dimensions have similar structures.  
+  For example, work item fields appear under the Work Item dimension, as the following illustration shows. The Linked Work Item and Test Case dimensions have similar structures.  
   
 <table>
 <tbody>
 <tr valign="top">
 <td>
-For information about each field, see [Work item field index](../../boards/work-items/guidance/work-item-field.md). Only fields that have `reportable="Dimension"` appear under the associated dimensions. Additional attributes appear when custom fields in the definitions of types of work items specify `Dimension` as the reportable attribute. For more information about how to use the `reportable` attribute, which is optional, and its values, see [Add or modify work item fields to support reporting](../../reference/xml/add-or-modify-work-item-fields-to-support-reporting.md).<br /><br /> For information about how to work with date hierarchies, see [Shared dimensions](shared-dimensions-in-the-analysis-services-cube.md).
+For information about each field, see <a href="../../boards/work-items/guidance/work-item-field.md" data-raw-source="[Work item field index](../../boards/work-items/guidance/work-item-field.md)">Work item field index</a>. Only fields that have <code>reportable=&quot;Dimension&quot;</code> appear under the associated dimensions. Additional attributes appear when custom fields in the definitions of types of work items specify <code>Dimension</code> as the reportable attribute. For more information about how to use the <code>reportable</code> attribute, which is optional, and its values, see <a href="../../reference/xml/add-or-modify-work-item-fields-to-support-reporting.md" data-raw-source="[Add or modify work item fields to support reporting](../../reference/xml/add-or-modify-work-item-fields-to-support-reporting.md)">Add or modify work item fields to support reporting</a>.<br /><br /> For information about how to work with date hierarchies, see <a href="shared-dimensions-in-the-analysis-services-cube.md" data-raw-source="[Shared dimensions](shared-dimensions-in-the-analysis-services-cube.md)">Shared dimensions</a>.
 </td>
 <td>
-![Folder structure in OLAP data cube](_img/rpt_workitem_folders.png "RPT_WorkItem_Folders") 
+<img src="media/rpt_workitem_folders.png" alt="Folder structure in OLAP data cube" title="RPT_WorkItem_Folders"/> 
 </td>
 </tr>
 </tbody>
@@ -188,15 +187,15 @@ For information about each field, see [Work item field index](../../boards/work-
   
 |Attribute|Description|  
 |---------------|-----------------|  
-|Area|Contains a 14-level hierarchy, as the following illustration shows, which correlates the measures in the cube according to the area classifications with which they are associated. You can use this parent-child hierarchy to summarize or filter measures according to their level within the area hierarchy.<br /><br /> ![Area Hierarchy Dimension](_img/alm_rpt_area_hierarchy.png "ALM_RPT_Area_Hierarchy")<br /><br /> For more information, see [Create and Modify Areas and Iterations](../../organizations/settings/set-area-paths.md).|  
+|Area|Contains a 14-level hierarchy, as the following illustration shows, which correlates the measures in the cube according to the area classifications with which they are associated. You can use this parent-child hierarchy to summarize or filter measures according to their level within the area hierarchy.<br /><br /> ![Area Hierarchy Dimension](media/alm_rpt_area_hierarchy.png "ALM_RPT_Area_Hierarchy")<br /><br /> For more information, see [Create and Modify Areas and Iterations](../../organizations/settings/set-area-paths.md).|  
 |Area Path|Flat list of the area paths for all team projects.|  
 |Changed Date|Flat list of dates that you can use to filter the set of work items based on the dates on which the team modified the items.|  
-|Changed Date Hierarchy by Month|Hierarchical tree that supports filtering and reporting on the set of work items based on the months in which the team modified the items. For example, you can use the Changed Date Hierarchy by Month or by Week, as the following illustration shows, to filter or create a trend report based on the changed date. For more information about how to work with date hierarchies, see [Shared dimensions](shared-dimensions-in-the-analysis-services-cube.md).<br /><br /> ![Changed Date Hierarchy](_img/alm_rpt_changeddate_hierarchy.png "ALM_RPT_ChangedDate_Hierarchy")|  
+|Changed Date Hierarchy by Month|Hierarchical tree that supports filtering and reporting on the set of work items based on the months in which the team modified the items. For example, you can use the Changed Date Hierarchy by Month or by Week, as the following illustration shows, to filter or create a trend report based on the changed date. For more information about how to work with date hierarchies, see [Shared dimensions](shared-dimensions-in-the-analysis-services-cube.md).<br /><br /> ![Changed Date Hierarchy](media/alm_rpt_changeddate_hierarchy.png "ALM_RPT_ChangedDate_Hierarchy")|  
 |Changed Date Hierarchy by Week|Hierarchical tree that supports filtering and reporting on the set of work items based on the week in which the team modified the items.|  
 |Created Date|Flat list of dates that you can use to filter the set of work items based on the date on which the team created the items.|  
 |Created Date Hierarchy by Month|Hierarchical tree that supports filtering and reporting on the set of work items based on the month in which the team created the items.|  
 |Created Date Hierarchy by Week|Hierarchical tree that supports filtering and reporting on the set of work items based on the week in which the team created the items.|  
-|Iteration|As the following illustration shows, contains a 14-level hierarchy that correlates the measures in the cube according to the iteration classifications with which they are associated. You can use this parent-child hierarchy to summarize or filter measures according to their levels within the iteration hierarchy.<br /><br /> ![Iteration Hierarchy Dimension](_img/alm_rpt_iteration_hierarchy.png "ALM_RPT_Iteration_Hierarchy")<br /><br /> For more information, see [Create and Modify Areas and Iterations](../../organizations/settings/set-area-paths.md).|  
+|Iteration|As the following illustration shows, contains a 14-level hierarchy that correlates the measures in the cube according to the iteration classifications with which they are associated. You can use this parent-child hierarchy to summarize or filter measures according to their levels within the iteration hierarchy.<br /><br /> ![Iteration Hierarchy Dimension](media/alm_rpt_iteration_hierarchy.png "ALM_RPT_Iteration_Hierarchy")<br /><br /> For more information, see [Create and Modify Areas and Iterations](../../organizations/settings/set-area-paths.md).|  
 |Iteration Path|Flat list of the set of iteration paths that are defined for all team projects.|  
 |Previous State|The only field under **More fields** is **Previous State**, which you can use to filter a report based on the State to which a work item was assigned before it was assigned to its current state. State is an attribute of the workflow for a type of work item. For more information, see [Change the workflow](../../reference/xml/change-workflow-wit.md).|  
   
@@ -234,7 +233,7 @@ For information about each field, see [Work item field index](../../boards/work-
   
  The Work Item Link Type and Work Item Linked dimensions are many-to-many dimensions that are linked to the Current Work Item fact table. Team members can link any work item to more than one other work item.  
   
- If a dimension corresponds to the attributes of links between work items, the name of the dimension is prefixed with the phrase "Work Item Linked." For example, the "Assigned To" attribute corresponds to the "Work Item Linked.Assigned To" attribute and so on for all other work item fields in the OLAP cube. For more information, see [Filter by Work Item Fields Under the Work Item Dimension](#work_Item_field) earlier in this topic.  
+ If a dimension corresponds to the attributes of links between work items, the name of the dimension is prefixed with the phrase "Work Item Linked." For example, the "Assigned To" attribute corresponds to the "Work Item Linked.Assigned To" attribute and so on for all other work item fields in the OLAP cube. For more information, see [Filter by Work Item Fields Under the Work Item Dimension](#work_Item_field) earlier in this article.  
   
 <a name="changeset"></a> 
 ###  Filter By Changesets  
@@ -270,7 +269,7 @@ You choose the **Work Item Changeset** entry in the combo box to access the Vers
   
  As the following illustration shows, The Work Item Tree Hierarchy contains eight hierarchical filters. The first hierarchy supports filtering work items at the top of the tree, Work Item Tree 1 supports filtering work items that are nested one level deep, and so on.  
   
- ![Work Item Tree](_img/alm_rpt_workitemtree.png "ALM_RPT_WorkItemTree")  
+ ![Work Item Tree](media/alm_rpt_workitemtree.png "ALM_RPT_WorkItemTree")  
   
  The following table describes the attributes in the Work Item Tree dimension. You use link types that are based on the tree topology to create multi-level, hierarchical relationships among work items. In addition to supporting multi-level, hierarchical views, hierarchical link types support directionality and restrict circular relationships. For more information, see [LinkTypes](../../reference/xml/link-type-element-reference.md).  
   

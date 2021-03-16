@@ -1,16 +1,13 @@
 ---
 title: Create a multi-platform pipeline
-titleSuffix: Azure Pipelines & TFS
+ms.custom: seodec18, devx-track-js
 description: Build and test on macOS, Linux, and Windows
-ms.prod: devops
-ms.technology: devops-cicd
 ms.topic: quickstart
 ms.assetid: 4aaa98c7-f363-4fe6-b9dd-158108955e38
-ms.manager: douge
-ms.author: alewis
-author: vtbassmatt
-ms.date: 9/20/2018
-monikerRange: 'vsts'
+ms.author: sdanie
+author: steved0x
+ms.date: 05/11/2020
+monikerRange: '>= azure-devops-2020'
 ---
 
 # Create a multi-platform pipeline
@@ -21,9 +18,7 @@ This is a step-by-step guide to using Azure Pipelines to build on macOS, Linux, 
 
 ## Prerequisites
 
-[!INCLUDE [include](_shared/ci-cd-prerequisites-vsts.md)]
-
-* You need a GitHub account, where you can create a repository.
+[!INCLUDE [include](includes/prerequisites.md)]
 
 ## Get the sample code
 
@@ -35,93 +30,64 @@ You can use Azure Pipelines to build an app on written in any language, on multi
 
 You should now have a sample app in your GitHub account.
 
-## Add additional platforms
+## Add a pipeline
 
-In the sample repo, the Node.js app is configured to run on Ubuntu Linux. You're going to add a second job that runs on Windows.
+In the sample repo, there's no pipeline yet.
+You're going to add jobs that run on three platforms.
 
 1. Go to your fork of the sample code on GitHub.
 
-1. Select `azure-pipelines.yml`, and then select the _Edit this file_ pencil icon.
-
-1. In GitHub's web editor, replace the existing content with the content below.
+1. Choose 'Create new file'. Name the file `azure-pipelines.yml`, and give it the contents below.
 
 ```yaml
 # Build NodeJS Express app using Azure Pipelines
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript?view=vsts
-jobs:
-- job: Linux
+# https://docs.microsoft.com/azure/devops/pipelines/ecosystems/javascript?view=azure-devops
+strategy:
+  matrix:
+    linux:
+      imageName: 'ubuntu-16.04'
+    mac:
+      imageName: 'macos-10.14'
+    windows:
+      imageName: 'vs2017-win2016'
 
-  pool:
-    vmImage: 'ubuntu 16.04'
+pool:
+  vmImage: $(imageName)
 
-  steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: '8.x'
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '8.x'
 
-  - script: |
-      npm install
-      npm test
+- script: |
+    npm install
+    npm test
 
-  - task: PublishTestResults@2
-    inputs:
-      testResultsFiles: '**/TEST-RESULTS.xml'
-      testRunTitle: 'Test results for JavaScript'
+- task: PublishTestResults@2
+  inputs:
+    testResultsFiles: '**/TEST-RESULTS.xml'
+    testRunTitle: 'Test results for JavaScript'
 
-  - task: PublishCodeCoverageResults@1
-    inputs: 
-      codeCoverageTool: Cobertura
-      summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*coverage.xml'
-      reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
+- task: PublishCodeCoverageResults@1
+  inputs: 
+    codeCoverageTool: Cobertura
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*coverage.xml'
+    reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
 
-  - task: ArchiveFiles@2
-    inputs:
-      rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
-      includeRootFolder: false
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
+    includeRootFolder: false
 
-  - task: PublishBuildArtifacts@1
-
-- job: Windows
-
-  pool:
-    vmImage: 'vs2017-win2016'
-
-  steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: '8.x'
-
-  - script: |
-      npm install
-      npm test
-
-  - task: PublishTestResults@2
-    inputs:
-      testResultsFiles: '**/TEST-RESULTS.xml'
-      testRunTitle: 'Test results for JavaScript'
-
-  - task: PublishCodeCoverageResults@1
-    inputs: 
-      codeCoverageTool: Cobertura
-      summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*coverage.xml'
-      reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
-
-  - task: ArchiveFiles@2
-    inputs:
-      rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
-      includeRootFolder: false
-
-  - task: PublishBuildArtifacts@1
+- task: PublishBuildArtifacts@1
 ```
 
 At the bottom of the GitHub editor, select **Commit changes**.
 
 Each job in this example runs on a different VM image.
-By default, the Linux and Windows jobs run at the same time in parallel.
+By default, the jobs run at the same time in parallel.
 
-Note: To make this example clearer, we've copied the code.
-However, when you go to put a pipeline for your app into production, we recommend that you instead use [templates](process/templates.md) to reduce code duplication.
-Also, `script` runs in each platform's native script interpreter: Bash on macOS and Linux, CMD on Windows.
+Note: `script` runs in each platform's native script interpreter: Bash on macOS and Linux, CMD on Windows.
 See [multi-platform scripts](scripts/cross-platform-scripting.md) to learn more.
 
 ## Create the pipeline
@@ -134,7 +100,7 @@ Now that you've configured your GitHub repo with a pipeline, you're ready to bui
 
 1. Select **GitHub** as the location of your source code.
 
-   ![Select GitHub](_img/get-started-yaml/new-pipeline.png)
+   ![Select GitHub](media/get-started-yaml/new-pipeline.png)
 
 1. For **Repository**, select **Authorize** and then **Authorize with OAuth**. 
 
@@ -144,18 +110,44 @@ Now that you've configured your GitHub repo with a pipeline, you're ready to bui
 
 1. Azure Pipelines shows you the YAML file that it will use to create your pipeline.
 
-1. Select **Save and run**, and then select the option to **Commit directly to the master branch**.
+1. Select **Save and run**, and then select the option to **Commit directly to the main branch**.
 
 1. The YAML file is pushed to your GitHub repository, and a new build is automatically started. Wait for the build to finish.
+
+## FAQ
+
+### Can I build my multi-platform pipeline on both self-hosted and Microsoft-hosted agents?
+
+You can, you would need to specify both a `vmImage` and a `Pool` variable, like the following example. For the hosted agent, specify `Azure Pipelines` as the pool name, and for self-hosted agents, leave the `vmImage` blank. The blank `vmImage` for the self-hosted agent may result in some unusual entries in the logs but they won't affect the pipeline.
+
+```yml
+strategy:
+  matrix:
+    microsofthosted:
+      poolName: Azure Pipelines
+      vmImage: ubuntu-latest
+
+    selfhosted:
+      poolName: FabrikamPool
+      vmImage:
+
+pool:
+  name: $(poolName)
+  vmImage: $(vmImage)
+
+steps:
+- checkout: none
+- script: echo test
+```
 
 ## Next steps
 
 You've just learned the basics of using multiple platforms with Azure Pipelines. From here, you can learn more about:
 
-* Running [multiple jobs](process/multiple-phases.md?tabs=yaml)
+* [Jobs](process/phases.md?tabs=yaml)
 * [Cross-platform scripting](scripts/cross-platform-scripting.md)
 * [Templates](process/templates.md) to remove the duplication
-* Building [Node.js](languages/javascript.md) apps
-* Building [.NET Core](languages/dotnet-core.md), [Go](languages/go.md), [Java](languages/java.md), or [Python](languages/python.md) apps
+* Building [Node.js](ecosystems/javascript.md) apps
+* Building [.NET Core](ecosystems/dotnet-core.md), [Go](ecosystems/go.md), [Java](ecosystems/java.md), or [Python](ecosystems/python.md) apps
 
 For details about building GitHub repositories, see [Build GitHub repositories](repos/github.md).

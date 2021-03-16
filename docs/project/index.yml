@@ -1,0 +1,95 @@
+### YamlMime:Landing
+
+title: Wikis, Public Projects, & work across projects
+summary: Share information, create public projects, and work across projects.  
+
+metadata:
+  title: Wikis, Public Projects, work across projects documentation
+  description: Share information, create public projects, and work across projects.
+  ms.prod: devops 
+  ms.technology: devops-collab
+  ms.topic: landing-page 
+  author: KathrynEE 
+  ms.author: kaelli 
+  ms.date: 12/17/2020
+
+# linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
+
+landingContent:
+# Cards and links should be based on top customer tasks or top subjects
+# Start card title with a verb
+  # Card (optional)
+  - title: Create and manage a public project
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is a public project?
+            url: ../organizations/public/about-public-projects.md?toc=/azure/devops/project/toc.json&bc=/azure/devops/project/breadcrumb/toc.json  
+      - linkListType: quickstart
+        links:
+          - text: Create a public project
+            url: ../organizations/public/create-public-project.md?toc=/azure/devops/project/toc.json&bc=/azure/devops/project/breadcrumb/toc.json  
+          - text: Invite users to your public project
+            url: ../organizations/public/invite-users-public.md?toc=/azure/devops/project/toc.json&bc=/azure/devops/project/breadcrumb/toc.json  
+          - text: Make a private project public
+            url: ../organizations/public/make-project-public.md?toc=/azure/devops/project/toc.json&bc=/azure/devops/project/breadcrumb/toc.json  
+  - title: Add and manage wikis
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: About wikis, READMEs, and Markdown
+            url: ./wiki/about-readme-wiki.md
+          - text: Provisioned vs published wikis
+            url: ./wiki/provisioned-vs-published-wiki.md
+      - linkListType: video
+        links:
+          - text: Add a Wiki to your Azure DevOps project
+            url: https://www.youtube.com/embed/744v1IefE-E?start=0
+      - linkListType: quickstart
+        links:
+          - text: Create a wiki for your project
+            url: ./wiki/wiki-create-repo.md
+          - text: Add and edit wiki pages
+            url: ./wiki/add-edit-wiki.md
+          - text: Publish a Git repository to a wiki
+            url: ./wiki/publish-repo-to-wiki.md
+      - linkListType: reference
+        links:
+          - text: Syntax guidance for basic Markdown usage
+            url: ./wiki/markdown-guidance.md
+          - text: Syntax guidance for Markdown usage in Wiki
+            url: ./wiki/wiki-markdown-guidance.md
+  - title: Work across projects
+    linkLists:
+      - linkListType: get-started
+        links:
+          - text: View work assigned to you
+            url: ./navigation/work-across-projects.md
+      - linkListType: tutorial
+        links:
+          - text: Set personal or team favorites
+            url: ./navigation/set-favorites.md
+      - linkListType: overview
+        links:
+          - text: Work across projects FAQs 
+            url: ./work-across-projects-faqs.yml
+  - title: Search
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Search across all your code, wiki, packages and work items
+            url: ./search/overview.md
+      - linkListType: video
+        links:
+          - text: Code search
+            url: https://sec.ch9.ms/ch9/d0f4/782cd441-3b03-4323-a3a7-8ab168cdd0f4/CodeSearch_high.mp4
+      - linkListType: how-to-guide
+        links:
+          - text: Search code
+            url: ./search/code-search.md
+          - text: Search packages
+            url: ./search/package-search.md
+          - text: Search work items
+            url: ./search/work-item-search.md
+          - text: Search wiki
+            url: ./wiki/search-wiki.md

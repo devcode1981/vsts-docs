@@ -1,77 +1,111 @@
 ---
-title: Grant permissions for managing extensions in Visual Studio Team Foundation Server (TFS)
-description: Grant users or groups permission to manage extensions for Team Foundation Server
+title: Manage extension permissions - Azure DevOps
+description: Grant users or groups permission for managing extensions for Azure DevOps
 ms.topic: conceptual
-ms.prod: devops
 ms.technology: devops-marketplace
 ms.assetid: 5b0786ec-9f5e-419f-acef-c15d15985285
-ms.manager: douge
-ms.author: elbatk
-author: elbatk
-ms.date: 9/27/2017
-monikerRange: '>= tfs-2013'
+ms.author: chcomley
+author: chcomley
+ms.date: 07/23/2020
+monikerRange: '>= tfs-2015'
 ---
 
- 
+# Manage extension permissions
 
-# Grant permissions to manage extensions
+[!INCLUDE [version-ts-tfs-2015-2016](../../includes/version-ts-tfs-2015-2016.md)]
 
-**Azure DevOps Services** | **TFS** 
+::: moniker range="azure-devops"
 
-::: moniker range="vsts"
-
-## Grant management permissions 
-
-To grant permissions to manage extensions (install, disable/enable, review and approve extension requests) for an on-prem collection or Azure DevOps Services organization, go to the collection/organization level Extension settings hub:
-
-![Extension settings hub](../_img/manage-permissions/extensions-settings.png)
-
-Click **Security** in the upper right of the Extension Security page:
-
-![Extension security button](../_img/manage-permissions/extensions-security-button.png)
-
-Add users or update permission settings:
-
-![Extension security](../_img/manage-permissions/extensions-security.png)
+Learn how to grant permissions to users or groups for managing extensions. Extension management tasks include installing, disabling, enabling, reviewing, and approving extensions.
 
 ::: moniker-end
 
-::: moniker range=">=tfs-2013 < vsts"
+::: moniker range=">=tfs-2015 < azure-devops"
 
-## Grant publish and update permissions on TFS
+Learn how to grant permissions for publishing or updating extensions for users or groups.
 
-To grant permissions for publishing or updating to users or groups, use [TFSSecurity](/tfs/server/ref/command-line/tfssecurity-cmd#permissions) command-line tool.
+::: moniker-end
 
-0.	At the server level, create a group, for example, "TFS Extension Publishers":
+::: moniker range="azure-devops"
 
-    ```
-    tfssecurity /gcg "TFS Extension Publishers" "publishers who can manage extensions for the server" /server:ServerURL
-    ```
+1. Sign in to your organization (```https://dev.azure.com/{yourorganization}```).
 
-0. 	Grant access to the "TFS Extension Publishers" group to manage extensions:
+2. Select ![gear icon](../../media/icons/gear-icon.png) **Organization settings**.
 
-    ```
-    tfssecurity /a+ Publisher "//" CreatePublisher n:"[TEAM FOUNDATION]\TFS Extension Publishers" allow /server:ServerURL
-    tfssecurity /a+ Publisher "//" PublishExtension n:"[TEAM FOUNDATION]\TFS Extension Publishers" allow /server:ServerURL
-    tfssecurity /a+ Publisher "//" UpdateExtension n:"[TEAM FOUNDATION]\TFS Extension Publishers" allow /server:ServerURL
-    tfssecurity /a+ Publisher "//" DeleteExtension n:"[TEAM FOUNDATION]\TFS Extension Publishers" allow /server:ServerURL
-    ```
+    ![Open Organization settings](../../media/settings/open-admin-settings-vert.png)
 
-    For Team Foundation Server "15" RC2 or earlier, use this syntax:
+3. Select **Extensions**.
 
-    ```
-    tfssecurity /a+ Publisher "//" Create n:"[TEAM FOUNDATION]\TFS Extension Publishers" allow /server:ServerURL
-    tfssecurity /a+ Publisher "//" Publish n:"[TEAM FOUNDATION]\TFS Extension Publishers" allow /server:ServerURL
-    tfssecurity /a+ Publisher "//" Write n:"[TEAM FOUNDATION]\TFS Extension Publishers" allow /server:ServerURL
-    ```
+    ![Extension settings hub](../media/manage-permissions/extensions-settings.png)
 
-0. Add existing users and groups to the "TFS Extension Publishers" group.
+4. Select **Security** in the upper right of the Extension Security page:
+
+    ![Extension security page](../media/manage-permissions/extensions-security-button.png)
+
+5. Add users or update permission settings:
+
+    ![Extension security permission setting](../media/manage-permissions/extensions-security.png)
+
+::: moniker-end
+
+::: moniker range="azure-devops-2019 || azure-devops-2020"
+
+1. Sign in to your organization (```https://dev.azure.com/{yourorganization}```).
+
+2. Select ![gear icon](../../media/icons/gear-icon.png) **Admin settings**.
+
+    ![Open Admin settings](../../media/settings/open-admin-settings-server.png)
+
+3. Select **Extensions**, and then select **Security**.
+
+    ![Select Extensions, and then select Security.](../media/select-extensions-and-security.png)
+
+4. Add users or update permission settings:
+
+    ![Extension security](../media/manage-permissions/extensions-security.png)
+
+::: moniker-end
+
+::: moniker range=">=tfs-2015 <= tfs-2018"
+
+To grant permissions for publishing or updating to users or groups, use [TFSSecurity](/azure/devops/server/command-line/tfssecurity-cmd#permissions) command-line tool.
+
+1. At the server level, create a group, for example, "TFS Extension Publishers":
+
+   ```
+   tfssecurity /gcg "TFS Extension Publishers" "publishers who can manage extensions for the server" /server:ServerURL
+   ```
+
+2. Grant access to the "TFS Extension Publishers" group to manage extensions:
+
+   ```
+   tfssecurity /a+ Publisher "//" CreatePublisher n:"[TEAM FOUNDATION]\TFS Extension Publishers" allow /server:ServerURL
+   tfssecurity /a+ Publisher "//" PublishExtension n:"[TEAM FOUNDATION]\TFS Extension Publishers" allow /server:ServerURL
+   tfssecurity /a+ Publisher "//" UpdateExtension n:"[TEAM FOUNDATION]\TFS Extension Publishers" allow /server:ServerURL
+   tfssecurity /a+ Publisher "//" DeleteExtension n:"[TEAM FOUNDATION]\TFS Extension Publishers" allow /server:ServerURL
+   ```
+
+   For Team Foundation Server "15" RC2 or earlier, use this syntax:
+
+   ```
+   tfssecurity /a+ Publisher "//" Create n:"[TEAM FOUNDATION]\TFS Extension Publishers" allow /server:ServerURL
+   tfssecurity /a+ Publisher "//" Publish n:"[TEAM FOUNDATION]\TFS Extension Publishers" allow /server:ServerURL
+   tfssecurity /a+ Publisher "//" Write n:"[TEAM FOUNDATION]\TFS Extension Publishers" allow /server:ServerURL
+   ```
+
+3. Add existing users and groups to the "TFS Extension Publishers" group.
 
     ```
     tfssecurity /g+ "[TEAM FOUNDATION]\TFS Extension Publishers" n:User /server:ServerURL
     ```
 
-You can add users later to "TFS Extension Publishers". This is a server-level permission, 
-so updating and deleting an extension will affect all the project collections that use the extension.
+You can add users later to "TFS Extension Publishers". This permission is a server-level permission, 
+so updating and deleting an extension affects all the project collections that use the extension.
 
 ::: moniker-end
+
+## Related articles
+
+- [Install extensions](../install-extension.md)
+- [Request extensions](../request-extensions.md)
+- [About permissions](../../organizations/security/about-permissions.md)

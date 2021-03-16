@@ -1,24 +1,20 @@
 ---
 title: Search code, work items, or wiki
-titleSuffix: Azure DevOps Services & TFS   
-description: Find code or work items quickly in Azure DevOps Services and Team Foundation Server (TFS)  
-ms.assetid: 
+titleSuffix: Azure DevOps
+description: Find code or work items quickly in Azure DevOps
 ms.custom: Navigation
-ms.prod: devops
 ms.technology: devops-collab
-ms.assetid: 
-ms.manager: douge
 ms.author: kaelli
 author: KathrynEE
 ms.topic: conceptual
 monikerRange: '>= tfs-2017'
-ms.date: 11/19/2018
+ms.date: 02/08/2019
 ---
 
 
 # Search across your code base, work items, or wiki
 
-[!INCLUDE [temp](../../_shared/version-tfs-2017-through-vsts.md)]
+[!INCLUDE [temp](../../includes/version-tfs-2017-through-vsts.md)]
 
 ::: moniker range=">= tfs-2018"  
 With the search box, you can quickly find a code file, work item, or wiki page. 
@@ -32,42 +28,28 @@ With the search box, you can quickly find a code file or work item.
 <a name="start-search"></a>
 ## Initiate a code search 
 
-Code search requires installation of the [Code Search extension](https://marketplace.visualstudio.com/items?itemName=ms.vss-code-search). If it hasn't yet been installed, request that a member of your Project Collection Administrators group [install it](../..//marketplace/install-extension.md#install-extension).  
+Code search requires installation of the [Code Search extension](https://marketplace.visualstudio.com/items?itemName=ms.vss-code-search). If it hasn't yet been installed, request that a member of your Project Collection Administrators group [install it](../..//marketplace/install-extension.md).  
 
-[!INCLUDE [temp](_shared/new-navigation-wp.md)] 
-
-# [New navigation](#tab/new-nav)
-
-::: moniker range=">= azdevserver-2019"
+::: moniker range=">= azure-devops-2019"
   
-To start your search, choose **Repos>Files** or other page under **Code**, enter a keyword or phrase in the search box, and press *Enter* or choose the ![ ](../search/_img/_shared/start-search-icon.png) start search icon. 
+To start your search, choose **Repos>Files** or other page under **Code**, enter a keyword or phrase in the search box, and press *Enter* or choose the :::image type="icon" source="../search/media/shared/start-search-icon.png" border="false"::: start search icon. 
 
 > [!div class="mx-imgBorder"]
-> ![Code Search box, new navigation](../../organizations/public/_img/search/code-search-vert.png) 
+> ![Code Search box](../../organizations/public/media/search/code-search-vert.png) 
 ::: moniker-end  
 
-::: moniker range=">= tfs-2017  <= tfs-2018"  
-[!INCLUDE [temp](../../_shared/new-navigation-not-supported.md)]  
-::: moniker-end  
 
-# [Previous navigation](#tab/previous-nav)  
+::: moniker range=">= tfs-2017 <= tfs-2018"
 
-::: moniker range=">= tfs-2017 <= tfs-2018 || vsts"
+1. In the search box, check that the text displays _Search code_. If it doesn't, use the selector to select it.
 
-0. In the search box, check that the text displays _Search code_. If it doesn't, use the selector to select it.
+   ![Switching between searching for code and work items](../search/media/code-search-get-started/title-bar-search-box-empty-outlined.png)
 
-   ![Switching between searching for code and work items](../search/_img/code-search-get-started/title-bar-search-box-empty-outlined.png)
-
-0. Enter a search string in the text box, and press _Enter_ (or choose the 
-   ![start search icon](../search/_img/_shared/start-search-icon.png) icon) to start your search.
+2. Enter a search string in the text box, and press _Enter_ (or choose the 
+   ![start search icon](../search/media/shared/start-search-icon.png) icon) to start your search.
 
 ::: moniker-end
 
-::: moniker range="azdevserver-2019"
-[!INCLUDE [temp](../../_shared/previous-navigation-not-supported-azd.md)] 
-::: moniker-end
-
----
 
 ### Work with code search results  
 
@@ -75,14 +57,14 @@ To start your search, choose **Repos>Files** or other page under **Code**, enter
    instances of the search string highlighted. If you see a list of work items, ensure that **Code** is selected in the top left.
 
 	> [!div class="mx-imgBorder"]  
-	> ![Code search results example](_img/search/code-search-example.png) 
+	> ![Code search results example](media/search/code-search-example.png) 
 
 1. Try assembling more complex search strings using the operators and functions listed in the handy 
    drop-down list. Select the filter function or code type you want to include in your search string from the
    list, and type the criteria value.
 
 	> [!div class="mx-imgBorder"]  
-	> ![Code search bar](_img/search/code-search-filters.png)     
+	> ![Code search bar](media/search/code-search-filters.png)     
 
    * You can find all instances of "ToDo" comments in your code simply by selecting `comment:` and typing `todo`. 
 
@@ -105,51 +87,43 @@ To learn more, see [Search code](../search/code-search.md).
 <a name="start-search"></a>
 ## Initiate a work item search 
 
-# [New navigation](#tab/new-nav)
+::: moniker range=">= azure-devops-2019"
 
-::: moniker range=">= azdevserver-2019"
-
-0. Choose any **Boards** page, enter a keyword or phrase in the search box, and press *Enter* or choose the ![ ](../search/_img/_shared/start-search-icon.png) start search icon. 
+1. Choose any **Boards** page, enter a keyword or phrase in the search box, and press *Enter* or choose the :::image type="icon" source="../search/media/shared/start-search-icon.png" border="false"::: start search icon. 
 
 	> [!div class="mx-imgBorder"]
-	> ![Work Item Search box, new navigation](_img/search/work-item-search-vert.png)    
+	> ![Work Item Search box](media/search/work-item-search-vert.png)    
 
-0. Search results are displayed in a snippet view where the matches found are shown in bold.
+1. Search results are displayed in a snippet view where the matches found are shown in bold.
 
-   ![Search results](../search/_img/work-item-search-get-started/results-matching.png)
+   ![Search results](../search/media/work-item-search-get-started/results-matching.png)
 
    This is a full text search that uses simple search strings for words or phrases.
    Work item search matches derived forms of your search terms; for example, a search for
    "updating" will also find instances of the word "updated" and "update". Note that searches are _not_ case-sensitive.
 
-0. Select a snippet of a work item to display it in the right window. 
+2. Select a snippet of a work item to display it in the right window. 
   
    Open the search results in a new browser tab from a search box by
    pressing _Ctrl_ + _Enter_ or by holding _Ctrl_ and clicking  the
-   ![start search icon](../search/_img/_shared/start-search-icon.png) icon.
+   ![start search icon](../search/media/shared/start-search-icon.png) icon.
    In Google Chrome, press _Ctrl_ + _Shift_ + _Enter_ to switch the focus
    to the new browser tab. 
 
-::: moniker-end
+::: moniker-end 
 
-::: moniker range=">= tfs-2017  <= tfs-2018"  
-[!INCLUDE [temp](../../_shared/new-navigation-not-supported.md)]  
-::: moniker-end  
-
-# [Previous navigation](#tab/previous-nav)  
-
-::: moniker range=">= tfs-2017 <= tfs-2018 || vsts"
+::: moniker range=">= tfs-2017 <= tfs-2018"
 
 1. In the search box, check that the text says _Search work items_. If it doesn't, use the selector to select it.
 
-   ![The Work Item Search textbox in the title bar](../search/_img/work-item-search-get-started/title-bar-search-box-empty-outlined.png)   
+   ![The Work Item Search textbox in the title bar](../search/media/work-item-search-get-started/title-bar-search-box-empty-outlined.png)   
 
 1. Enter a search string in the text box, and press _Enter_ (or choose the 
-   ![start search icon](../search/_img/_shared/start-search-icon.png) icon) to start your search. 
+   ![start search icon](../search/media/shared/start-search-icon.png) icon) to start your search. 
 
 1. Search results are displayed in a snippet view where the matches found are shown in bold.
 
-   ![Search results](../search/_img/work-item-search-get-started/results-matching.png)
+   ![Search results](../search/media/work-item-search-get-started/results-matching.png)
 
    This is a full text search that uses simple search strings for words or phrases.
    Work item search matches derived forms of your search terms; for example, a search for
@@ -159,30 +133,21 @@ To learn more, see [Search code](../search/code-search.md).
   
    Open the search results in a new browser tab from a search box by
    pressing _Ctrl_ + _Enter_ or by holding _Ctrl_ and clicking  the
-   ![start search icon](../search/_img/_shared/start-search-icon.png) icon.
+   ![start search icon](../search/media/shared/start-search-icon.png) icon.
    In Google Chrome, press _Ctrl_ + _Shift_ + _Enter_ to switch the focus
    to the new browser tab. 
 
 ::: moniker-end
 
-::: moniker range="azdevserver-2019"
-[!INCLUDE [temp](../../_shared/previous-navigation-not-supported-azd.md)] 
-::: moniker-end
-
----
-
-
 ### Fine tune your work item search results 
 
-# [New navigation](#tab/new-nav)
-
-::: moniker range=">= azdevserver-2019"  
+::: moniker range=">= azure-devops-2019"  
 
 1. Fine tune your search by specifying the fields to search. Enter `a:` and a user name
    to search for all items assigned to that user.
 
 	> [!div class="mx-imgBorder"]  
-	> ![Search from the title bar](_img/search/search-work-vert.png)    
+	> ![Search from the title bar](media/search/search-work-vert.png)    
 
    The quick filters you can use are:
 
@@ -193,7 +158,7 @@ To learn more, see [Search code](../search/code-search.md).
  
 1. Start typing the name of a field in your work items; for example, type `ta`.
 
-   ![Quick filters as you type](../search/_img/work-item-search-get-started/dyna-dropdown.png)    
+   ![Quick filters as you type](../search/media/work-item-search-get-started/dyna-dropdown.png)    
 
    The dropdown list shows work item field name suggestions 
    that match user input thereby helping the user to complete the search faster. For example, a search such as 
@@ -209,19 +174,13 @@ To learn more, see [Search code](../search/code-search.md).
 
 ::: moniker-end
 
-::: moniker range=">= tfs-2017  <= tfs-2018"  
-[!INCLUDE [temp](../../_shared/new-navigation-not-supported.md)]  
-::: moniker-end  
-
-# [Previous navigation](#tab/previous-nav)  
-
-::: moniker range=">= tfs-2017 <= tfs-2018 || vsts" 
+::: moniker range=">= tfs-2017 <= tfs-2018" 
 
 1. Fine tune your search by specifying the fields to search. Enter `a:` and a user name
    to search for all items assigned to that user.
 
 	> [!div class="mx-imgBorder"]  
-	> ![Search from the title bar](_img/search/work-item-search-filters.png)    
+	> ![Search from the title bar](media/search/work-item-search-filters.png)    
 
    The quick filters you can use are:
 
@@ -232,7 +191,7 @@ To learn more, see [Search code](../search/code-search.md).
  
 1. Start typing the name of a field in your work items; for example, type `ta`.
 
-   ![Quick filters as you type](..//search/_img/work-item-search-get-started/dyna-dropdown.png)    
+   ![Quick filters as you type](..//search/media/work-item-search-get-started/dyna-dropdown.png)    
 
    The dropdown list shows work item field name suggestions 
    that match user input thereby helping the user to complete the search faster. For example, a search such as 
@@ -248,11 +207,6 @@ To learn more, see [Search code](../search/code-search.md).
 
 ::: moniker-end
 
-::: moniker range="azdevserver-2019"
-[!INCLUDE [temp](../../_shared/previous-navigation-not-supported-azd.md)] 
-::: moniker-end
-
----
 
 To learn more, see [Search work items](../search/work-item-search.md)
 
@@ -269,47 +223,34 @@ With wiki search, you can search within a project wiki or across all wikis creat
 ::: moniker-end
 
 
-# [New navigation](#tab/new-nav)
-::: moniker range=">= azdevserver-2019" 
+::: moniker range=">= azure-devops-2019" 
 
 Choose **Overview>Wiki** and type your keyword or phrase into the search box. 
 
 > [!div class="mx-imgBorder"]  
-> ![Wiki search option, new navigation](../wiki/_img/search/search-wiki-vert.png)   
+> ![Wiki search option](../wiki/media/search/search-wiki-vert.png)   
 
 The search feature quickly returns wiki pages by title or page content. English language stemming support helps you find the most relevant wiki pages. For example, when you enter *request* in the search box, wiki search will return page results containing related words such as *requesting, requested, requests,* and so on.
 
 > [!div class="mx-imgBorder"]  
-> ![Wiki search results, new navigation](../wiki/_img/search/wiki-search-example-vert.png)   
-> 
+> ![Wiki search results](../wiki/media/search/wiki-search-example-vert.png)   
+
 ::: moniker-end  
 
-::: moniker range=">= tfs-2017  <= tfs-2018"  
-[!INCLUDE [temp](../../_shared/new-navigation-not-supported.md)]  
-::: moniker-end  
 
-# [Previous navigation](#tab/previous-nav)  
-
-::: moniker range="tfs-2018 || vsts"  
+::: moniker range="tfs-2018"  
 
 Open **Wiki** and type your keyword or phrase into the search box. 
 
 > [!div class="mx-imgBorder"]  
-> ![Wiki search option, previous navigation](../wiki/_img/search/search-wiki-horz.png)   
+> ![Wiki search option, previous navigation](../wiki/media/search/search-wiki-horz.png)   
 
 The search feature quickly returns wiki pages by title or page content. English language stemming support helps you find the most relevant wiki pages. For example, when you enter *request* in the search box, wiki search will return page results containing related words such as *requesting, requested, requests,* and so on.
 
 > [!div class="mx-imgBorder"]  
-> ![Wiki search results](../wiki/_img/search/wiki-search-example-vert.png)   
+> ![Wiki search results](../wiki/media/search/wiki-search-example-vert.png)   
 
 ::: moniker-end
-
-::: moniker range="azdevserver-2019"
-[!INCLUDE [temp](../../_shared/previous-navigation-not-supported-azd.md)] 
-::: moniker-end
-
-
----
 
 
 ## Related articles

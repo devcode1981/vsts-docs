@@ -1,13 +1,16 @@
 {
   "build": {
+    "markdownEngineName": "markdig",
     "content": [
       {
         "files": [
-          "**/*.md"
+          "**/*.md",
+          "**/**.yml"
         ],
         "exclude": [
           "**/obj/**",
           "**/includes/**",
+          "**/_shared/**",
           "README.md",
           "LICENSE",
           "LICENSE-CODE",
@@ -33,17 +36,32 @@
     "globalMetadata": {
       "uhfHeaderId": "MSDocsHeader-AzureDevOps",
       "ms.topic": "article",
-      "ms.technology": "vsts-release-notes",
-      "author": "alexcnichols",
-      "ms.author": "alexn",
-      "ms.manager": "douge",
+      "breadcrumb_path": "~/breadcrumb/toc.yml",
+      "extendBreadcrumb": true,
+      "ms.technology": "devops-release-notes",
+      "author": "gloridelmorales",
+      "ms.author": "glmorale",
+      "ms.manager": "mijacobs",
       "ms.prod": "devops",
       "ms.version": "ALM",
       "MSHAttr.msprod": "ms.prod:devops",
       "ms.prodfamily": "ALM",
-      "hide_comments": "true"
+      "hide_comments": "true",
+      "_op_documentIdPathDepotMapping": {
+        "./": {
+          "depot_name": "VS.release-notes",
+          "folder_relative_path_in_docset": "./"
+        }
+      }
     },
-    "fileMetadata": {},
+    "fileMetadata": {
+      "ms.author": {
+        "docswhatsnew/**": "sdanie"
+      },
+      "author": {
+        "docswhatsnew/**": "steved0x"
+      }
+    },
     "template": [],
     "dest": "release-notes"
   }

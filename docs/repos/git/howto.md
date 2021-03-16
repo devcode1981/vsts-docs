@@ -3,20 +3,16 @@ title: Git frequently asked questions
 titleSuffix: Azure Repos
 description: Tips, Tricks, and HOWTO to complete some less-common Git tasks.
 ms.assetid: b1262306-214c-4422-8eda-d03d05825241
-ms.prod: devops
 ms.technology: devops-code-git 
-ms.manager: douge
-ms.author: sdanie
-author: steved0x
 ms.topic: reference
 ms.date: 03/14/2018
-monikerRange: '>= tfs-2013'
+monikerRange: '<= azure-devops'
 ---
 
 
 #  Frequently Asked Git Questions
 
-#### Azure Repos | TFS 2018 | TFS 2017 | TFS 2015 | VS 2017 | VS 2015
+**Azure Repos | Azure DevOps Server 2020 | Azure DevOps Server 2019 | TFS 2018 | TFS 2017 | TFS 2015 | VS 2017 | VS 2015**
 
 ### Is there an easy way to get a remote branch downloaded into my local repository?
 
@@ -35,12 +31,12 @@ This is up to you and your team. An accepted practice is to make separate commit
 A popular option is to allow everyone to commit locally as much as they want, but before they push the local commits, they squash them first through [rebasing](rebase.md).
 This gives users a lot of personal flexibility to make frequent commits while keeping the commit history streamlined. 
 
-### If every branch retains its full commit history even when merged into master, doesn't that make the commit history of master hard to follow over time?
+### If every branch retains its full commit history even when merged into main, doesn't that make the commit history of main hard to follow over time?
 
-Large projects with many commits and a range of contributors can result in commit histories for the `master` branch that represent 
-the development history of the topic branches merged into `master` more than the development history of the overall project. 
+Large projects with many commits and a range of contributors can result in commit histories for the `main` branch that represent 
+the development history of the topic branches merged into `main` more than the development history of the overall project. 
 Git provides a facility for condensing commits on branches through [squashing commits and rebasing](rebase.md). 
-Squashing commits makes the commit history on a branch less verbose and makes for a simpler commit history on the master branch once merged.
+Squashing commits makes the commit history on a branch less verbose and makes for a simpler commit history on the main branch once merged.
 
 ### How can I find out who made a specific change to a file in my Git repository?
 
@@ -65,7 +61,7 @@ Checking out to a different branch in Git will affect the state of files on your
 that represent the state of your branch. If you attempt to change branches while you have uncommitted changes, those changes would be overwritten during the checkout. Git doesn't
 want you to accidentally lose your changes, so it prevents the checkout from happening. You can resolve this by:
 
-----
+---
 - Abandoning the changes and return to the most recent commit. See [undoing changes in Git](undo.md) for instructions on how to roll back to the most recent commit.  
 - Committing the changes. See [saving your work in Git with commits](commits.md). 
 - [Stashing](howto.md#stash) your current work, saving the changes for later and cleaning up the workspace to the last commit.    
@@ -92,7 +88,7 @@ Once you run `git stash apply` the most recently stashed changes will be applied
 Once you are done with the stash, delete it with `git stash drop`. This will remove the last set of stashed changes.
 
 A final note about stash is that you can have multiple stashes, but doing so requires more manual manipulation as you have to explicitly apply and drop stashes. You can read more about
-this from in the [Git Stash documentation](http://git-scm.com/book/en/v1/Git-Tools-Stashing).
+this from in the [Git Stash documentation](https://git-scm.com/book/en/v1/Git-Tools-Stashing).
 
 
 ### How can I change the default editor that is used when working with Git command line tools?

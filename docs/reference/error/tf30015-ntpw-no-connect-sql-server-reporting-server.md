@@ -2,32 +2,30 @@
 title: TF30015-The New Team Project Wizard could not connect to the specified SQL Server Reporting Services server
 titleSuffix: Azure DevOps & TFS
 description: The New Team Project Wizard was unable to connect to {name}.
-ms.prod: devops
 ms.technology: devops-agile
 ms.assetid: 97f7dbf0-20f4-4e8d-94d2-403ca581d0a2
-ms.manager: douge
 ms.author: kaelli
 author: KathrynEE
-ms.topic: Troubleshooting
+ms.topic: troubleshooting
 ms.date: 02/22/2017
 ---
 
 # TF30015: The New Team Project Wizard could not connect to the specified SQL Server Reporting Services server {0}.
 
-[!INCLUDE [temp](../../_shared/version-vsts-tfs-all-versions.md)]
+[!INCLUDE [temp](../../includes/version-vsts-tfs-all-versions.md)]
 
 
 The New Team Project Wizard was unable to connect to {*name*}, the server that hosts SQL Server Reporting Services. The reason for the failed connection cannot be determined at this time.  
   
  Possible causes of this error include:  
   
--   You do not have the required permissions to create a project.  
+- You do not have the required permissions to create a project.  
   
--   A server in the Team Foundation deployment is incorrectly configured. This problem is especially common after a server move, failover, or other maintenance activity.  
+- A server in the Team Foundation deployment is incorrectly configured. This problem is especially common after a server move, failover, or other maintenance activity.  
   
--   The server that hosts SQL Server Reporting Services is offline.  
+- The server that hosts SQL Server Reporting Services is offline.  
   
- Because the wizard could not connect to the server that hosts SQL Server Reporting Services, the wizard was unable to create the SQL Server Reporting Services site on that server.  
+  Because the wizard could not connect to the server that hosts SQL Server Reporting Services, the wizard was unable to create the SQL Server Reporting Services site on that server.  
   
 ### To correct this error    
   

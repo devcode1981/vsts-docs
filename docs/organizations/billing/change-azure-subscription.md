@@ -1,83 +1,74 @@
 ---
-title: Change the Azure subscription that your Azure DevOps organization uses for billing
-description: Steps for how to unlink the Azure subscription that your organization uses for billing via the Visual Studio Marketplace
-ms.prod: devops
+title: Change Azure subscription used for billing
+titleSuffix: Azure DevOps Services
+ms.custom: seodec18, contperf-fy21q1
+description: Unlink the Azure subscription that your organization uses for billing
 ms.technology: devops-billing
 ms.assetid: e447adb1-6208-49f6-a488-515aa4b2fdcf
-ms.topic: conceptual
-ms.manager: douge
+ms.topic: how-to
 ms.author: chcomley
 author: chcomley
-ms.date: 11/14/2018
-monikerRange: 'vsts'
+monikerRange: 'azure-devops'
+ms.date: 08/05/2020
 ---
 
-# Change the Azure subscription that your organization uses for billing
+# Change or remove your organization's subscription
 
-[!INCLUDE [version-vsts-only](../../_shared/version-vsts-only.md)]
+[!INCLUDE [version-vsts-only](../../includes/version-vsts-only.md)]
 
-If you want to use a different Azure subscription to bill purchases for your organization, you can do either of the following:
+Learn how to change the Azure subscription that your Azure DevOps organization uses for billing. You can remove your billing subscription at any time.   
 
-- Move it to a different Azure subscription that you have access to
-- Remove the current Azure subscription and then buy again using a new subscription
+[!INCLUDE [pricing-calculator-tip](../../includes/pricing-calculator-tip.md)]
 
-## Move to a different subscription
+## Prerequisites
 
-If the target subscription is in the same Azure Active Directory as the destination subscription and you have access to both, complete the following steps or learn more about [moving resources to new resource groups or subscriptions](/azure/azure-resource-manager/resource-group-move-resources).
+To change or remove your billing subscription, you need the following:
 
-1. Sign in to the [Azure portal](https://portal.azure.com).
-2. Select **Resource groups**.
+- [Organization Owner](../security/lookup-organization-owner-admin.md) permissions or be a member of the  [Project Collection Administrators group](../security/set-project-collection-level-permissions.md)  
+- [Owner or Contributor permission for an Azure subscription](add-backup-billing-managers.md), which you can use to purchase
 
-   ![Select Azure Resource groups](_img/change-azure-subscription/azure-resource-groups.png)
+<a id="change-subscription" />
 
-3. Select the resource group containing your organization.
-4. Select **Move** > **Move to another subscription**.
+## Change your subscription
 
-   ![Select Move > Move to another resource group](_img/change-azure-subscription/select-move-to-another-subscription.png)
+1. Sign in to your organization (```https://dev.azure.com/{yourorganization}```).
 
-5. Select your target subscription and resource group.
-6. Select **OK**.
+2. Select ![gear icon](../../media/icons/gear-icon.png) **Organization settings**.
 
-## Remove the billing subscription and purchase again
+   ![Open Organization settings](../../media/settings/open-admin-settings-vert.png)
 
-### Prerequisites
+3. Select **Billing**.
 
-- [Project collection administrator or organization owner permissions](../accounts/faq-add-delete-users.md#find-owner)
-- [The **owner** or **contributor** role on your Azure subscription](add-backup-billing-managers.md)
+   ![Select Billing in Organization settings](media/shared/select-billing-organization-settings.png)
 
->[!NOTE]
-> When you remove the billing subscription from your organization, any paid quantities of Basic, Azure Artifacts users, Test Manager users, Microsoft-hosted CI/CD, and self-hosted CI/CD you’ve paid for this month will continue uninterrupted until the 1st of next month, but your organization will revert immediately to the Free Tier for cloud-based load testing. Removing the subscription will also cancel any non-Microsoft paid extensions without refund or credit.
+4. Select **Change billing**.
 
-[Remove billing subscription](#remove-billing-subscription)
+   ![Select Change billing](media/shared/select-change-billing.png)
 
-### Remove billing subscription
+5. Select your Azure subscription, and then select **Save**.
 
-1. [Sign in to the Azure portal](https://portal.azure.com/) as organization owner and as Azure subscription co-administrator or greater.
+   ![Select your Azure subscription](media/shared/select-azure-subscription.png)
 
-    If you experience browser problems with Azure,
-    make sure that you use a [supported browser](https://azure.microsoft.com/documentation/articles/azure-preview-portal-supported-browsers-devices/).
+> [!NOTE]
+> A user interface limitation prevents the subscription picker from displaying more than 50 subscriptions. If your user account has access to more than 50 subscriptions and the target subscription you want to change the billing for isn't visible, you can follow either of the following two workarounds:
+> - Create a new user account. Grant the account Owner/Contributor rights to the target subscription and administrative privileges to the Azure DevOps organization. Use the new account to link the organization to the target subscription.
+> - Open a [support ticket](https://developercommunity.visualstudio.com/spaces/21/index.html).
 
-2. Go to **All services** > **Azure DevOps Services organizations**.
+## Remove your subscription 
 
-   ![Choose All services and Azure DevOps organizations](../accounts/_img/_shared/azure-portal-team-services-administration.png)
+> [!NOTE]
+> When you remove the billing subscription from your organization, any paid quantities of Basic, Azure Artifacts users, Azure Test Plans users, Microsoft-hosted CI/CD, and self-hosted CI/CD go back to the free organization limits immediately.
 
-3. Select your organization and **Remove billing**.
+1. Sign in to your organization, choose ![gear icon](../../media/icons/gear-icon.png) **Organization settings** > **Billing**, and then **Change billing**, following steps 1 through 4 provided in the [Change the subscription](#change-subscription) section.
 
-   ![Remove billing from your organization](../accounts/_img/_shared/azure-portal-remove-billing.png)
+2. Choose **Remove billing**, and then choose **Save**.
 
-### Purchase again by using the new subscription
-
-1. Make your purchases again in the [Visual Studio Marketplace](https://marketplace.visualstudio.com/azuredevops), Azure DevOps tab. During your first purchase, select the new Azure subscription to use for billing going forward.
-
->[!NOTE]
-> You will only incur incremental charges only if the quantities of Microsoft resources that you select exceed what you've already paid for the current month. Purchases of non-Microsoft extensions will be treated as new purchases and billed immediately to your new Azure subscription.
-If you wait until the first of next month to make your purchases again, your organization reverts to the free tier and users in excess of the free limits will appear as expired.
+	> [!div class="mx-imgBorder"]  
+	> ![Remove billing](media/change-azure-subscription/remove-billing-highlight.png)  
 
 ## Related articles
 
-- [Azure DevOps users](https://marketplace.visualstudio.com/items?itemName=ms.vss-vstsuser)
-- [Microsoft-hosted CI/CD](https://marketplace.visualstudio.com/items?itemName=ms.build-release-hosted-pipelines)
-- [Self-hosted CI/CD](https://marketplace.visualstudio.com/items?itemName=ms.build-release-private-pipelines)
-- [Test Manager](https://marketplace.visualstudio.com/items?itemName=ms.vss-testmanager-web)
-- [Azure Artifacts](https://marketplace.visualstudio.com/items?itemName=ms.feed)
-- Any non-Microsoft services you're buying through the [Visual Studio Marketplace](https://marketplace.visualstudio.com/azuredevops).
+- [Buy Basic access for users](buy-basic-access-add-users.md)
+- [Buy Azure Test Plans](buy-basic-access-add-users.md)
+- [Buy parallel jobs](../../pipelines/licensing/concurrent-jobs.md#how-much-do-parallel-jobs-cost)
+- [Sign up for Azure Artifacts](../../artifacts/start-using-azure-artifacts.md)

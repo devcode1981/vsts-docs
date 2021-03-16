@@ -1,23 +1,21 @@
 ---
-title: Why use Azure Boards?
+title: 11 reasons to start using Azure Boards
 titleSuffix: Azure Boards & TFS 
-description: Benefits provided with Azure Boards  
-ms.custom: boards-get-started
-ms.prod: devops
+description: Understand why to use Azure Boards to track your issues, user stories, bugs, tasks, and other work  
+ms.custom: "boards-get-started, seodec18"
 ms.technology: devops-new-user
 ms.assetid:  
-ms.manager: douge
 ms.author: kaelli
 author: KathrynEE
 ms.topic: overview
 monikerRange: '>= tfs-2013'
-ms.date: 11/19/2018
+ms.date: 01/11/2019
 ---
 
 
-# Why use Azure Boards?  
+# 11 Reasons for using Azure Boards to plan and track your work 
 
-[!INCLUDE [temp](../_shared/version-vsts-plus-azdevserver-2019.md)]
+[!INCLUDE [temp](../includes/version-all.md)]
 
 We know you have a choice of tracking systems. So why use Azure Boards to plan and track your work, bugs, and customer issues? 
 
@@ -37,11 +35,11 @@ As your organization grows, you can [add teams](../../organizations/projects/abo
 Visual tools help teams quickly see and share progress. For example, with [Kanban boards](../boards/kanban-quickstart.md) you can add work, update the status of work, and monitor work in progress. 
 
 > [!div class="mx-imgBorder"]  
-> ![Example Kanban board](../../boards/boards/_img/quickstart/intro-view.png)
+> ![Example Kanban board](../../boards/boards/media/quickstart/intro-view.png)
 
 With [product backlogs](../backlogs/create-your-backlog.md), you can quickly add work items and prioritize work to keep the most important work at the top of the stack. And, with [delivery plans](../plans/review-team-plans.md), teams can share their plans against a calendar view. 
 
-Use [built-in scrum boards and planning tools](../sprints/index.md) to help your teams run effective stand-ups, planning meetings, and retrospectives.
+Use [built-in scrum boards and planning tools](../sprints/scrum-overview.md) to help your teams run effective stand-ups, planning meetings, and retrospectives.
 
 ## 3. Easy to customize
 
@@ -50,7 +48,7 @@ Kanban boards, taskboards, and delivery plans are easy to configure and customiz
 For example, with Kanban boards, you can configure columns, swim lanes, card styles, fields shown on cards, and more. You can configure them all through a common configuration dialog. 
 
 > [!div class="mx-imgBorder"]  
-> ![Kanban board common configuration dialog](../../organizations/settings/_img/configure-team/common-configuration-dialog.png)
+> ![Kanban board common configuration dialog](../../organizations/settings/media/configure-team/common-configuration-dialog.png)
 
 
 > [!TIP]   
@@ -64,7 +62,7 @@ And, you can easily add [custom fields, work item types, and portfolio backlogs]
 Work item forms provide built-in discussion that you can use to capture questions, notes, and communication as they occur. With this feature, you can maintain a history of what a team decides on any particular work item. You can quickly bring a team member or an entire team into the conversation [by using @mentions](../../notifications/at-mentions.md). 
 
 > [!div class="mx-imgBorder"]  
-> ![Discussion section in work item form](../backlogs/_img/add-work-items-discussion.png)
+> ![Discussion section in work item form](../backlogs/media/add-work-items-discussion.png)
 
 ## 5. Capture information, generous cloud storage 
 
@@ -77,10 +75,10 @@ In addition, you can link work items within a hierarchy or by simple related lin
 As your project grows, the number of work items used to track it grows. To support your ability to quickly find a specific work item, Azure Boards provides you with easy-to-use tools: 
 
 - A follow feature so you can [follow work items](../work-items/follow-work-items.md) to monitor updates and changes
-- [Pivot views](plan-track-work.md#pivot-views) that show you work items assigned to you, that you elected to follow, were recently modified, and more  
-- A powerful [query engine](../queries/example-queries.md) that filters work item lists based on any field and used to update or triage work items
+- [Pivot views](../work-items/view-add-work-items.md ) that show you work items assigned to you, that you elected to follow, were recently modified, and more  
+- A powerful [query engine](../queries/about-managed-queries.md) that filters work item lists based on any field and used to update or triage work items
 - Fast, flexible [ad-hoc search](../queries/search-box-queries.md) with quick inline filters 
-- Alert management settings so you can [personalize the alerts](../../notifications/howto-manage-personal-notifications.md) you receive when work items are assigned to you or are changed, or other filter criteria
+- Alert management settings so you can [personalize the alerts](../../notifications/manage-your-personal-notifications.md) you receive when work items are assigned to you or are changed, or other filter criteria
 
 
 ## 7. Monitor status and progress with built-in dashboards and analytics  
@@ -90,9 +88,9 @@ With Azure Boards, you gain access to a number of tools to generate reports to s
 By using [configurable dashboards](../../report/dashboards/dashboards.md), you can add one or more widgets. You configure widgets to display the information and data you want, such as the following bug burndown widget. 
 
 > [!div class="mx-imgBorder"]  
-> ![Example bug burndown widget](/azure/devops/report/dashboards/_img/burndown-widget/burndownup-bug-burndown.png)  
+> ![Example bug burndown widget](/azure/devops/report/dashboards/media/burndown-widget/burndownup-bug-burndown.png)  
 
-In addition to dashboards, you have access to the [Analytics service](../../report/analytics/what-is-analytics.md), which is optimized for fast read-access and server-based aggregations. By using [Analytics views](../../report/analytics/what-are-analytics-views.md) and [Power BI](../../report/analytics/what-are-analytics-views.md), you can create highly sophisticated reports on the project data of interest. 
+In addition to dashboards, you have access to the [Analytics service](../../report/powerbi/what-is-analytics.md), which is optimized for fast read-access and server-based aggregations. By using [Analytics views](../../report/powerbi/what-are-analytics-views.md) and [Power BI](../../report/powerbi/what-are-analytics-views.md), you can create highly sophisticated reports on the project data of interest. 
 
 
 ## 8. Office integration 
@@ -104,14 +102,14 @@ Project managers who want to use familiar tools can import and export work item 
 
 ## 9. Extensions and extensibility  
 
-You can gain even greater functionality by adding Marketplace extensions, many of which are free. An extension is an installable unit that adds capabilities to Visual Studio, Azure DevOps Services, Team Foundation Server, or Visual Studio Code. You can find extensions within these products or in the [Visual Studio Marketplace](https://marketplace.visualstudio.com/vsts).
+You can gain even greater functionality by adding Marketplace extensions, many of which are free. An extension is an installable unit that adds capabilities to Visual Studio, Azure DevOps Services, Team Foundation Server, or Visual Studio Code. You can find extensions within these products or in the [Visual Studio Marketplace](https://marketplace.visualstudio.com/azuredevops), Azure DevOps tab.
 
 Here are a few extensions available from the Marketplace.
 
 > [!div class="mx-imgBorder"]  
-> ![Marketplace extensions for plan and track work](_img/why-boards/marketplace-extensions.png) 
+> ![Marketplace extensions for plan and track work](media/why-boards/marketplace-extensions.png) 
 
-In addition, by using the [REST API](/rest/api/vsts/index), you can create your own extensions or tools to integrate with Azure DevOps Services.
+In addition, by using the [REST API](/rest/api/azure/devops/index), you can create your own extensions or tools to integrate with Azure DevOps Services.
 
 
 ## 10. Mobile app 
@@ -119,7 +117,7 @@ In addition, by using the [REST API](/rest/api/vsts/index), you can create your 
 Azure Boards makes it easy to stay on top of changes as they occur. 
 By using the [mobile browser](../../project/navigation/mobile-work.md), you can be notified and respond to changes made to work items.  
 
-![Mobile browser, work item form](../../project/navigation/_img/mobile-work-intro-1.png)
+![Mobile browser, work item form](../../project/navigation/media/mobile-work-intro-1.png)
 
 ## 11. Start for free
 
@@ -128,6 +126,6 @@ Last but not least, you can start for free and add up to five free users and unl
 Get started today. To learn how, see [Sign up for free and invite others to collaborate on your project](sign-up-invite-teammates.md). 
 
 
+## Related articles
 
-
-
+- [Best tool to add, update, and link work items](../work-items/best-tool-add-update-link-work-items.md)

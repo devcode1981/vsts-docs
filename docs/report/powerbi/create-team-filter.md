@@ -1,34 +1,33 @@
 ---
 title: Apply a team filter to a Power BI report
-titleSuffix: Azure DevOps Services 
+titleSuffix: Azure DevOps 
 description: Sample report that show how to create a trend report with a team filter using an Analytics view
-ms.prod: devops
 ms.technology: devops-analytics
-ms.assetid: 
-ms.reviewer: jozimm
-ms.manager: douge
 ms.author: kaelli
+author: KathrynEE
 ms.topic: sample
-monikerRange: '>= azdevserver-2019'
-ms.date: 05/18/2018 
+monikerRange: '>= azure-devops-2019'
+ms.date: 12/18/2020
 ---
 
 # Create a Power BI report filtered by team using a custom Analytics view
 
-[!INCLUDE [temp](../../_shared/version-azure-devops.md)]
+[!INCLUDE [temp](../includes/version-azure-devops.md)]
 
-Analytics views support field criteria to filter work items based on teams. However, there is no team-specific field available to support filtering a Power BI report. While each work item is associated with a specific area path, area paths can be associated with more than one team. Due to this one-to-many associations, the Analytics service doesn't provide a team-specific field. 
+Analytics views support field criteria to filter work items based on teams. However, there is no team-specific field available to support filtering a Power BI report. While each work item is associated with a specific area path, area paths can be associated with more than one team. Due to this one-to-many associations, Analytics doesn't provide a team-specific field. 
 
 However, you can still filter on a team using the steps provided in this article. The general process introduces a mapping table between the [Analytics view](create-quick-report.md) and the [teams](../extend-analytics/data-model-analytics-service.md) entity.
 
 > [!NOTE]  
 > In a similar manner, limitations exist in determining the board-specific column of a work item within an Analytics view. However, the guidance provided in this article won't work for board locations due to the dependency on the selected historical data in the view. 
 
+[!INCLUDE [temp](./includes/prerequisites-power-bi.md)]
+
 ## Add the AreaSK field to your Analytics view 
 
 The default fields included within the default Analytics views don't include the fields necessary to create the relationship mapping in Power BI. Use the following steps to introduce the mapping table to your model and build the necessary relationships to support filtering on teams.
 
-1. [Edit](../analytics/analytics-views-manage.md) your Analytics view.
+1. [Edit](analytics-views-manage.md) your Analytics view.
 2. In the **Field** tab add the *AreaSK* field.  
 3. Save the updated view.
 4. Load the Power BI pbix file associated with your Analytics view in Power BI Desktop.
@@ -43,12 +42,12 @@ The next step is to add the *Teams* entity to the Power BI data model and genera
 3. Select the **Blank Query** option.
 
     > [!div class="mx-imgBorder"]  
-    > ![Blank Query](_img/BlankQuery.png) 
+    > ![Blank Query](media/BlankQuery.png) 
 
 4. Open **Advanced Editor**.    
  
     > [!div class="mx-imgBorder"]    
-    > ![Advanced Editor](_img/AdvancedEditor.png) 
+    > ![Advanced Editor](media/AdvancedEditor.png) 
 
 5. Add the following query code, substituting organization information and team names to match your Analytics view. 
    
@@ -62,7 +61,7 @@ The next step is to add the *Teams* entity to the Power BI data model and genera
 
 6. Rename the query to *Teams*.
 
-    ![Change Query Name to Teams](_img/ChangeQueryName.png)
+    ![Change Query Name to Teams](media/ChangeQueryName.png)
 
 7. From the **Home** tab, choose **New Source** to add another blank query and rename it to 
  *Areas*. 
@@ -79,7 +78,7 @@ The next step is to add the *Teams* entity to the Power BI data model and genera
 
 9. From the **Home** tab, choose **New Source** to add another blank query and rename it to *AreaToTeam*.
 
-10. Open **Advanced Editor** and add the following query code, substituting organization information to match your view.
+11. Open **Advanced Editor** and add the following query code, substituting organization information to match your view.
 
     ```Query
     let
@@ -96,7 +95,7 @@ The next step is to add the *Teams* entity to the Power BI data model and genera
 11. On the Home tab, choose **Close & Apply**.   
 
 	> [!div class="mx-imgBorder"]  
-	> ![Power BI Desktop, Home, Close & Apply](_img/powerbi-close-apply.png)   
+	> ![Power BI Desktop, Home, Close & Apply](media/powerbi-close-apply.png)   
 
 16. Next, choose **Refresh** to add *AreaSK* to the view.  
 
@@ -108,33 +107,33 @@ The last step is to create the necessary relationships in Power BI.
 1. Open the **Relationships** view. 
 
     > [!div class="mx-imgBorder"]  
-    > ![Open the Relationships view](_img/TeamRelationships.png) 
+    > ![Open the Relationships view](media/TeamRelationships.png) 
 
 2. From the **Home** tab, open **Manage Relationships**.
 
 	> [!div class="mx-imgBorder"]  
-	> ![Power BI Desktop, Home, Manage Relationships](_img/manage-relationships.png) 
+	> ![Power BI Desktop, Home, Manage Relationships](media/manage-relationships.png) 
 	
 3. In the Manage Relationships dialog:  
 	a. Delete any relationships that might have been automatically detected.   
 	b. Choose **New** to create a bidirectional *Many to One* relationship between your *View* and *Area*. To learn more, see [Bidirectional cross-filtering using DirectQuery in Power BI Desktop](/power-bi/desktop-bidirectional-filtering).  
 
 	> [!div class="mx-imgBorder"]  
-	> ![Power BI Desktop, Manage Relationships dialog, View To Area](_img/ViewToArea.png)
+	> ![Power BI Desktop, Manage Relationships dialog, View To Area](media/ViewToArea.png)
 
 4. Create a bidirectional *One to Many* relationship between *Areas* and *AreaToTeam*.
 
 	> [!div class="mx-imgBorder"]  
-	> ![Power BI Desktop, Home, Manage Relationships, Areas and AreaToTeam Mapping](_img/AreaToAreaTeam.png) 	 
+	> ![Power BI Desktop, Home, Manage Relationships, Areas and AreaToTeam Mapping](media/AreaToAreaTeam.png) 	 
 
 5. Create a bidirectional *Many to One* relationship between *AreaToTeam* and *Teams*.  
 
 	> [!div class="mx-imgBorder"]  
-	> ![Power BI Desktop, Home, Manage Relationships, AreaToTeam and Teams Mapping](_img/TeamAreaToTeam.png) 
+	> ![Power BI Desktop, Home, Manage Relationships, AreaToTeam and Teams Mapping](media/TeamAreaToTeam.png) 
 
 6. Return to the **Report** view, and open the context menu for *TeamName* and *TeamSK* fields and choose the **Hide** option. <!--- Hide Area and AreaToTeam Tables --> 
 
-    <img src="_img/HideArea.png" alt="Hide Area" style="border: 1px solid #C3C3C3;" />
+    <img src="media/HideArea.png" alt="Hide Area" style="border: 1px solid #C3C3C3;" />
 
 7. Hide corresponding SKs in your *View* and *Team* tables. 
 
@@ -143,17 +142,17 @@ The last step is to create the necessary relationships in Power BI.
 Now that you have the mappings in place, you can filter a report view based on *Teams*. To begin, start by adding a slicer to your report based on *Team Name* (remove Blank if needed).
 
 > [!div class="mx-imgBorder"]  
-> ![Power BI Desktop, Team Slicer](_img/TeamSlicer.png)  
+> ![Power BI Desktop, Team Slicer](media/TeamSlicer.png)  
 
 Now you can filter all visualization on a report using a slicer or any other supported filtering functionality in Power BI.
 
 > [!div class="mx-imgBorder"]  
-> ![Power BI Desktop, Count Filtered by Team](_img/CountFilteredByTeam.png)  
+> ![Power BI Desktop, Count Filtered by Team](media/CountFilteredByTeam.png)  
  
 
 ## Related articles
 
 - [Power BI integration overview](overview.md) 
-- [Create Analytics views](../analytics/analytics-views-create.md)
-- [Get started with Power BI Desktop](/power-bi/desktop-getting-started)
+- [Create Analytics views](analytics-views-create.md)
+- [Get started with Power BI Desktop](/power-bi/fundamentals/desktop-getting-started)
 - [Bidirectional cross-filtering using DirectQuery in Power BI Desktop](/power-bi/desktop-bidirectional-filtering)

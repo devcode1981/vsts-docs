@@ -1,14 +1,11 @@
 ---
-title: Get started guide for Azure Repos 
+title: Guide for getting started with Azure Repos 
 titleSuffix: Azure Repos 
 description: Sign up and get started using Azure Repos 
-ms.prod: devops
 ms.technology: devops-new-user
 ms.assetid:  
-ms.manager: douge
-ms.author: sdanie
-author: steved0x
 ms.date: 09/10/2018
+ms.custom: seo-javascript-september2019
 monikerRange: '>= tfs-2013'
 ---
 
@@ -27,5 +24,5 @@ After you sign up, learn how to [code with Git](code-with-git.md). Whether your 
 Other resources to get you up and running:
 
 - [Web portal navigation](../../project/navigation/index.md)
-- [Security & identity](../../organizations/security/index.md)
+- [Security & identity](../../organizations/security/about-security-identity.md)
 - [About projects and scaling your organization](../../organizations/projects/about-projects.md)

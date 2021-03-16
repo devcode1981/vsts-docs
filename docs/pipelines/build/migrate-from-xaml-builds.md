@@ -1,14 +1,9 @@
 ---
 title: Migrate from XAML builds
-titleSuffix: Azure Pipelines & TFS
+ms.custom: seodec18
 description: How to migrate from XAML builds to new builds in your Azure Pipelines or Team Foundation Server (TFS)
 ms.topic: conceptual
-ms.prod: devops
-ms.technology: devops-cicd
 ms.assetid: 77D7057E-FE9B-4DF8-89CC-244E2A38CA35
-ms.manager: douge
-ms.author: alewis
-author: andyjlewis
 ms.date: 04/17/2018
 monikerRange: '>= tfs-2013'
 ---
@@ -18,10 +13,12 @@ monikerRange: '>= tfs-2013'
 **Azure Pipelines | TFS 2018 | TFS 2017 | XAML builds**
 
 ::: moniker range="<= tfs-2018"
-[!INCLUDE [temp](../_shared/concept-rename-note.md)]
+
+[!INCLUDE [temp](../includes/concept-rename-note.md)]
+
 ::: moniker-end
 
-We introduced XAML build automation capabilities based on the Windows Workflow Foundation in Team Foundation Server (TFS) 2010. We released another version of [XAML builds](http://msdn.microsoft.com/library/ms181709%28v=vs.120%29.aspx) in TFS 2013.
+We introduced XAML build automation capabilities based on the Windows Workflow Foundation in Team Foundation Server (TFS) 2010. We released another version of [XAML builds](/previous-versions/visualstudio/visual-studio-2013/ms181709(v=vs.120)) in TFS 2013.
 
 After that we sought to expand beyond .NET and Windows and add support for other kinds of apps that are based on operating systems such as macOS and Linux. It became clear that we needed to switch to a more open, flexible, web-based foundation for our build automation engine. In early 2015 in Azure Pipelines, and then in TFS 2015, we introduced a simpler task- and script-driven cross-platform build system.
 
@@ -37,33 +34,53 @@ Here are the steps to migrate from XAML builds to newer builds:
 
 1. If you're using a private TFS server, [set up agents](../agents/v2-windows.md) to run your builds.
 
-1. To get familiar with the new build system, create a ["Hello world" build pipeline](../get-started-designer.md).
+2. To get familiar with the new build system, create a ["Hello world" build pipeline](../create-first-pipeline.md).
 
-1. Create a new build pipeline intended to replace one of your XAML build pipelines.
+3. Create a new build pipeline intended to replace one of your XAML build pipelines.
 
- 1. Create a new build pipeline.
- 
- 1. Port your XAML settings.
+   1. Create a new build pipeline.
 
-1. On the [General tab](#general-tab), disable the XAML build pipeline.
+   1. Port your XAML settings.
 
-1. Repeat the previous two steps for each of your XAML build pipelines.
+4. On the [General tab](#general-tab), disable the XAML build pipeline.
 
-1. Take advantage of new build features and learn more about the kinds of apps you can build.
+5. Repeat the previous two steps for each of your XAML build pipelines.
 
-1. Learn how to customize, and if necessary extend your system.
+6. Take advantage of new build features and learn more about the kinds of apps you can build.
 
-1. When you no longer need the history and artifacts from your XAML builds, delete the XAML builds, and then the XAML build pipelines.
+7. Learn how to customize, and if necessary extend your system.
 
- > [!WARNING]
- > After you delete the XAML builds and pipelines, you cannot get them back.
+8. When you no longer need the history and artifacts from your XAML builds, delete the XAML builds, and then the XAML build pipelines.
+
+   > [!WARNING]
+   > After you delete the XAML builds and pipelines, you cannot get them back.
 
 ## Create new build pipelines
 
 If you're building a standard .NET app, you're probably using one of the out-of-the-box build templates such as TfvcTemplate.12.xaml or GitTemplate.12.xaml. In this case, it will probably just take you a few clicks to create build pipelines in the new build system.
 
 <ol>
-    [!INCLUDE [include](../_shared/begin-create-build-definition.md)]
+
+
+<li><p><a data-toggle="collapse" href="#expando-begin-create-build-definition-open-team-project">Open your project in your web browser &#x25BC;</a></p>
+<div class="collapse" id="expando-begin-create-build-definition-open-team-project">
+<img src="~/pipelines/media/browse-to-team-project.png" alt="Browse to project">
+
+<p>(If you don&#39;t see your project listed on the home page, select <strong>Browse</strong>.)</p>
+<ul>
+<li>On-premises TFS: <code>http://{your_server}:8080/tfs/DefaultCollection/{your_project}</code> </li>
+<li>Azure Pipelines: <code>https://dev.azure.com/{your_organization}/{your_project}</code></li>
+</ul>
+<p><a href="/azure/devops/server/admin/websitesettings" data-raw-source="[The TFS URL doesn&#39;t work for me. How can I get the correct URL?](/azure/devops/server/admin/websitesettings)">The TFS URL doesn&#39;t work for me. How can I get the correct URL?</a></p>
+</div>
+</li>
+
+<li><p><a data-toggle="collapse" href="#expando-begin-create-build-definition-create">Create a build pipeline (Pipelines tab &gt; Builds) &#x25BC;</a></p>
+<div class="collapse" id="expando-begin-create-build-definition-create">
+<img src="~/pipelines/media/create-new-build-definition.png" alt="Build tab">
+<p>
+</div>
+</li>
 
 <li>Select a template to add commonly used tasks to your build pipeline.</li>
 
@@ -76,7 +93,7 @@ In each of the following sections we show the XAML user interface, and then prov
 
 ### General tab
 
-![xaml build general tab](_img/migrate-from-xaml-builds/xaml-build-general-tab.png)
+![xaml build general tab](media/migrate-from-xaml-builds/xaml-build-general-tab.png)
 
 | XAML setting | TFS 2017 equivalent | Azure Pipelines and TFS 2018 and newer equivalent |
 |-|-|-|
@@ -88,7 +105,7 @@ In each of the following sections we show the XAML user interface, and then prov
 
 #### TFVC
 
-![xaml build source settings tfvc](_img/migrate-from-xaml-builds/xaml-build-source-settings-tfvc.png)
+![xaml build source settings tfvc](media/migrate-from-xaml-builds/xaml-build-source-settings-tfvc.png)
 
 | XAML setting | TFS 2017 and newer equivalent | Azure Pipelines equivalent |
 |-|-|-|
@@ -98,7 +115,7 @@ The new build pipeline offers you some new options. The specific extra options y
 
 #### Git
 
-![xaml build source settings git tfs](_img/migrate-from-xaml-builds/xaml-build-source-settings-git-tfs.png)
+![xaml build source settings git tfs](media/migrate-from-xaml-builds/xaml-build-source-settings-git-tfs.png)
 
 | XAML setting | TFS 2017 and newer equivalent | Azure Pipelines equivalent |
 |-|-|-|
@@ -108,7 +125,7 @@ The new build pipeline offers you some new options. The specific extra options y
 
 ### Trigger tab
 
-![xaml build trigger tab](_img/migrate-from-xaml-builds/xaml-build-trigger-tab.png)
+![xaml build trigger tab](media/migrate-from-xaml-builds/xaml-build-trigger-tab.png)
 
 | XAML setting | TFS 2017 and newer, Azure Pipelines equivalent |
 |-|-|
@@ -132,7 +149,7 @@ We don't yet support the **Build even if nothing has changed since the previous 
 
 ### Build Defaults tab
 
-![xaml build build defaults tab](_img/migrate-from-xaml-builds/xaml-build-build-defaults-tab.png)
+![xaml build build defaults tab](media/migrate-from-xaml-builds/xaml-build-build-defaults-tab.png)
 
 | XAML process parameter | TFS 2017 and newer equivalent | Azure Pipelines equivalent |
 |-|-|-|
@@ -149,7 +166,7 @@ The new build pipeline offers you some new options. For example:
 
 #### TF Version Control
 
-![xaml source settings git tfs](_img/migrate-from-xaml-builds/xaml-build-template-12-tf-version-control.png)
+![XAML source settings, TFVC.](media/migrate-from-xaml-builds/xaml-build-template-12-tf-version-control.png)
 
 | XAML process parameter | TFS 2017 and newer equivalent | Azure Pipelines equivalent |
 |-|-|-|
@@ -161,7 +178,7 @@ The new build pipeline offers you some new options. See [Build TFVC repositories
 
 #### Git
 
-![xaml source settings git tfs](_img/migrate-from-xaml-builds/git-template-12-xaml-git.png)
+![XAML source settings, Git.](media/migrate-from-xaml-builds/git-template-12-xaml-git.png)
 
 | XAML process parameter | TFS 2017 and newer equivalent | Azure Pipelines equivalent |
 |-|-|-|
@@ -172,7 +189,7 @@ The new build pipeline offers you some new options. See [Pipeline options for Gi
 
 #### Build
 
-![xaml source settings git tfs](_img/migrate-from-xaml-builds/xaml-build-template-12-build.png)
+![XAML source settings, Build.](media/migrate-from-xaml-builds/xaml-build-template-12-build.png)
 
 On the **Build** tab (TFS 2017 and newer) or the **Tasks** tab (Azure Pipelines), after you select the Visual Studio Build task, you'll see the arguments that are equivalent to the XAML build parameters.
 
@@ -197,13 +214,13 @@ Learn more: [Visual Studio Build task](../tasks/build/visual-studio-build.md) (f
 
 #### Test
 
-![xaml source settings git tfs](_img/migrate-from-xaml-builds/xaml-build-template-12-test.png)
+![XAML source settings, Test.](media/migrate-from-xaml-builds/xaml-build-template-12-test.png)
 
-See [Get started with continuous testing](../test/getting-started-with-continuous-testing.md) and [Visual Studio Test task](../tasks/test/vstest.md).
+See [continuous testing](../ecosystems/dotnet-core.md#run-your-tests) and [Visual Studio Test task](../tasks/test/vstest.md).
 
 #### Publish Symbols
 
-![xaml source settings git tfs](_img/migrate-from-xaml-builds/xaml-build-template-12-publish-symbols.png)
+![XAML source settings, Publish.](media/migrate-from-xaml-builds/xaml-build-template-12-publish-symbols.png)
 
 | XAML process parameter | TFS 2017 and newer, Azure Pipelines equivalent |
 |-|-|
@@ -211,7 +228,7 @@ See [Get started with continuous testing](../test/getting-started-with-continuou
 
 #### Advanced
 
-![xaml source settings git tfs](_img/migrate-from-xaml-builds/xaml-build-template-12-advanced.png)
+![XAML source settings, Advanced.](media/migrate-from-xaml-builds/xaml-build-template-12-advanced.png)
 
 | XAML process parameter | TFS 2017 and newer equivalent| Azure Pipelines equivalent |
 |-|-|-|
@@ -226,11 +243,11 @@ The new build pipeline offers you some new options. See:
 
 * [Agent capabilities](../agents/agents.md#capabilities)
 
-* [Build number format](../build/options.md#build-number-format)
+* [Build number format](../process/run-number.md)
 
 ### Retention Policy tab
 
-![xaml build retention policy tab](_img/migrate-from-xaml-builds/xaml-build-retention-policy-tab.png)
+![xaml build retention policy tab](media/migrate-from-xaml-builds/xaml-build-retention-policy-tab.png)
 
 | XAML process parameter | TFS 2017 and newer, Azure Pipelines equivalent |
 |-|-|
@@ -252,7 +269,7 @@ Here are a few examples of the kinds of apps you can build:
 
 * [Build your Universal Windows Platform app](../apps/windows/universal.md)
 
-* [Build your Xamarin app](../apps/mobile/xamarin.md)
+* [Build your Xamarin app](../ecosystems/xamarin.md)
 
 * [C++ apps for Windows](../apps/windows/cpp.md)
 
@@ -260,7 +277,7 @@ Here are a few examples of the kinds of apps you can build:
 
 The new build system is tightly integrated with Azure Pipelines. So it's easier then ever to automatically kick off a deployment after a successful build. Learn more:
 
-* [CI/CD Hello world](../get-started-designer.md)
+* [Create your first pipeline](../create-first-pipeline.md)
 
 * [Release pipelines](../release/index.md)
 
@@ -274,7 +291,7 @@ A few examples include:
 
 ### Other apps and tasks
 
-For more examples of apps you can build and deploy, see [Build and deploy your app](../apps/index.md).
+For more examples of apps you can build and deploy, see [Build and deploy your app](/previous-versions/azure/devops/pipelines/apps/).
 
 For a complete list of our build, test, and deployment tasks, see [Build and release tasks](../tasks/index.md).
 
@@ -284,7 +301,7 @@ In XAML builds you created custom XAML tasks. In the new builds, you've got a ra
 
 ### Get tasks from the Marketplace
 
-[Visual Studio Marketplace](https://marketplace.visualstudio.com/vsts)
+[Visual Studio Marketplace](https://marketplace.visualstudio.com/azuredevops)
 offers hundreds of extensions that you can install to add tasks that extend your build and deployment capabilities.
 
 ### Write a script
@@ -300,7 +317,7 @@ A major feature of the new build system is its emphasis on using scripts to cust
 > 
 > If you're using TFS 2017 or newer, you can write a short PowerShell script directly inside your build pipeline.
 
-![inline powershell script](_img/migrate-from-xaml-builds/inline-powershell-script.png)
+![inline powershell script](media/migrate-from-xaml-builds/inline-powershell-script.png)
 _TFS 2017 or newer inline PowerShell script_
 
 For all these tasks we offer a set of built-in variables, and if necessary, you can define your own variables. See [Build variables](../build/variables.md).
@@ -315,7 +332,7 @@ In XAML builds you created custom XAML templates. In the new builds, it's easier
 
 ### Create a template
 
-If you don't see a template for the kind of app you can start from an empty pipeline and [add the tasks you need](../tasks/index.md). After you've got a pattern that you like, you can clone it or save it as a template directly in your web browser. See [CI/CD Hello world](../get-started-designer.md).
+If you don't see a template for the kind of app you can start from an empty pipeline and [add the tasks you need](../tasks/index.md). After you've got a pattern that you like, you can clone it or save it as a template directly in your web browser. See [Create your first pipeline](../create-first-pipeline.md).
 
 ### Task groups (TFS 2017 or newer)
 
@@ -323,7 +340,7 @@ In XAML builds, if you change the template, then you also change the behavior of
 
 If you want to create a reusable and automatically updated piece of logic, then [create a task group](../library/task-groups.md). You can then later modify the task group in one place and cause all the pipelines that use it to automatically be changed.
 
-## Q & A
+## FAQ
 
 <!-- BEGINSECTION class="md-qanda" -->
 
@@ -335,9 +352,9 @@ XAML builds are deprecated. We strongly recommend that you migrate to the new bu
 
 ::: moniker-end
 
-::: moniker range="vsts"
+::: moniker range=">=azure-devops-2020"
 
-If you're not yet ready to migrate, then to enable XAML builds you must connect a XAML build controller to your organization. See [Configure and manage your build system](https://msdn.microsoft.com/library/ms252495%28v=vs.120%29.aspx).
+If you're not yet ready to migrate, then to enable XAML builds you must connect a XAML build controller to your organization. See [Configure and manage your build system](/previous-versions/visualstudio/visual-studio-2013/ms252495(v=vs.120)).
 
 ::: moniker-end
 
@@ -347,7 +364,7 @@ If you're not yet ready to migrate, then to enable XAML builds:
 
 1. Install [TFS 2018.2](https://visualstudio.microsoft.com/downloads/?q=tfs).
 
-1. Connect your XAML build servers to your TFS instance. See [Configure and manage your build system](https://msdn.microsoft.com/library/ms252495%28v=vs.120%29.aspx).
+1. Connect your XAML build servers to your TFS instance. See [Configure and manage your build system](/previous-versions/visualstudio/visual-studio-2013/ms252495(v=vs.120)).
 
 ::: moniker-end
 

@@ -2,17 +2,18 @@
 title: LabelText and Text XML elements reference 
 titleSuffix: Azure DevOps & TFS
 description: Adds a standalone label or informational text to a work item form by using the LabelText element
-ms.prod: devops
 ms.technology: devops-agile
+ms.custom: process
 ms.assetid: 6ff20e50-cef6-4278-96c4-9fd69f7e2d3a
-ms.manager: douge
-ms.author: kaelliauthor: KathrynEE
+ms.author: kaelli
+author: KathrynEE
+monikerRange: '< azure-devops'
 ms.date: 02/14/2017
 ---
 
 # LabelText and Text XML elements reference
 
-[!INCLUDE [temp](../../_shared/customization-phase-0-and-1-plus-version-header.md)] 
+[!INCLUDE [temp](../../includes/customization-phase-0-and-1-plus-version-header.md)] 
 
 You can add a standalone label or informational text to a work item form by using the `LabelText` element. The label is not associated with any work item field. Optionally, you can add a hyperlink to some or all of the text.  
   
@@ -24,16 +25,16 @@ The `LabelText` element is a child element of the `Control` element.
 ## Syntax  
   
 > [!div class="tabbedCodeSnippets"]
-```XML
-<LabelText>  
-   <Text>  
-      <Link OpenInNewWindow="true | false" UrlPath="URLLinkWithParameters">  
-         <Param index="IndexValue " value="ParamValue " type ="Original | Current"/>  
-      </Link>  
-      LabelText  
-   </Text>  
-</LabelText>  
-```  
+> ```XML
+> <LabelText>  
+>    <Text>  
+>       <Link OpenInNewWindow="true | false" UrlPath="URLLinkWithParameters">  
+>          <Param index="IndexValue " value="ParamValue " type ="Original | Current"/>  
+>       </Link>  
+>       LabelText  
+>    </Text>  
+> </LabelText>  
+> ```  
   
 ## Attributes and elements  
  The following sections describe attributes, child elements, and parent elements.  
@@ -62,48 +63,48 @@ The `LabelText` element is only recognized by clients that are running Visual St
 The following example adds the plain text "Enter details about how to reproduce the bug in the space below:" to a work item form.  
   
 > [!div class="tabbedCodeSnippets"]
-```XML  
-<Control Type="LabelControl" Label=" Enter details about how to reproduce the bug in the space below:">  
-      <LabelText>  
-      <Text>Enter details about how to reproduce the bug in the space below:  
-      </Text>  
-      </LabelText>  
-</Control>  
-```  
+> ```XML  
+> <Control Type="LabelControl" Label=" Enter details about how to reproduce the bug in the space below:">  
+>       <LabelText>  
+>       <Text>Enter details about how to reproduce the bug in the space below:  
+>       </Text>  
+>       </LabelText>  
+> </Control>  
+> ```  
   
 ### Example: Standalone Label with Hyperlink  
 
 The following example adds a hyperlink which is labeled "How do I use this work item?" to a work item form.   
   
 > [!div class="tabbedCodeSnippets"]
-```XML 
-<Control Type="LabelControl" Label="How do I use this work item?">  
-      <LabelText>  
-      <Text>  
-      <Link UrlRoot="http://www.live.com"></Link>  
-      How do I use this work item?  
-      </Text>  
-      </LabelText>  
-</Control>  
-```  
+> ```XML 
+> <Control Type="LabelControl" Label="How do I use this work item?">  
+>       <LabelText>  
+>       <Text>  
+>       <Link UrlRoot="http://www.live.com"></Link>  
+>       How do I use this work item?  
+>       </Text>  
+>       </LabelText>  
+> </Control>  
+> ```  
   
 ### Example: Hyperlink Applied to Portions of Text  
   
 The following example adds a two-part label to a work item form. The first part, "Iteration Path", is associated with a hyperlink. The second part, "(must be 3 levels deep)" appears on the work item form as plain text.  
   
 > [!div class="tabbedCodeSnippets"]
-```XML 
-<Control Type="FieldControl" FieldName="System.IterationPath" LabelPosition="Left">  
-      <LabelText>  
-      <Text>  
-         <Link UrlRoot="@WssSiteUrl/render.aspx?wit=bug&topic=Iteration">  
-         </Link>  
-      Iteration Path  
-      </Text>  
-      <Text> (must be 3 levels deep)</Text>  
-      </LabelText>  
-</Control>  
-```  
+> ```XML 
+> <Control Type="FieldControl" FieldName="System.IterationPath" LabelPosition="Left">  
+>       <LabelText>  
+>       <Text>  
+>          <Link UrlRoot="@WssSiteUrl/render.aspx?wit=bug&topic=Iteration">  
+>          </Link>  
+>       Iteration Path  
+>       </Text>  
+>       <Text> (must be 3 levels deep)</Text>  
+>       </LabelText>  
+> </Control>  
+> ```  
 
 ## Related articles  
 - [Specify work item form controls](specify-work-item-form-controls.md)

@@ -2,20 +2,21 @@
 title: Tab XML element reference 
 titleSuffix: TFS
 description: Uses to cluster a group of fields or to support one or more special controls.
-ms.prod: devops
 ms.technology: devops-agile
+ms.custom: process
 ms.assetid: fe932d65-20d4-46ab-aca0-f4a8423929b4
-ms.manager: douge
-ms.author: kaelliauthor: KathrynEE
+ms.author: kaelli
+author: KathrynEE
+monikerRange: '<= tfs-2015'
 ms.date: 02/14/2017
 ---
 
 # Tab XML element reference
 
-[!INCLUDE [temp](../../_shared/version-tfs-2013-2015.md)]
+[!INCLUDE [temp](../../includes/version-tfs-2013-2015.md)]
 
 > [!IMPORTANT]  
->This topic applies to project customization for the On-premises XML process model and the old work item form. For the Hosted XML process model and TFS 2017 and later versions that use the new work item form, see [WebLayout and Control elements](weblayout-xml-elements.md). For the Inheritance process model, see [Customize a process](../../organizations/settings/work/customize-process.md).
+> This topic applies to project customization for the On-premises XML process model and the old work item form. For the Hosted XML process model and TFS 2017 and later versions that use the new work item form, see [WebLayout and Control elements](weblayout-xml-elements.md). For the Inheritance process model, see [Customize a process](../../organizations/settings/work/customize-process.md).
 >
 >For an overview of process models, see [Customize your work tracking experience](../customize-work.md).    
 
@@ -25,14 +26,14 @@ You use the **Tab** element to cluster a group of fields or to support one or mo
 ## Syntax  
 
 > [!div class="tabbedCodeSnippets"]
-```XML
-<Tab Label="LabelText" Padding="(left, top, right, bottom)" Margin="(left, top, right, bottom)">
-   <Group> . . . </Group>
-   <Control> . . . </Control>
-   <TabGroup> . . . </TabGroup>
-   <Splitter> . . . </Splitter>
-</Tab>  
-```  
+> ```XML
+> <Tab Label="LabelText" Padding="(left, top, right, bottom)" Margin="(left, top, right, bottom)">
+>    <Group> . . . </Group>
+>    <Control> . . . </Control>
+>    <TabGroup> . . . </TabGroup>
+>    <Splitter> . . . </Splitter>
+> </Tab>  
+> ```  
   
 ## Attributes and elements  
  The following sections describe attributes, child elements, and parent elements.  
@@ -66,32 +67,32 @@ You use the **Tab** element to cluster a group of fields or to support one or mo
 ## Example  
   
 > [!div class="tabbedCodeSnippets"]
-```XML
-<FORM>  
-   <Layout>  
-        . . .   
-      <TabGroup>  
-         <Tab Label="Planning">  
-            <Group Label="Status" Padding="(0,0,0,3)">  
-               <Column PercentWidth="100">  
-                  <Control FieldName="Microsoft.DevDiv.Importance" Type="FieldControl" Label="Importance" LabelPosition="Left" />  
-                  <Control FieldName="Microsoft.DevDiv.Commitment" Type="FieldControl" Label="Commitment / Confidence" LabelPosition="Left" />  
-                    . . .  
-               </Column>  
-            </Group>  
-         </Tab>  
-         <Tab Label="Description">  
-            <Group>  
-               <Column PercentWidth="100">  
-                  <Control FieldName="System.Description" Type="HtmlFieldControl" Label="Value Proposition Description" LabelPosition="Top" />  
-               </Column >  
-            </Group>  
-         </Tab>  
- . . .                
-      </TabGroup>  
-   </Layout>  
-</FORM>  
-```  
+> ```XML
+> <FORM>  
+>    <Layout>  
+>         . . .   
+>       <TabGroup>  
+>          <Tab Label="Planning">  
+>             <Group Label="Status" Padding="(0,0,0,3)">  
+>                <Column PercentWidth="100">  
+>                   <Control FieldName="Microsoft.DevDiv.Importance" Type="FieldControl" Label="Importance" LabelPosition="Left" />  
+>                   <Control FieldName="Microsoft.DevDiv.Commitment" Type="FieldControl" Label="Commitment / Confidence" LabelPosition="Left" />  
+>                     . . .  
+>                </Column>  
+>             </Group>  
+>          </Tab>  
+>          <Tab Label="Description">  
+>             <Group>  
+>                <Column PercentWidth="100">  
+>                   <Control FieldName="System.Description" Type="HtmlFieldControl" Label="Value Proposition Description" LabelPosition="Top" />  
+>                </Column >  
+>             </Group>  
+>          </Tab>  
+>  . . .                
+>       </TabGroup>  
+>    </Layout>  
+> </FORM>  
+> ```  
   
   
 ## Related articles

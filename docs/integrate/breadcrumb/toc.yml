@@ -1,7 +1,0 @@
-- name: Azure DevOps & TFS
-  tocHref: /azure/devops/
-  topicHref: /azure/devops/index
-  items: 
-  - name: Integrate
-    tocHref: /azure/devops/
-    topicHref: /azure/devops/integrate/index

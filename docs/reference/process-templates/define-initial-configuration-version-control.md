@@ -2,11 +2,10 @@
 title: Define Git or TFVC initial configuration 
 titleSuffix: Azure DevOps & TFS
 description: Configure the initial security permissions, check-out policies, and check-in notes for TFVC or Git 
-ms.prod: devops
 ms.technology: devops-agile
 ms.assetid: a7dff64f-4bb7-4083-bcf5-12d70e4915ea
-ms.manager: douge
-ms.author: kaelliauthor: KathrynEE
+ms.author: kaelli
+author: KathrynEE
 ms.topic: reference
 monikerRange: '>= tfs-2013 <= tfs-2017' 
 ms.date: 10/11/2017
@@ -15,7 +14,7 @@ ms.date: 10/11/2017
 
 # Define the initial configuration of Git and TFVC
 
-[!INCLUDE [temp](../../_shared/customization-phase-0-and-1-plus-version-header.md)]
+[!INCLUDE [temp](../../includes/customization-phase-0-and-1-plus-version-header.md)]
 
 > [!NOTE]  
 >  For TFS 2017.3 and later versions, you create projects from the web 
@@ -45,26 +44,26 @@ You can change the name of the XML file and the folder name but not the name of 
 
 
 > [!div class="tabbedCodeSnippets"]
-```XML  
-<exclusive_checkout required=""/>  
-```  
+> ```XML  
+> <exclusive_checkout required=""/>  
+> ```  
   
  If the **required** attribute is set to **true**, only one person can check out a file at a time. If this attribute set to **false**, multiple people can check out a file at the same time, and they must reconcile changes when they check in the file.  
   
  The following example shows how to require exclusive check-out:  
   
 > [!div class="tabbedCodeSnippets"]
-```XML
-<exclusive_checkout required="true"/>  
-```  
+> ```XML
+> <exclusive_checkout required="true"/>  
+> ```  
   
 ##  <a name="Latest"></a> Get Latest on Check Out  
  You use the **get_latest_on_checkout** element to configure the default behavior when a user checks out a file for a project.  
   
 > [!div class="tabbedCodeSnippets"]
-```XML  
-<get_latest_on_checkout required=""/>  
-```  
+> ```XML  
+> <get_latest_on_checkout required=""/>  
+> ```  
   
  If the **required** attribute is set to **true**, the most recent version of an item, or tip, is downloaded every time that a user checks it out. This behavior resembles the check-out behavior in Visual SourceSafe.  
   
@@ -73,9 +72,9 @@ You can change the name of the XML file and the folder name but not the name of 
  The following example shows how to specify that the default check-out behavior is to get the most recent version of an item when a user checks it out.  
   
 > [!div class="tabbedCodeSnippets"]
-```XML  
-<get_latest_on_checkout required="true"/>  
-```  
+> ```XML  
+> <get_latest_on_checkout required="true"/>  
+> ```  
   
 ##  <a name="Notes"></a> Check-in Notes  
  The developer provides check-in notes when he or she checks in code. These notes describe whether the code changes are related to team processes and, if they are, how. For example, a check-in note can indicate whether the change was made because of a security review, and the note can include details about the changes relative to the security review.  
@@ -83,9 +82,9 @@ You can change the name of the XML file and the folder name but not the name of 
  You use the following syntax for a checkin_note element  
   
 > [!div class="tabbedCodeSnippets"]
-```XML  
-<checkin_note label="" required="" order=""/>  
-```  
+> ```XML  
+> <checkin_note label="" required="" order=""/>  
+> ```  
   
  The following table describes the attributes of the checkin_note element.  
   
@@ -98,14 +97,14 @@ You can change the name of the XML file and the folder name but not the name of 
 The following example shows how to create an additional check-in note labeled "Documentation Impact" which isn't required to have a value.  
   
 > [!div class="tabbedCodeSnippets"]
-```XML
-<taskXml>  
-   <checkin_note label="Code Reviewer" required="false" order="1"/>  
-   <checkin_note label="Security Reviewer" required="false" order="2"/>  
-   <checkin_note label="Performance Reviewer" required="false" order="3"/>   
-   <checkin_note label="Documentation Impact" required="false"/>  
-</taskXml>  
-```  
+> ```XML
+> <taskXml>  
+>    <checkin_note label="Code Reviewer" required="false" order="1"/>  
+>    <checkin_note label="Security Reviewer" required="false" order="2"/>  
+>    <checkin_note label="Performance Reviewer" required="false" order="3"/>   
+>    <checkin_note label="Documentation Impact" required="false"/>  
+> </taskXml>  
+> ```  
   
 <a name="Permissions"></a> 
 ##  Permissions    
@@ -115,30 +114,30 @@ The default assignments for TFVC and GIt permissions made to all default process
 
  
 > [!div class="tabbedCodeSnippets"]
-```XML
-<?xml version="1.0" encoding="utf-8"?>
-<tasks>
-  <task id="VersionControlTask" name="Create Version Control area" plugin="Microsoft.ProjectCreationWizard.VersionControl" completionMessage="Version control Task completed.">
-    <dependencies />
-    <taskXml>
-      <permission allow="Read, PendChange, Checkin, Label, Lock, ReviseOther, UnlockOther, UndoOther, LabelOther, AdminProjectRights, CheckinOther, Merge, ManageBranch" identity="[$$PROJECTNAME$$]\$$PROJECTADMINGROUP$$" />
-      <permission allow="Read, PendChange, Checkin, Label, Lock, Merge" identity="[$$PROJECTNAME$$]\Contributors" />
-      <permission allow="Read, PendChange, Checkin, Label, Lock, Merge" identity="[$$PROJECTNAME$$]\Build Administrators" />
-      <permission allow="Read" identity="[$$PROJECTNAME$$]\Readers" />
-      <exclusive_checkout required="false" />
-      <get_latest_on_checkout required="false" />
-      <git>
-        <permission allow="GenericRead, GenericContribute, Administer, CreateBranch, CreateTag, ManageNote" identity="[$$PROJECTNAME$$]\$$PROJECTADMINGROUP$$" />
-        <permission allow="GenericRead, GenericContribute, CreateBranch, CreateTag, ManageNote" identity="[$$PROJECTNAME$$]\Contributors" />
-        <permission allow="GenericRead, GenericContribute, CreateBranch, CreateTag, ManageNote" identity="[$$PROJECTNAME$$]\Build Administrators" />
-        <permission allow="GenericRead" identity="[$$PROJECTNAME$$]\Readers" />        
-      </git>
-    </taskXml>
-  </task>
-</tasks> 
-```  
+> ```XML
+> <?xml version="1.0" encoding="utf-8"?>
+> <tasks>
+>   <task id="VersionControlTask" name="Create Version Control area" plugin="Microsoft.ProjectCreationWizard.VersionControl" completionMessage="Version control Task completed.">
+>     <dependencies />
+>     <taskXml>
+>       <permission allow="Read, PendChange, Checkin, Label, Lock, ReviseOther, UnlockOther, UndoOther, LabelOther, AdminProjectRights, CheckinOther, Merge, ManageBranch" identity="[$$PROJECTNAME$$]\$$PROJECTADMINGROUP$$" />
+>       <permission allow="Read, PendChange, Checkin, Label, Lock, Merge" identity="[$$PROJECTNAME$$]\Contributors" />
+>       <permission allow="Read, PendChange, Checkin, Label, Lock, Merge" identity="[$$PROJECTNAME$$]\Build Administrators" />
+>       <permission allow="Read" identity="[$$PROJECTNAME$$]\Readers" />
+>       <exclusive_checkout required="false" />
+>       <get_latest_on_checkout required="false" />
+>       <git>
+>         <permission allow="GenericRead, GenericContribute, Administer, CreateBranch, CreateTag, ManageNote" identity="[$$PROJECTNAME$$]\$$PROJECTADMINGROUP$$" />
+>         <permission allow="GenericRead, GenericContribute, CreateBranch, CreateTag, ManageNote" identity="[$$PROJECTNAME$$]\Contributors" />
+>         <permission allow="GenericRead, GenericContribute, CreateBranch, CreateTag, ManageNote" identity="[$$PROJECTNAME$$]\Build Administrators" />
+>         <permission allow="GenericRead" identity="[$$PROJECTNAME$$]\Readers" />        
+>       </git>
+>     </taskXml>
+>   </task>
+> </tasks> 
+> ```  
 
 
 ## Related articles  
 -  [Configure initial groups, teams, members, and permissions](configure-initial-groups-teams-members-permissions.md)   
--  [Code](../../repos/git/overview.md)
+-  [Code](../../repos/git/index.yml)

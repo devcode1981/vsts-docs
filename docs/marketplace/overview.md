@@ -1,77 +1,104 @@
 ---
-title: Visual Studio Marketplace overview | Azure DevOps Services & TFS 
-description: Overview of Visual Studio, Visual Studio Code, and Azure DevOps Services/TFS extensions offered through the Visual Studio Marketplace
+title: Visual Studio Marketplace overview | Azure DevOps
+description: Overview of Visual Studio, Visual Studio Code, and Azure DevOps extensions offered through the Visual Studio Marketplace
 ms.topic: conceptual
-ms.prod: devops
 ms.technology: devops-marketplace
 ms.assetid: 50c06553-9fba-40da-8c04-357497cc1db7
-ms.manager: douge
-ms.author: elbatk
-author: elbatk
-ms.date: 09/10/2018
-monikerRange: '>= tfs-2013'
+ms.author: chcomley
+author: chcomley
+ms.date: 07/23/2020
+monikerRange: '>= tfs-2015'
 ---
 
-#  Discover extensions in the Marketplace
+# Marketplace extensions for Azure DevOps
 
-In the Visual Studio Marketplace you can do the following:
+[!INCLUDE [version-ts-tfs-2015-2016](../includes/version-ts-tfs-2015-2016.md)]
 
-- Discover and install extensions for Visual Studio, **Azure DevOps Services**, **Team Foundation Server (TFS)**, and Visual Studio Code
-- Purchase subscriptions for Visual Studio or Xamarin University
+Extensions are simple add-ons that can be used to customize and extend your experience with Azure DevOps. The [Marketplace](https://marketplace.visualstudio.com/azuredevops) is home to hundreds of extensions that can be installed to help with the following tasks:
 
-![Extensions Marketplace](../organizations/billing/_img/_shared/extensions-marketplace.png)
-
->[!NOTE]
-> This documentation focuses on discovering and installing extensions. Most extensions are available for free. For information on purchasing, see the following:
-> - [Azure DevOps Services billing overview](../organizations/billing/overview.md)
-> - [How to pay for TFS users](../organizations/billing/buy-access-tfs-test-hub.md)
-> - [How to buy Visual Studio cloud subscriptions](/visualstudio/subscriptions/vscloud-overview)
-> - [How to buy Xamarin University](../organizations/billing/xamarin-univ.md)
-
-## What are extensions?
-
-An extension is an installable unit that contributes new capabilities into Visual Studio, Azure DevOps Services, Team Foundation Server, or Visual Studio Code. You can find extensions from within these product or from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/). 
-
-Extending Azure DevOps Services is the easiest way for users to get the most out of their 
-devops environment. The [Visual Studio Marketplace](https://marketplace.visualstudio.com) is home to hundreds of extensions
-that can be installed to help with the following:
-
-- Planning and tracking of work items, sprints, scrums, etc.
-- Build and release flows
+- Planning and tracking of work items, sprints, scrums, and so on
+- Pipelines build and release flows
 - Code testing and tracking
-- Collaboration amongst team members
+- Collaboration among team members
 
-Adding extensions to your Azure DevOps organization is incredibly easy:
+In the Azure DevOps Marketplace you can do the following tasks:
 
-1. Search and find extensions for your organization in the [Visual Studio Marketplace](https://marketplace.visualstudio.com).
+- Discover and install extensions for Azure DevOps, Visual Studio, and Visual Studio Code
+- Purchase Visual Studio subscriptions
+
+![Extensions Marketplace](../organizations/billing/media/shared/extensions-marketplace.png)
+
+Most extensions are available for free.
+For information on purchasing, see the following articles:
+
+- [Azure DevOps billing overview](../organizations/billing/overview.md)
+- [How to pay for TFS users](../organizations/billing/buy-access-tfs-test-hub.md)
+- [How to buy Visual Studio cloud subscriptions](/visualstudio/subscriptions/vscloud-overview)
+
+## Add an extension
+
+#### [Browser](#tab/browser)
+
+You can quickly add extensions to your organization by doing the following steps:
+
+1. Search and find extensions for your organization in the [Marketplace > Azure DevOps](https://marketplace.visualstudio.com/azuredevops).
 2. Install the extension from the Marketplace and start using it in Azure DevOps.
 
-You must have administrative permissions to upload or install extensions.
+To upload, install, or assign extensions you need [Project Collection Administrator or organization Owner permissions](./faq-extensions.md#find-owner).
+
+#### [Azure DevOps CLI](#tab/azure-devops-cli/)
+
+::: moniker range="= azure-devops"
+
+Add an extension to your organization by first searching for and then installing the extension from the [Marketplace > Azure DevOps](https://marketplace.visualstudio.com/azuredevops).
+
+[Search for extension](#search-extension) | [Install extension](install-extension.md#install-extension) 
+
+<a id="search-extension" />
+
+### Search for an extension
+
+You can search for extensions from the marketplace with the [az devops extension search](/cli/azure/ext/azure-devops/devops/extension#ext-azure-devops-az-devops-extension-search) command. To get started, see [Get started with Azure DevOps CLI](../cli/index.md).
+
+```azurecli
+az devops extension search --search-query
+```
+
+#### Parameters
+
+- **search-query**: Specify a term to search in the marketplace.
+
+#### Example
+
+The following command searches the marketplace for the term **Timetracker** and returns the *Publisher ID* and *Extension ID* in table format.  
+
+```azurecli 
+az devops extension search --search-query Timetracker --output table
+
+Publisher Id    Extension Id    Name
+--------------  --------------  -----------
+7pace           Timetracker     Timetracker
+7pacelabs       kitten          Kitten
+```
+
+::: moniker-end
+
+[!INCLUDE [temp](../includes/note-cli-not-supported.md)]
+
+* * *
 
 ## Get or build extensions
 
-| Product | Topics |
+| Product | Articles |
 |-----------------------------|--------------------------------------------------------------------------------------------------|
-| Azure DevOps Services | [Get extensions for Azure DevOps Services](install-extension.md) <br/> [Develop extensions for Azure DevOps Services](https://aka.ms/vsoextensions) |
-| Team Foundation Server | [Get extensions for TFS](get-tfs-extensions.md) <br/> [Develop extensions for Team Foundation Server](https://aka.ms/vsoextensions) |
-| Visual Studio | [Get extensions for Visual Studio](https://marketplace.visualstudio.com/vs) <br/> [Develop extensions for Visual Studio](http://aka.ms/extendvs) |
-| Visual Studio Code | [Get extensions for Visual Studio Code](https://marketplace.visualstudio.com/vscode) <br/> [Develop extensions for Visual Studio Code](http://go.microsoft.com/fwlink/?LinkID=703825) |
+| Azure DevOps | [Get extensions for Azure DevOps](install-extension.md) <br/> [Develop extensions for Azure DevOps](../extend/overview.md) |
+| Visual Studio | [Get extensions for Visual Studio](https://marketplace.visualstudio.com/vs) <br/> [Develop extensions for Visual Studio](https://aka.ms/extendvs) |
+| Visual Studio Code | [Get extensions for Visual Studio Code](https://marketplace.visualstudio.com/vscode) <br/> [Develop extensions for Visual Studio Code](https://go.microsoft.com/fwlink/?LinkID=703825) |
 
+## Related articles
 
-## Free extensions
-
-There are many free extensions available in the Marketplace, too numerous to list. However, the following extensions are listed as they quickly add a lot of value and are easily installed.
-
-- [Work Item Search](https://marketplace.visualstudio.com/items?itemName=ms.vss-workitem-search)   
-- [Campfire integration](https://marketplace.visualstudio.com/items?itemName=ms-vsts.services-campfire)   
-- [Hipchat integration](https://marketplace.visualstudio.com/items?itemName=ms-vsts.services-hipchat)   
-- [Slack integration](https://marketplace.visualstudio.com/items?itemName=ms-vsts.vss-services-slack)   
-- [Microsoft Teams integration](https://marketplace.visualstudio.com/items?itemName=ms-vsts.vss-services-teams)    
-
-Browse the [Marketplace](https://marketplace.visualstudio.com/) to find additional extensions.
-
-
-
-
-
-
+- [Install extensions](install-extension.md)
+- [Request extensions and approve extension requests](request-extensions.md)
+- [Manage extension permissions](how-to/grant-permissions.md)
+- [Uninstall or disable extensions](uninstall-disable-extensions.md)
+- [Extension FAQs](faq-extensions.md)

@@ -3,9 +3,7 @@ title: Sprint and scrum best practices
 titleSuffix: Azure Boards 
 description: Best practice guidance to implement scrum and use sprint tools in Azure Boards, Azure DevOps, & Team Foundation Server 
 ms.technology: devops-agile
-ms.prod: devops
 ms.assetid: 1E2F0BDC-C267-4724-86E8-E4BBD75B50B2
-ms.manager: douge
 ms.author: kaelli
 author: KathrynEE
 ms.topic: conceptual
@@ -16,7 +14,7 @@ ms.date: 11/19/2018
 
 # Scrum and best practices 
  
-[!INCLUDE [temp](../_shared/version-vsts-tfs-all-versions.md)] 
+[!INCLUDE [temp](../includes/version-all.md)] 
 
 <a id="assign-work-sprint-meeting">  </a>
 ## Sprint planning meetings 
@@ -33,9 +31,9 @@ After you've planned your sprint, you may want to [share the plan](share-plan.md
 
 You can learn more from these resources: 
 *	[What is Scrum?](/azure/devops/learn/agile/what-is-scrum)
-*	[Sprint planning](https://msdn.microsoft.com/library/hh765982.aspx) white paper
-*	[The Scrum Guide](http://www.scrumguides.org/scrum-guide.html)
-*	[Build and manage the product backlog](https://msdn.microsoft.com/library/hh765982.aspx) white paper
+*	[Sprint planning](/previous-versions/visualstudio/visual-studio-2013/hh765982(v=vs.120)) white paper
+*	[The Scrum Guide](https://www.scrumguides.org/scrum-guide.html)
+*	[Build and manage the product backlog](/previous-versions/visualstudio/visual-studio-2013/hh765982(v=vs.120)) white paper
 
 
 <a id="set-sprint-goals">  </a>
@@ -64,7 +62,7 @@ help limit the number of stakeholders and end-users that are involved.
 During the sprint review the most important question you should ask yourself is whether you managed to achieve the sprint goal. 
 How many stories you actually completed comes second. If the goal is accomplished, the sprint succeeds, even if not all stories were finished.
 
-*Contributed by [Jesse Houwing](http://blog.jessehouwing.nl/), Visual Studio devops Ranger and a senior consultant working for Avanade Netherlands.*
+*Contributed by [Jesse Houwing](https://blog.jessehouwing.nl/), Visual Studio devops Ranger and a senior consultant working for Avanade Netherlands.*
 
 ## Tips for successful triage meetings  
 Fixing bugs represents a trade-off with regards to other work. Use your triage meeting to determine how important fixing each bug is against other priorities related to meeting the project scope, budget, and schedule.  
@@ -80,12 +78,12 @@ Fixing bugs represents a trade-off with regards to other work. Use your triage m
 
 Consider managing your bug bar and technical debt as part of your team's overall set of continuous improvement activities. You may find these additional resources of interest: 
 
-- [Good and Bad Technical Debt (and how TDD helps)](http://blog.crisp.se/2013/10/11/henrikkniberg/good-and-bad-technical-debt) by Henrik Kniberg  
-- [Managing Technical Debt](http://www.infoq.com/articles/managing-technical-debt) posted by Sven Johann & Eberhard Wolff  
+- [Good and Bad Technical Debt (and how TDD helps)](https://blog.crisp.se/2013/10/11/henrikkniberg/good-and-bad-technical-debt) by Henrik Kniberg  
+- [Managing Technical Debt](https://www.infoq.com/articles/managing-technical-debt) posted by Sven Johann & Eberhard Wolff  
 
 
 
-##Tips from the trenches: [Agile Bug Management: Not an Oxymoron](https://visualstudiomagazine.com/articles/2012/10/12/agile-bug-management.aspx)  
+## Tips from the trenches: [Agile Bug Management: Not an Oxymoron](https://visualstudiomagazine.com/articles/2012/10/12/agile-bug-management.aspx)  
 *by Gregg Boer, Principal Program Manager, Visual Studio Cloud Services at Microsoft*  
 ### Every Sprint, Address any Known Bug Debt 
 Every sprint, the team looks at any bugs remaining in the bug backlog and allocates capacity to get that known set of bugs down to zero, or near-zero. Whether this is one day, one week or the entire sprint, they fix the bugs first. Bugs found later, within the sprint, are not considered part of that initial commitment. Unless they're very high priority, they're put on the bug backlog for the next sprint.
@@ -193,4 +191,4 @@ In some cases, your team may need to do some work to implement an improvement. F
 ## Related articles
 
 *	[What is Scrum?](/azure/devops/learn/agile/what-is-scrum)
-*	[Agile Retrospectives: Making Good Teams Great](http://www.amazon.com/Agile-Retrospectives-Making-Teams-Great/dp/0977616649/)	
+*	[Agile Retrospectives: Making Good Teams Great](https://www.amazon.com/Agile-Retrospectives-Making-Teams-Great/dp/0977616649/)	

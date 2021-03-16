@@ -2,19 +2,18 @@
 title: CMMI process guidance, Project activities
 titleSuffix: Azure Boards
 description: Reduce the risks to your project that stem from shifting requirements and implementation costs 
-ms.prod: devops
 ms.technology: devops-agile
 ms.assetid: 078d2b8e-e0a7-4c17-8f00-e830c78d338c
 ms.topic: conceptual
-ms.manager: douge
-ms.author: kaelliauthor: KathrynEE
-monikerRange: '>= tfs-2013 || azdevserver-2019'
+ms.author: kaelli
+author: KathrynEE
+monikerRange: '>= tfs-2013'
 ms.date: 01/20/2017
 ---
 
 # Project activities
 
-[!INCLUDE [temp](../../../_shared/version-vsts-tfs-all-versions.md)]
+[!INCLUDE [temp](../../../includes/version-all.md)]
 
 To make the most effective use of MSF for [CMMI Process Improvement](guidance-background-to-cmmi.md), you should organize your project into a series of iterations, typically between four and eight weeks long. This helps you reduce the risks to your project that stem from shifting requirements and implementation costs. Iterative project structure is an important contribution to meeting the risk management requirements of CMMI.  
   
@@ -30,26 +29,26 @@ To make the most effective use of MSF for [CMMI Process Improvement](guidance-ba
 ### Initial project planning  
  Project planning includes the following activities:  
   
--   Analyzing the requirements in sufficient detail to enable you to form a plan. This analysis can include the use of requirements models, storyboards, and other tools that help envisage the working system.  
+- Analyzing the requirements in sufficient detail to enable you to form a plan. This analysis can include the use of requirements models, storyboards, and other tools that help envisage the working system.  
   
--   Devising an overall design or architecture for the system. If this involves working on a platform that is new to team members, some time must be assigned to experimenting with it. Development will be slow in the earlier iterations.  
+- Devising an overall design or architecture for the system. If this involves working on a platform that is new to team members, some time must be assigned to experimenting with it. Development will be slow in the earlier iterations.  
   
--   Casting the requirements as a set of incremental product requirements whose development can be approximately estimated. The difference between general requirements and product requirements is an important one, and this is a significant activity. For more information, see [Develop requirements](guidance-develop-requirements.md).  
+- Casting the requirements as a set of incremental product requirements whose development can be approximately estimated. The difference between general requirements and product requirements is an important one, and this is a significant activity. For more information, see [Develop requirements](guidance-develop-requirements.md).  
   
--   Making an initial assignment of product requirements to iterations.  
+- Making an initial assignment of product requirements to iterations.  
   
--   Setting dates for releases.  
+- Setting dates for releases.  
   
- The plan and requirements models will be revisited and refined throughout the project. Part of the purpose of iterative development is to allow improvements in the requirements that stem from demonstrating working software at an early stage.  
+  The plan and requirements models will be revisited and refined throughout the project. Part of the purpose of iterative development is to allow improvements in the requirements that stem from demonstrating working software at an early stage.  
   
- Initial project planning is done in Iteration 0.  
+  Initial project planning is done in Iteration 0.  
   
- For more information, see [Plan a project](guidance-plan-a-project-cmmi.md).  
+  For more information, see [Plan a project](guidance-plan-a-project-cmmi.md).  
   
 ### Exploring an existing product  
  The goal of your project might be to update a product that already exists. In this case, if the team is unfamiliar with the product, exploration of the code is an activity for Iteration 0. Each development task in subsequent iterations will also involve understanding the code in a particular locality and tracing the consequences of changing it.  
   
- For more information, see [Visualize code](https://msdn.microsoft.com/library/dd409365).  
+ For more information, see [Visualize code](/visualstudio/modeling/visualize-code).  
   
 ## During the project  
  The plan is reviewed and subject to change throughout the project.  
@@ -79,17 +78,17 @@ To make the most effective use of MSF for [CMMI Process Improvement](guidance-ba
   
  The plan will change for two principal reasons:  
   
--   Changes in requirements.  
+- Changes in requirements.  
   
--   Changes in the estimates that the developers made. As the project progresses, the development team can make more reliable estimates of the work that will be required to implement future features. In some cases, some functionality might have been postponed from a previous iteration, which adds a feature to the plan.  
+- Changes in the estimates that the developers made. As the project progresses, the development team can make more reliable estimates of the work that will be required to implement future features. In some cases, some functionality might have been postponed from a previous iteration, which adds a feature to the plan.  
   
- Both types of change become less frequent in later iterations.  
+  Both types of change become less frequent in later iterations.  
   
- Revise the requirements models from which the product requirements are derived.  
+  Revise the requirements models from which the product requirements are derived.  
   
- Revise the assignment of requirements to iterations. Just as in the initial planning activity, the business stakeholders provide the priorities, the development team provides the estimates, and the meeting juggles the features between iterations.  
+  Revise the assignment of requirements to iterations. Just as in the initial planning activity, the business stakeholders provide the priorities, the development team provides the estimates, and the meeting juggles the features between iterations.  
   
- For more information, see [Plan a project](guidance-plan-a-project-cmmi.md).  
+  For more information, see [Plan a project](guidance-plan-a-project-cmmi.md).  
   
 ## Before major releases of the product  
  The activities that are involved in deployment of a product vary according to its type and are not dealt with here.  

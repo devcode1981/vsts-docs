@@ -1,34 +1,17 @@
-- name: Start using Azure Boards
-  href: index.md?toc=/azure/devops/boards/get-started/toc.json&bc=/azure/devops/boards/get-started/breadcrumb/toc.json
-  items:
-  - name: "What is Azure Boards?"
-    href: what-is-azure-boards.md
-  - name: "Why use Azure Boards?"
-    href: why-use-azure-boards.md
-  - name: Sign up and invite some teammates 
-    href: sign-up-invite-teammates.md
-  - name: Plan and track work
-    href: plan-track-work.md 
-  - name: Create your backlog
-    href: ../backlogs/create-your-backlog.md?toc=/azure/devops/boards/get-started/toc.json&bc=/azure/devops/boards/get-started/breadcrumb/toc.json 
-  - name: Kanban board quickstart
-    href: ../boards/kanban-quickstart.md?toc=/azure/devops/boards/get-started/toc.json&bc=/azure/devops/boards/get-started/breadcrumb/toc.json  
-  - name: Connect a project to GitHub  
-    href: ../../boards/github/connect-to-github.md?toc=/azure/devops/boards/get-started/toc.json&bc=/azure/devops/boards/get-started/breadcrumb/toc.json 
-  - name: Default permissions (Security)
-    href: permissions-access-boards.md?toc=/azure/devops/boards/get-started/toc.json&bc=/azure/devops/boards/get-started/breadcrumb/toc.json  
-  - name: Key concepts
-    href: key-concepts.md
-  - name: Best tool for the job
-    href: ../work-items/best-tool-add-update-link-work-items.md?toc=/azure/devops/boards/get-started/toc.json&bc=/azure/devops/boards/get-started/breadcrumb/toc.json  
-  - name: Resources
-    items:
-    - name: Web portal navigation
-      href: ../../project/navigation/index.md
-    - name: Work items
-      href: ../work-items/index.md
-    - name: Process customization
-      href: ../../organizations/settings/work/inheritance-process-model.md
-    - name: Security & identity
-      href: ../../organizations/security/index.md
-
+- name: Start using Azure Boards 
+  href: index.md
+- name: Sign up and invite some teammates 
+  href: sign-up-invite-teammates.md
+- name: Plan and track work
+  href: plan-track-work.md 
+  displayName: issues, user stories, tasks, epics, features, Kanban, board, workflow 
+- name: Customize your boards
+  href: customize-boards.md 
+  displayName: cards, columns, field, swimlanes, settings, backlog levels 
+- name: Track work as a Stakeholder
+  href: ../../organizations/security/get-started-stakeholder.md?bc=%252fazure%252fdevops%252fboards%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fdevops%252fboards%252ftoc.json
+- name: Manage your project
+  href: manage-boards.md
+  displayName: add users, areas, iterations, sprints, project, wiki, notifications, extensions
+- name: Keyboard shortcuts
+  href: keyboard-shortcuts.md

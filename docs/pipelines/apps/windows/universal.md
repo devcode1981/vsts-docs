@@ -1,13 +1,8 @@
 ---
 title: Build your Universal Windows Platform app
-titleSuffix: Azure Pipelines & TFS
+ms.custom: seodec18
 description: Define a CI pipeline that builds your Universal Windows Platform (UWP) solution on Team Foundation Server and Visual Azure Pipelines.
-ms.prod: devops
-ms.technology: devops-cicd
 ms.assetid: E3E15C22-3211-4FCC-A10C-5717EA8B116E
-ms.manager: douge
-ms.author: alewis
-author: andyjlewis
 ms.date: 12/20/2017
 ms.topic: quickstart
 monikerRange: '>= tfs-2017'
@@ -18,95 +13,101 @@ monikerRange: '>= tfs-2017'
 **Azure Pipelines | TFS 2018 | TFS 2017.2**
 
 ::: moniker range="<= tfs-2018"
-[!INCLUDE [temp](../../_shared/concept-rename-note.md)]
+[!INCLUDE [temp](../../includes/concept-rename-note.md)]
 ::: moniker-end
 
-Universal Windows Platform (UWP) is a common app platform available on every device that runs Windows 10. Azure Pipelines and Team Foundation Server (TFS) provide a highly customizable continuous integration (CI) pipeline to automatically build and package your UWP app whenever your team pushes or checks in code. In this quickstart you learn how to define your CI pipeline.
+Universal Windows Platform (UWP) is a common app platform available on every device that runs Windows 10. Azure Pipelines and Team Foundation Server (TFS) provide a highly customizable continuous integration (CI) pipeline to automatically build and package your UWP app whenever your team pushes or checks in code. In this quickstart, you learn how to define your CI pipeline.
 
 ## Prerequisites
 
-[!INCLUDE [include](../../_shared/ci-cd-prerequisites-vsts.md)]
+* You need an Azure DevOps organization. If you don't have one, you can [create one for free](https://go.microsoft.com/fwlink/?LinkId=307137). If your team already has one, then make sure you're an administrator of the Azure DevOps project that you want to use.  (An Azure DevOps organization is different from your GitHub organization. Give them the same name if you want alignment between them.)
 
 * While the simplest way to try this quickstart is to use an Azure DevOps organization, you can also use a TFS server instead of an Azure DevOps organization. Make sure that you have [configured a build agent](../../agents/v2-windows.md) for your project, and that you have a version of Visual Studio matching your development machine installed on the agent machine.
 
 ## Get sample app code
 
-[!INCLUDE [include](../_shared/get-sample-code-intro.md)]
+[!INCLUDE [include](../includes/get-sample-code-intro.md)]
 
-```
-https://github.com/Microsoft/UWPQuickStart
+```GitHub
+https://github.com/microsoft/Windows-appsample-rssreader
 ```
 
 # [Azure Repos or TFS repo](#tab/vsts)
 
-[!INCLUDE [include](../_shared/get-sample-code-vsts-tfs-2017-update-2.md)]
+[!INCLUDE [include](../includes/get-sample-code-vsts-tfs-2017-update-2.md)]
 
 # [GitHub repo](#tab/github)
 
-[!INCLUDE [include](../_shared/get-sample-code-github.md)]
+[!INCLUDE [include](../includes/get-sample-code-github.md)]
 
 ---
 
 ## Set up continuous integration
 
-[!INCLUDE [include](../../_shared/ci-quickstart-intro.md)]
+[!INCLUDE [include](../../includes/ci-quickstart-intro.md)]
 
 [//]: # (TODO: Restore use of includes when we get support for using them in a list.)
 
 1. Create a new build pipeline.
 
- # [Azure Repos or TFS repo](#tab/vsts)
+   # [Azure Repos or TFS repo](#tab/vsts)
 
- Navigate to the **Files** tab of the **Code** hub, and then click **Set up build**.
+   Under the **Build and Release** menu, select **Builds** then **New** to create a new build definition.
 
- ![Screenshot showing button to set up build for a repository](../_shared/_img/set-up-first-build-from-code-hub.png)
+   :::image type="content" source="../media/set-up-first-build.png" alt-text="Create a new build definition for a repository":::
 
- You are taken to **Azure Pipelines** and asked to **Select a template** for the new build pipeline.
+   Select a source and chose your team project, repository, and default branch then select **Continue**.
+    
+   **Select a template** or start with an **Empty process** to create your build pipeline.
 
- # [GitHub repo](#tab/github)
+   # [GitHub repo](#tab/github)
 
- Navigate to the **Builds** tab Azure Pipelines or TFS, and then click **+ New**. You are asked to **Select a template** for the new build pipeline.
+   Navigate to the **Builds** tab Azure Pipelines or TFS, and then click **+ New**. You are asked to **Select a template** for the new build pipeline.
 
- ---
+   ---
 
-1. In the right panel, click **Universal Windows Platform**, and then click **Apply**.
+2. In the right panel, click **Universal Windows Platform**, and then click **Apply**.
 
- You now see all the tasks that were automatically added to the build pipeline by the template. These are the tasks that will automatically run every time you push code changes.
+   You now see all the tasks that were automatically added to the build pipeline by the template. These are the tasks that will automatically run every time you push code changes.
 
-1. For the **Agent pool**:
+3. For the **Agent pool**:
 
- * **Azure Pipelines:** Select _Hosted VS2017_. This is how you can use our pool of agents that have the software you need to build your app.
+   * **Azure Pipelines:** Select _Hosted VS2017_. This is how you can use our pool of agents that have the software you need to build your app.
 
- * **TFS:** Select a pool that includes a [Windows build agent](../../agents/v2-windows.md).
+   * **TFS:** Select a pool that includes a [Windows build agent](../../agents/v2-windows.md).
 
-1. Click **Get sources** and then:
+4. Click **Get sources** and then:
 
- # [Azure Repos or TFS repo](#tab/vsts)
+   # [Azure Repos or TFS repo](#tab/vsts)
 
- Observe that the new build pipeline is automatically linked to your repository.
+   Observe that the new build pipeline is automatically linked to your repository.
 
- # [GitHub repo](#tab/github)
+   # [GitHub repo](#tab/github)
 
- Select your version control repository. You'll need to authorize access to your repo.
+   Select your version control repository. You'll need to authorize access to your repo.
 
- ---
+   ---
 
-1. Click the **Triggers** tab in the build pipeline. Enable the **Continuous Integration** trigger. This will ensure that the build pipeline is automatically triggered every time you commit a change to your repository.
+5. Click the **Triggers** tab in the build pipeline. Enable the **Continuous Integration** trigger. This will ensure that the build pipeline is automatically triggered every time you commit a change to your repository.
 
-1. Click **Save & queue** to kick off your first build. On the **Save build pipeline and queue** dialog box, click **Save & queue**.
+6. Click **Save & queue** to kick off your first build. On the **Save build pipeline and queue** dialog box, click **Save & queue**.
 
-1. A new build is started. You'll see a link to the new build on the top of the page. Click the link to watch the new build as it happens.
+7. A new build is started. You'll see a link to the new build on the top of the page. Click the link to watch the new build as it happens.
 
 [//]: # (TODO:> [!TIP])
 [//]: # (TODO:> To learn more about GitHub CI builds, see [Define CI build pipeline for your Git repo](#)
 
 ## View the build summary
 
-[!INCLUDE [include](../_shared/view-build-summary.md)]
+[!INCLUDE [include](../includes/view-build-summary.md)]
 
 ## Next steps
 
 You can now update the build pipeline to generate production builds.
 
  * [Signing UWP package](/windows/uwp/packaging/create-certificate-package-signing)
- * [Associate package with the store](https://msdn.microsoft.com/library/windows/apps/hh454036.aspx)
+ * [Associate package with the store](/windows/msix/package/packaging-uwp-apps#configure-your-project)
+ 
+## Related topics
+
+* [Set up automated builds for your UWP app](/windows/uwp/packaging/auto-build-package-uwp-apps)

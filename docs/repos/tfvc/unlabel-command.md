@@ -3,11 +3,7 @@ title: Unlabel Command
 titleSuffix: Azure Repos
 description: Unlabel Command
 ms.assetid: 37b15bd4-ec75-4fbe-938e-544793c88a3c
-ms.prod: devops
 ms.technology: devops-code-tfvc
-ms.manager: douge
-ms.author: sdanie
-author: steved0x
 ms.topic: reference
 ms.date: 08/10/2016
 monikerRange: '>= tfs-2015'
@@ -16,7 +12,7 @@ monikerRange: '>= tfs-2015'
 
 # Unlabel Command
 
-#### Azure Repos | TFS 2018 | TFS 2017 | TFS 2015 | VS 2017 | VS 2015 | VS 2013
+**Azure Repos | Azure DevOps Server 2020 | Azure DevOps Server 2019 | TFS 2018 | TFS 2017 | TFS 2015 | VS 2017 | VS 2015 | VS 2013**
 
 Removes an item from an existing label in the server for Team Foundation version control.
 
@@ -24,7 +20,9 @@ Removes an item from an existing label in the server for Team Foundation version
 
 To use the **unlabel** command, you must either own the label, or have the **Administer labels** permission set to **Allow**. For more information, see [Permissions and groups reference](../../organizations/security/permissions.md).
 
-    tf unlabel [/collection:TeamProjectCollectionUrl] [/recursive] [/login:username, [password]] labelname itemspec
+```
+tf unlabel [/collection:TeamProjectCollectionUrl] [/recursive] [/login:username, [password]] labelname itemspec
+```
 
 ## Parameters
 
@@ -46,21 +44,21 @@ To use the **unlabel** command, you must either own the label, or have the **Adm
 </tr>
 <tr>
 <td><p><i>itemspec</i></p></td>
-<td><p>Identifies the file or folder from which to remove the specified label. For more information about how Team Foundation parses itemspecs to determine which items are within scope, see <a href="https://msdn.microsoft.com/library/56f7w6be">Command-Line Syntax (Version Control)</a>.</p>
+<td><p>Identifies the file or folder from which to remove the specified label. For more information about how Team Foundation parses itemspecs to determine which items are within scope, see <a href="/previous-versions/visualstudio/visual-studio-2010/56f7w6be(v=vs.100)">Command-Line Syntax (Version Control)</a>.</p>
 <div class="alert">
 <div class="mtps-table" xmlns="http://www.w3.org/1999/xhtml">
 <div class="mtps-row">
 <strong>Note</strong>
 </div>
 <div class="mtps-row">
-You can specify more than one *itemspec* argument.
+You can specify more than one <em>itemspec</em> argument.
 </div>
 </div>
 </div></td>
 </tr>
 <tr>
 <td><p><i>username</i></p></td>
-<td><p>Provides a value to the <strong>/login</strong> option. You can specify a username value as either <i>DOMAIN</i>\<i>UserName</i> or <i>UserName</i>.</p></td>
+<td><p>Provides a value to the <strong>/login</strong> option. You can specify a username value as either <i>DOMAIN\UserName</i> or <i>UserName</i>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -77,23 +75,27 @@ The **unlabel** command of the **tf** command-line utility removes an item from 
 
 If you remove all items from a label in the Team Foundation version control server, that label is deleted. You can also delete a label using the command `tf label /delete`. To learn more about the existing labels in the system, see [Labels Command](labels-command.md).
 
-For more information on how to find the **tf** command-line utility, see [Tf Command-Line Utility Commands](https://msdn.microsoft.com/library/z51z7zy0).
+For more information on how to find the **tf** command-line utility, see [Tf Command-Line Utility Commands](/previous-versions/visualstudio/visual-studio-2010/z51z7zy0(v=vs.100)).
 
 ## Examples
 
 The following example removes the "goodbuild" label from 314.cs.
 
-    c:\projects>tf unlabel goodbuild $/src/314.cs
+```
+c:\projects>tf unlabel goodbuild $/src/314.cs
+```
 
 The following example removes the "Beta1" label from all files and folders in the collection at http://myserver:8080/tfs/DefaultCollection.
 
-    c:\projects>tf unlabel Beta1 $/ /collection:http://myserver:8080/tfs/DefaultCollection /recursive
+```
+c:\projects>tf unlabel Beta1 $/ /collection:http://myserver:8080/tfs/DefaultCollection /recursive
+```
 
 ## See Also
 
 #### Reference
 
-[Command-Line Syntax (Version Control)](https://msdn.microsoft.com/library/56f7w6be)
+[Command-Line Syntax (Version Control)](/previous-versions/visualstudio/visual-studio-2010/56f7w6be(v=vs.100))
 
 [Label Command (Team Foundation Version Control)](label-command-team-foundation-version-control.md)
 
@@ -105,4 +107,4 @@ The following example removes the "Beta1" label from all files and folders in th
 
 #### Other Resources
 
-[Tf Command-Line Utility Commands](https://msdn.microsoft.com/library/z51z7zy0)
+[Tf Command-Line Utility Commands](/previous-versions/visualstudio/visual-studio-2010/z51z7zy0(v=vs.100))

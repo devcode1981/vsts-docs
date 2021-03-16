@@ -1,46 +1,45 @@
 ---
 title: CMMI process work item types & workflow
 titleSuffix: Azure Boards
+ms.custom: work-items
 description: How to guide for using the CMMI process  work item types and workflow to track work in Azure Boards, Azure DevOps, & Team Foundation Server   
 ms.technology: devops-agile
-ms.prod: devops
 ms.assetid: b5b7b488-3248-485c-b896-a2c6f824a219
 ms.topic: conceptual
-ms.manager: douge
 ms.author: kaelli
 author: KathrynEE
 monikerRange: '>= tfs-2013'
-ms.date: 11/19/2018
---- 
+ms.date: 12/20/2018
+---
 
 # CMMI process work item types and workflow
 
 
-[!INCLUDE [temp](../../_shared/version-vsts-tfs-all-versions.md)]
+[!INCLUDE [temp](../../includes/version-all.md)]
 
 Teams use the work item types (WITs) provided with the MSF for CMMI Process Improvement 2015 (CMMI) process to plan and track progress of software projects. Teams define requirements to manage the backlog of work and then, using the Kanban board, track progress by updating the status of requirements.
  
-<img src="_img/cmmi-process-plan-wits.png" alt="CMMI process, WITs used to plan and track" style="border: 2px solid #C3C3C3;" />
+![CMMI process work item types, conceptual image](media/cmmi-process-plan-wits.png)
 
 To gain insight into a portfolio of requirements, product owners can map requirements to features. When teams work in iterations, they define tasks that automatically link to requirements.
 
 Using Microsoft Test Manager and the web portal, testers create and run test cases and define bugs to track code defects.
 
-To support additional CMMI processes, teams can track change requests, risks, issues, and notes captured in review meetings.
+To support additional CMMI processes, teams can track change requests, risks, issues, and notes captured in review meetings. If you are new to the CMMI process, review the section [Plan and track work with CMMI](cmmi-process.md#start-using) to get started. 
 
   
-[!INCLUDE [temp](../../_shared/note-work-item-form-differences.md)] 
+[!INCLUDE [temp](../../includes/note-work-item-form-differences.md)] 
 
 ## Define requirements 
 
 Create requirements from the quick add panel on the [product backlog page](../../backlogs/create-your-backlog.md). Alternatively, you can bulk add requirements using [Excel](../../backlogs/office//bulk-add-modify-work-items-excel.md) or [Project](../../backlogs/office/create-your-backlog-tasks-using-project.md).
 
-<img src="_img/cmmi-quick-add-panel.png" alt="CMMI process, Quick add panel on the requirements backlog page" style="border: 2px solid #C3C3C3;" />
+<img src="media/cmmi-quick-add-panel.png" alt="CMMI process, Quick add panel on the requirements backlog page" style="border: 2px solid #C3C3C3;" />
 
 
 Later, you can open each requirement to provide more details and estimate its size.
 
-![Requirement work item form](_img/cmmi-requirement-form.png)  
+![Requirement work item form](media/cmmi-requirement-form.png)  
 
 Requirements specify the functions and product elements that teams need to create. Product owners typically define and stack rank requirements on the product backlog page. The team then scopes the size of the effort to deliver the highest priority items.
 
@@ -55,31 +54,29 @@ Use the following guidance and that provided for [fields used in common across w
   <tr>
     <td>
       <p>
-        [Description](../../queries/titles-ids-descriptions.md)
+        <a href="../../queries/titles-ids-descriptions.md" data-raw-source="[Description](../../queries/titles-ids-descriptions.md)">Description</a>
       </p>
     </td>
     <td>
-      <p>Provide enough detail for estimating how much work will be required to implement the requirement. Focus on who the requirement is for, what users want to accomplish, and why. Don't describe how the requirement should be developed. Do provide sufficient details so that your team can write tasks and test cases to implement the item.</p>
+      <p>Provide enough detail for estimating how much work will be required to implement the requirement. Focus on who the requirement is for, what users want to accomplish, and why. Don&#39;t describe how the requirement should be developed. Do provide sufficient details so that your team can write tasks and test cases to implement the item.</p>
       <p>In HTML fields, you can add rich text and images. </p>
       <p>
-        
       </p>
     </td>
   </tr>
   <tr>
     <td>
-      <p>[Impact Assessment](cmmi/guidance-requirements-field-reference-cmmi.md)</p>
+      <p><a href="cmmi/guidance-requirements-field-reference-cmmi.md" data-raw-source="[Impact Assessment](cmmi/guidance-requirements-field-reference-cmmi.md)">Impact Assessment</a></p>
     </td>
     <td>
       <p>The customer impact of not implementing this requirement. You might include details from the Kano model about whether this requirement is in the surprise, required, or obvious categories. You capture this information in the rich-text HTML field which corresponds to Impact Assessment.</p>
       <p>
-        
       </p>
     </td>
   </tr>
   <tr>
     <td>
-      <p>[Requirement Type](cmmi/guidance-requirements-field-reference-cmmi.md) (Required) </p>
+      <p><a href="cmmi/guidance-requirements-field-reference-cmmi.md" data-raw-source="[Requirement Type](cmmi/guidance-requirements-field-reference-cmmi.md)">Requirement Type</a> (Required) </p>
     </td>
     <td>
       <p>The kind of requirement to implement. You can specify one of the following values: </p>
@@ -131,10 +128,8 @@ Use the following guidance and that provided for [fields used in common across w
       </ul>
     </td>
   </tr>
-
-
 <tr>
-	<td><p>[Value area](../../queries/planning-ranking-priorities.md)</p></td>
+    <td><p><a href="../../queries/planning-ranking-priorities.md" data-raw-source="[Value area](../../queries/planning-ranking-priorities.md)">Value area</a></p></td>
 	<td><p>The area of customer value addressed by the epic, feature, requirement, or backlog item. Values include:</p>
         <ul>
         <li>
@@ -149,38 +144,31 @@ Use the following guidance and that provided for [fields used in common across w
         </li>
       </ul>
 </td></tr>
-
   <tr>
     <td>
       <p>
-        [Size](../../queries/query-numeric.md) </p>
+        <a href="../../queries/query-numeric.md" data-raw-source="[Size](../../queries/query-numeric.md)">Size</a> </p>
     </td>
     <td>
-
- 
-
-      <p>Estimate the amount of work required to complete a requirement using any numeric unit of measurement your team prefers. </p><p> By defining the **Size** for requirements, teams can use the Agile [velocity charts](../../../report/dashboards/velocity-chart-data-store.md) and [forecast](../../sprints/forecast.md) tools to estimate future iterations or work efforts. The Kanban [Cumulative Flow Diagram](../../boards/kanban-basics.md) references the values in this field. For additional guidance, see the [Estimating](https://msdn.microsoft.com/library/hh765979) white paper.</p>
+      <p>Estimate the amount of work required to complete a requirement using any numeric unit of measurement your team prefers. </p><p> By defining the <strong>Size</strong> for requirements, teams can use the Agile <a href="../../../report/dashboards/team-velocity.md" data-raw-source="[velocity charts](../../../report/dashboards/team-velocity.md)">velocity charts</a> and <a href="../../sprints/forecast.md" data-raw-source="[forecast](../../sprints/forecast.md)">forecast</a> tools to estimate future iterations or work efforts. The Kanban <a href="../../boards/kanban-basics.md" data-raw-source="[Cumulative Flow Diagram](../../boards/kanban-basics.md)">Cumulative Flow Diagram</a> references the values in this field. For additional guidance, see the <a href="/previous-versions/visualstudio/visual-studio-2013/hh765979(v=vs.120)" data-raw-source="[Estimating](/previous-versions/visualstudio/visual-studio-2013/hh765979(v=vs.120))">Estimating</a> white paper.</p>
     </td>
   </tr>
 <tr>
-	<td><p>[Original Estimate](../../queries/query-numeric.md) </p></td>
-	<td><p>The amount of estimated work required to complete a task. Typically, this field doesn't change after it is assigned.</p>
+    <td><p><a href="../../queries/query-numeric.md" data-raw-source="[Original Estimate](../../queries/query-numeric.md)">Original Estimate</a> </p></td>
+    <td><p>The amount of estimated work required to complete a task. Typically, this field doesn&#39;t change after it is assigned.</p>
 <p>You can specify work in hours or in days. There are no inherent time units associated with this field.</p>
 </td>
 </tr>
-
 <tr>
-	<td><p>[Start Date/Finish Date](../../queries/query-by-date-or-current-iteration.md) </p></td>
-	<td><p>The target dates for when the work will start or finish. These fields are filled in by [Microsoft Project](../../backlogs/office/create-your-backlog-tasks-using-project.md) when you use it for scheduling.</p>
+    <td><p><a href="../../queries/query-by-date-or-current-iteration.md" data-raw-source="[Start Date/Finish Date](../../queries/query-by-date-or-current-iteration.md)">Start Date/Finish Date</a> </p></td>
+    <td><p>The target dates for when the work will start or finish. These fields are filled in by <a href="../../backlogs/office/create-your-backlog-tasks-using-project.md" data-raw-source="[Microsoft Project](../../backlogs/office/create-your-backlog-tasks-using-project.md)">Microsoft Project</a> when you use it for scheduling.</p>
 <p>You can specify work in hours or in days. There are no inherent time units associated with this field.</p>
 </td>
 </tr>
-
-
   <tr>
     <td>
       <p>
-        [Priority](../../queries/planning-ranking-priorities.md) (Required)</p>
+        <a href="../../queries/planning-ranking-priorities.md" data-raw-source="[Priority](../../queries/planning-ranking-priorities.md)">Priority</a> (Required)</p>
     </td>
     <td>
       <p>A subjective rating of the requirement as it relates to the business. Allowed values are:</p>
@@ -191,7 +179,7 @@ Use the following guidance and that provided for [fields used in common across w
         </li>
         <li>
           <p>
-            <strong>2</strong>: (default) Product cannot ship without the item, but it doesn't have to be addressed immediately. </p>
+            <strong>2</strong>: (default) Product cannot ship without the item, but it doesn&#39;t have to be addressed immediately. </p>
         </li>
         <li>
           <p>
@@ -199,14 +187,13 @@ Use the following guidance and that provided for [fields used in common across w
         </li>
       </ul>
       <p>
-        
       </p>
     </td>
   </tr>
   <tr>
     <td>
       <p>
-       [Triage](../../queries/planning-ranking-priorities.md) (Required) </p>
+       <a href="../../queries/planning-ranking-priorities.md" data-raw-source="[Triage](../../queries/planning-ranking-priorities.md)">Triage</a> (Required) </p>
     </td>
     <td>
       <p>Indicates the type of triage decision that is pending for the work item. Use this field when the work item is in the Proposed state and specify one of the following values: <strong>Pending</strong> (default), <strong>More Info</strong>, <strong>Info Received</strong>, and <strong>Triaged</strong>.</p>
@@ -215,7 +202,7 @@ Use the following guidance and that provided for [fields used in common across w
   <tr>
     <td>
       <p>
-        [Blocked](../../queries/planning-ranking-priorities.md)</p>
+        <a href="../../queries/planning-ranking-priorities.md" data-raw-source="[Blocked](../../queries/planning-ranking-priorities.md)">Blocked</a></p>
     </td>
     <td>
       <p>Indicates whether a team member is prevented from making progress toward implementing a requirement or task or resolving a bug, change request, or risk. If an issue has been opened to track a blocking problem, you can create a link to the issue. You can specify <strong>Yes</strong> of <strong>No</strong>.</p>
@@ -224,27 +211,25 @@ Use the following guidance and that provided for [fields used in common across w
   <tr>
     <td>
       <p>
-        [Committed](../../queries/planning-ranking-priorities.md) (Required)  </p>
+        <a href="../../queries/planning-ranking-priorities.md" data-raw-source="[Committed](../../queries/planning-ranking-priorities.md)">Committed</a> (Required)  </p>
     </td>
     <td>
       <p>Indicates whether the requirement is committed in the project or not. You can specify <strong>Yes</strong> or <strong>No</strong> (default).</p>
     </td>
   </tr>
-
   <tr>
     <td>
       <p>
-        [Integrated In](../../queries/build-test-integration.md)  </p>
+        <a href="../../queries/build-test-integration.md" data-raw-source="[Integrated In](../../queries/build-test-integration.md)">Integrated In</a>  </p>
     </td>
     <td>
       <p>Product build number that incorporates the requirement, change request, or fixes a bug.</p>
     </td>
   </tr>
-
   <tr>
     <td>
       <p>
-        [User Acceptance Test](cmmi/guidance-requirements-field-reference-cmmi.md) (Required) </p>
+        <a href="cmmi/guidance-requirements-field-reference-cmmi.md" data-raw-source="[User Acceptance Test](cmmi/guidance-requirements-field-reference-cmmi.md)">User Acceptance Test</a> (Required) </p>
     </td>
     <td>
       <p>The status of the user acceptance test for a requirement. You can specify one of the following values:   </p>
@@ -282,12 +267,10 @@ Use the following guidance and that provided for [fields used in common across w
 	<p>You specify Not Ready when the requirement is in the Active state, and you specify Ready when the requirement is in the Resolved state.</p>
     </td>
   </tr>
-
-
   <tr>
     <td>
       <p>
-        [Subject Matter Experts](cmmi/guidance-requirements-field-reference-cmmi.md) 
+        <a href="cmmi/guidance-requirements-field-reference-cmmi.md" data-raw-source="[Subject Matter Experts](cmmi/guidance-requirements-field-reference-cmmi.md)">Subject Matter Experts</a> 
       </p>
     </td>
     <td>
@@ -298,13 +281,13 @@ Use the following guidance and that provided for [fields used in common across w
 </table>
 
 
-[!INCLUDE [temp](../../_shared/discussion-tip.md)] 
+[!INCLUDE [temp](../../includes/discussion-tip.md)] 
 
 ## Track progress
 
 As work progresses, you change the State field to update the status. Optionally, you can specify a reason. The state and reason fields appear on the work item form in the header area. 
 
-<img src="_img/agile-bug-form-state-reason.png" alt="Bug work item form, header area" style="border: 1px solid #C3C3C3;" /> 
+<img src="media/agile-bug-form-state-reason.png" alt="Bug work item form, header area" style="border: 1px solid #C3C3C3;" /> 
 
 ### CMMI workflow states 
 
@@ -313,7 +296,7 @@ These diagrams show the main progression and regression states for the Requireme
 > [!div class="mx-tdBreakAll"]  
 > |Requirement  |Bug |Task |  
 > |-------------|----------|---------| 
-> |<img src="_img/IC757081.png" title="Requirement workflow states, CMMI process" alt="Requirement workflow states, CMMI process" /> |<img src="_img/IC757084.png" title="Bug workflow states, CMMI process" alt="Bug workflow states, CMMI process" /> |<img src="_img/IC757087.png" title="Task workflow states, CMMI process" alt="Task workflow states, CMMI process" /> |
+> |<img src="media/IC757081.png" title="Requirement workflow states, CMMI process" alt="Requirement workflow states, CMMI process" /> |<img src="media/IC757084.png" title="Bug workflow states, CMMI process" alt="Bug workflow states, CMMI process" /> |<img src="media/IC757087.png" title="Task workflow states, CMMI process" alt="Task workflow states, CMMI process" /> |
 
 The typical workflow progression for a requirement is:  
 -   The product owner creates a requirement in the **Proposed** state with the default reason, **New requirement**.  
@@ -325,7 +308,7 @@ The typical workflow progression for a requirement is:
 
 Teams can use the [Kanban board](../../boards/kanban-basics.md) to update the status of requirements, and the [sprint taskboard](../../sprints/task-board.md) to update the status of tasks. Dragging items to a new state column updates both the State and Reason fields.
 
-<img src="../../boards/_img/ALM_CC_MoveCard.png" alt="Web portal, Track progress on the Kanban board" style="border: 2px solid #C3C3C3;" />
+<img src="../../boards/media/ALM_CC_MoveCard.png" alt="Web portal, Track progress on the Kanban board" style="border: 2px solid #C3C3C3;" />
 
 You can customize the Kanban board to support additional [swim lanes](../../boards/expedite-work.md) or [columns](../../boards/add-columns.md). For additional customization options, see [Customize your work tracking experience](#customize-work-tracking).
 
@@ -343,11 +326,11 @@ The feature work item contains similar fields provided for requirements and incl
 
 When your team manages their work in sprints, they can use the [sprint backlog page](../../sprints/assign-work-sprint.md) to break down the work to be accomplished into distinct tasks.  
 
-<img src="_img/IC697755.png" alt="Web portal, Add task link on a sprint backlog page" style="border: 2px solid #C3C3C3;" />
+<img src="media/IC697755.png" alt="Web portal, Add task link on a sprint backlog page" style="border: 2px solid #C3C3C3;" />
 
 Name the task and estimate the work it will take.
 
-![CMMI Task work item form](_img/cmmi-task-form.png)
+![CMMI Task work item form](media/cmmi-task-form.png)
 
 When teams estimate work they define tasks and estimate the hours or days to complete tasks. Teams forecast work and define tasks at the start of an iteration, and each team member performs a subset of those tasks. Tasks can include development, testing, and other kinds of work. For example, a developer can define tasks to implement requirements, and a tester can define tasks to write and run test cases. By linking tasks to requirements and bugs, they see the progress made on these items. For additional guidance, see [Iteration activities](cmmi/guidance-iteration-activities.md).
 
@@ -360,7 +343,7 @@ When teams estimate work they define tasks and estimate the hours or days to com
 </thead>
 <tbody valign="top">
 <tr>
-<td><p>[Task Type](cmmi/guidance-requirements-field-reference-cmmi.md) </p></td>
+<td><p><a href="cmmi/guidance-requirements-field-reference-cmmi.md" data-raw-source="[Task Type](cmmi/guidance-requirements-field-reference-cmmi.md)">Task Type</a> </p></td>
 <td><p>Select the kind of task to implement from the allowed values:</p>
 <ul>
 <li><p><strong>Corrective Action</strong></p></li>
@@ -369,7 +352,7 @@ When teams estimate work they define tasks and estimate the hours or days to com
 </ul></td>
 </tr>
 <tr>
-<td><p>[Discipline](../../queries/query-numeric.md)</p></td>
+<td><p><a href="../../queries/query-numeric.md" data-raw-source="[Discipline](../../queries/query-numeric.md)">Discipline</a></p></td>
 <td><p>Select the discipline this task represents when your team estimates sprint capacity by activity.</p>
 <ul>
 <li><p><strong>Analysis</strong></p></li>
@@ -378,23 +361,21 @@ When teams estimate work they define tasks and estimate the hours or days to com
 <li><p><strong>User Education</strong></p></li>
 <li><p><strong>User Experience</strong></p></li>
 </ul>
-<p>This field is also used to calculate capacity by discipline. It is assigned to `type=&quot;Activity&quot;` in the ProcessConfiguration file. (2)</p>
-<p>For additional guidance, see [Implement development tasks](cmmi/guidance-implement-development-tasks.md).</p></td>
+<p>This field is also used to calculate capacity by discipline. It is assigned to <code>type=&amp;quot;Activity&amp;quot;</code> in the ProcessConfiguration file. (2)</p>
+<p>For additional guidance, see <a href="cmmi/guidance-implement-development-tasks.md" data-raw-source="[Implement development tasks](cmmi/guidance-implement-development-tasks.md)">Implement development tasks</a>.</p></td>
 </tr>
 <tr>
-<td><p>[Original Estimate](../../queries/query-numeric.md) </p></td>
-<td><p>The amount of estimated work required to complete a task. Typically, this field doesn't change after it is assigned.</p></td>
+<td><p><a href="../../queries/query-numeric.md" data-raw-source="[Original Estimate](../../queries/query-numeric.md)">Original Estimate</a> </p></td>
+<td><p>The amount of estimated work required to complete a task. Typically, this field doesn&#39;t change after it is assigned.</p></td>
 </tr>
 <tr>
-<td><p>[Remaining Work](../../queries/query-numeric.md)</p></td>
+<td><p><a href="../../queries/query-numeric.md" data-raw-source="[Remaining Work](../../queries/query-numeric.md)">Remaining Work</a></p></td>
 <td>
-
-<p>The amount of work remaining to complete a task. As work progresses, update this field. It's used to calculate [capacity charts](../../sprints/set-capacity.md), the [sprint burndown chart](../../sprints/sprint-burndown.md), and the [Sprint Burndown](https://msdn.microsoft.com/library/ff731588.aspx) report. </p><p>If you divide a task into subtasks, specify hours for the subtasks only. You can specify work in any unit of measurement your team chooses.</p>
-
+<p>The amount of work remaining to complete a task. As work progresses, update this field. It&#39;s used to calculate <a href="../../sprints/set-capacity.md" data-raw-source="[capacity charts](../../sprints/set-capacity.md)">capacity charts</a>, the <a href="../../../report/dashboards/configure-sprint-burndown.md" data-raw-source="[sprint burndown chart](../../../report/dashboards/configure-sprint-burndown.md)">sprint burndown chart</a>, and the <a href="/azure/devops/report/sql-reports/sprint-burndown-scrum" data-raw-source="[Sprint Burndown](../../../report/sql-reports/sprint-burndown-scrum.md)">Sprint Burndown</a> report. </p><p>If you divide a task into subtasks, specify hours for the subtasks only. You can specify work in any unit of measurement your team chooses.</p>
 </td>
 </tr>
 <tr>
-<td><p>[Completed Work](../../queries/query-numeric.md)</p></td>
+<td><p><a href="../../queries/query-numeric.md" data-raw-source="[Completed Work](../../queries/query-numeric.md)">Completed Work</a></p></td>
 <td><p>The amount of work that has been spent implementing a task.</p></td>
 </tr>
 </tbody>
@@ -405,15 +386,15 @@ When teams estimate work they define tasks and estimate the hours or days to com
 
 ### Test requirements
 
-From the web portal or Test Manager, you can [create test cases that automatically link to a requirement or bug](../../../test/create-test-cases.md).  Or, you can link a requirement to a test case from the ![Links tab icon](../../backlogs/_img/icon-links-tab-wi.png) (links tab). 
+From the web portal or Test Manager, you can [create test cases that automatically link to a requirement or bug](../../../test/create-test-cases.md).  Or, you can link a requirement to a test case from the :::image type="icon" source="../../backlogs/media/icon-links-tab-wi.png" border="false"::: (links tab). 
 
-![Select the test suite and add a test case](_img/IC793453.png)  
+![Select the test suite and add a test case](media/IC793453.png)  
 
 The test case contains a number of fields, many of which are automated and integrated with Test Manager and the build process. For a description of each field, see [Query based on build and test integration fields](../../queries/build-test-integration.md).  
 
-<img src="_img/agile-test-case-form.png" alt="Web portal, Test case work item form" style="border: 2px solid #C3C3C3;" />
+<img src="media/agile-test-case-form.png" alt="Web portal, Test case work item form" style="border: 2px solid #C3C3C3;" />
 
-The ![Links tab icon](../../backlogs/_img/icon-links-tab-wi.png) (links tab) lists all the requirements and bugs in a test case. By using linking, the team can track the progress made in testing each item and supports information that appears in the [Requirements Overview Report](../../../report/sql-reports/requirements-overview-report-cmmi.md) report.
+The :::image type="icon" source="../../backlogs/media/icon-links-tab-wi.png" border="false"::: (links tab) lists all the requirements and bugs in a test case. By using linking, the team can track the progress made in testing each item and supports information that appears in the [Requirements Overview Report](../../../report/sql-reports/requirements-overview-report-cmmi.md) report.
 
 ### Track code defects
 
@@ -429,21 +410,22 @@ In addition to the requirement, feature, task, and bug WITs, you can track infor
 -   [Risk](cmmi/guidance-bugs-issues-risks-field-reference-cmmi.md) to track the probability  and degree of variance between actual and desired outcomes. When you [manage risks](cmmi/guidance-manage-risks.md), you strategically minimize the variance between the outcome that you want and the actual outcome.  
 -   [Review](cmmi/guidance-review-meeting-field-reference-cmmi.md) to document the results of a design or code review. Team members can [capture the details of how the design or code meets standards](cmmi/guidance-implement-development-tasks.md) in areas of name correctness, code relevance, extensibility, code complexity, algorithmic complexity, and code security.  
 <br/>
-You can add an issue from the  [New work item widget](../../../report/dashboards/widget-catalog.md#new-work-item-widget) added to a [team dashboard](../../../Report/dashboards.md), or from the **New** menu on the Queries page. 
+You can add an issue from the  [New work item widget](../../../report/dashboards/widget-catalog.md#new-work-item-widget) added to a [team dashboard](../../../report/dashboards/dashboards.md), or from the **New** menu on the Queries page. 
 
-![Add work item from a New work item widget](_img/cmmi-new-work-item-widget.png)  
+![Add work item from a New work item widget](media/cmmi-new-work-item-widget.png)  
 
-Work items you add from the widget are automatically scoped to your [team's default area and iteration paths](../../../organizations/settings/set-team-defaults.md). To change the team context, see [Switch team context](../../../project/navigation/go-to-project-repo.md?toc=/azure/devops/boards/plans/toc.json&bc=/azure/devops/boards/plans/breadcrumb/toc.json).  
+Work items you add from the widget are automatically scoped to your team's default area and iteration paths. To change the team context, see [Switch team context](../../../project/navigation/go-to-project-repo.md?toc=/azure/devops/boards/plans/toc.json&bc=/azure/devops/boards/plans/breadcrumb/toc.json).  
 
 
-[!INCLUDE [temp](../../_shared/common-work-item-fields.md)]   
+[!INCLUDE [temp](../../includes/common-work-item-fields.md)]   
 
 ## Customize work item types
-[!INCLUDE [temp](../../_shared/customize-work-tracking.md)] 
+
+[!INCLUDE [temp](../../includes/customize-work-tracking.md)] 
 
 ## Related articles 
 
-[!INCLUDE [temp](../../_shared/create-team-project-links.md)]  
+[!INCLUDE [temp](../../includes/create-team-project-links.md)]  
 
 
 ### Backlog list order
@@ -452,8 +434,7 @@ The [Stack Rank](../../queries/planning-ranking-priorities.md) field is used to 
 
 This field doesn't appear on the work item form. 
 
-
-  
+::: moniker range="<= tfs-2015"
 
 ### Links control, client work item form 
 
@@ -545,6 +526,4 @@ Work item forms displayed in a client and the web portal for TFS 2015 and earlie
 </tbody>
 </table>
 
-
-
-[!INCLUDE [temp](../../../_shared/help-support-shared.md)]
+::: moniker-end
