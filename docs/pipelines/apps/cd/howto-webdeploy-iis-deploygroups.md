@@ -1,25 +1,18 @@
----
-title: Use IIS Deployment Groups for rolling deployments and databases
-titleSuffix: Azure Pipelines & TFS
-description: Next steps for deploying an app to IIS servers using Deployment Groups in Azure Pipelines or Team Foundation Server (TFS)
+﻿---
+title: Deploy apps & databases with Deployment Groups
+description: Deploy an app to IIS servers using Deployment Groups in Azure Pipelines or Team Foundation Server (TFS)
 ms.assetid: 9FC7A7FC-0386-478A-BE1D-0A0B8104ED42
-ms.prod: devops
-ms.technology: devops-cicd
 ms.topic: conceptual
-ms.manager: douge
-ms.author: ahomer
-author: alexhomer1
-ms.date: 08/24/2018
-monikerRange: '>= tfs-2015'
+ms.custom: seodec18
+ms.author: ronai
+author: RoopeshNair
+ms.date: 12/07/2018
+monikerRange: '>= tfs-2018'
 ---
 
 # How To: Extend your deployments to IIS Deployment Groups
 
-**Azure Pipelines | TFS 2018 | TFS 2017 | TFS 2015**
-
-::: moniker range="<= tfs-2018"
-[!INCLUDE [temp](../../_shared/concept-rename-note.md)]
-::: moniker-end
+[!INCLUDE [version-tfs-2018](../../includes/version-tfs-2018.md)]
 
 You can quickly and easily deploy your ASP.NET or Node.js app to an IIS Deployment Group using
 Azure Pipelines or Team Foundation Server (TFS),
@@ -53,12 +46,12 @@ If you deploy releases to multiple stages, you can substitute configuration sett
 1. Define stage-specific configuration settings in the **Variables** tab of a stage in a release pipeline; for example,
    `<connectionStringKeyName> = <value>`.
 
-1. In the **IIS Web App Deploy** task, select the checkbox for **XML variable substitution** under **File Transforms and Variable Substitution Options**.
+2. In the **IIS Web App Deploy** task, select the checkbox for **XML variable substitution** under **File Transforms and Variable Substitution Options**.
 
    > If you prefer to manage stage configuration settings in
-   your own database or Azure keyvault, add a task to the stage to read and emit those values using
-   `##vso[task.setvariable variable=connectionString;issecret=true]<value>`.
-
+   > your own database or Azure KeyVault, add a task to the stage to read and emit those values using
+   > `##vso[task.setvariable variable=connectionString;issecret=true]<value>`.
+   > 
    > At present, you cannot apply a different configuration to individual IIS servers.
 
 <a name="rolling"></a>
@@ -68,7 +61,7 @@ If your deployment group consists of many IIS target servers, you can deploy to 
 This ensures that your application is available to your customers at all times.
 Simply select the **Deployment group job** and use the slider to configure the **Maximum number of targets in parallel**.
 
-![Configuring safe rolling deployment for the proportion of stages to update in parallel](_img/howto-webdeploy-iis-deploygroups/safe-rolling-deployment.png)
+![Configuring safe rolling deployment for the proportion of stages to update in parallel](media/howto-webdeploy-iis-deploygroups/safe-rolling-deployment.png)
 
 <a name="database"></a>
 ## Deploy a database with your app
@@ -84,7 +77,7 @@ To deploy a database with your app:
    
    - **Deployment group**: Select the deployment group you created in the [previous example](deploy-webdeploy-iis-deploygroups.md).
    
-   - **Machine tags**: `web`<p />
+   - **Required tags**: `web`<p />
    
    Then add an **IIS Web App Deploy** task to this job.
    
@@ -92,6 +85,6 @@ To deploy a database with your app:
    
    - **Deployment group**: Select the deployment group you created in the [previous example](deploy-webdeploy-iis-deploygroups.md).
    
-   - **Machine tags**: `database`<p />
+   - **Required tags**: `database`<p />
    
    Then add a **SQL Server Database Deploy** task to this job.

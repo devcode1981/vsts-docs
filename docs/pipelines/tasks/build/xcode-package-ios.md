@@ -1,12 +1,10 @@
 ---
 title: Xcode Package iOS build and release task
-titleSuffix: Azure Pipelines & TFS
+ms.custom: seodec18
 description: Xcode Package iOS build and release task for Azure Pipelines and Team Foundation Server (TFS)
-ms.prod: devops
-ms.technology: devops-cicd
 ms.assetid: FF3E5771-481B-4D72-B3D5-ED9B3379E298
-ms.manager: douge
-ms.author: dastahel
+ms.author: vijayma
+author: vijayma
 ms.date: 11/13/2017
 monikerRange: '>= tfs-2015'
 ---
@@ -14,9 +12,9 @@ monikerRange: '>= tfs-2015'
 
 # Xcode Package iOS task
 
-[!INCLUDE [temp](../../_shared/version-tfs-2015-rtm.md)]
+[!INCLUDE [temp](../../includes/version-tfs-2015-rtm.md)]
 
-Use this task in a build or release pipeline to generate an .ipa file from Xcode build output.
+Use this task to generate an .ipa file from Xcode build output.
 
 ## Deprecated
 **The Xcode Package iOS task has been deprecated.
@@ -28,8 +26,11 @@ Otherwise, use the latest version of the Xcode task.**
 xcode
 
 ::: moniker range="> tfs-2018"
+
 ## YAML snippet
-[!INCLUDE [temp](../_shared/yaml/XcodePackageiOSV0.md)]
+
+[!INCLUDE [temp](../includes/yaml/XcodePackageiOSV0.md)]
+
 ::: moniker-end
 
 ## Arguments
@@ -62,7 +63,7 @@ Name of the provisioning profile to use when signing.
 <tr>
 <td>SDK</td>
 <td>
-The SDK you want to use.  Run **xcodebuild -showsdks** to see a list of valid SDK values.
+The SDK you want to use.  Run <strong>xcodebuild -showsdks</strong> to see a list of valid SDK values.
 </td>
 </tr>
 <tr>
@@ -72,32 +73,39 @@ The SDK you want to use.  Run **xcodebuild -showsdks** to see a list of valid SD
 <td>Path to .app</td>
 <td>
 Relative path to the built .app file.
-The default value is `$(SDK)/$(Configuration)/build.sym/$(Configuration)-$(SDK)`.
-Make sure to specify the variable values on the [variables tab](../../build/variables.md).
+The default value is <code>$(SDK)/$(Configuration)/build.sym/$(Configuration)-$(SDK)</code>.
+Make sure to specify the variable values on the <a href="../../build/variables.md" data-raw-source="[variables tab](../../build/variables.md)">variables tab</a>.
 </td>
 </tr>
 <tr>
 <td>Path to place .ipa</td>
 <td>
-Relative path where the .ipa will be placed. The directory will be created if it doesn't exist.
-The default value is `$(SDK)/$(Configuration)/build.sym/$(Configuration)-$(SDK)/output`.
-Make sure to specify the variable values on the [variables tab](../../build/variables.md).
+Relative path where the .ipa will be placed. The directory will be created if it doesn&#39;t exist.
+The default value is <code>$(SDK)/$(Configuration)/build.sym/$(Configuration)-$(SDK)/output</code>.
+Make sure to specify the variable values on the <a href="../../build/variables.md" data-raw-source="[variables tab](../../build/variables.md)">variables tab</a>.
 </td>
 </tr>
-[!INCLUDE [temp](../_shared/control-options-arguments.md)]
+
+
+<tr>
+<th style="text-align: center" colspan="2"><a href="~/pipelines/process/tasks.md#controloptions" data-raw-source="[Control options](../../process/tasks.md#controloptions)">Control options</a></th>
+</tr>
+
 </table>
 
 ## Open source
 
 This task is open source [on GitHub](https://github.com/Microsoft/azure-pipelines-tasks). Feedback and contributions are welcome.
 
-## Q & A
+## FAQ
 <!-- BEGINSECTION class="md-qanda" -->
 
-[!INCLUDE [temp](../../_shared/qa-agents.md)]
+[!INCLUDE [temp](../../includes/qa-agents.md)]
 
-::: moniker range="< vsts"
-[!INCLUDE [temp](../../_shared/qa-versions.md)]
+::: moniker range="< azure-devops"
+
+[!INCLUDE [temp](../../includes/qa-versions.md)]
+
 ::: moniker-end
 
 <!-- ENDSECTION -->

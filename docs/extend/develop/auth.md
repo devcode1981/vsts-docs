@@ -1,22 +1,27 @@
 ---
-ms.prod: devops
 ms.technology: devops-ecosystem
-title: Auth and Security | Extensions for Azure DevOps Services
-description: Auth and secuirty for Azure DevOps Services Extensions
+title: Auth and Security | Extensions for Azure DevOps 
+description: Learn about authentication and security for Azure DevOps extensions.
 ms.assetid: c1704b14-66d2-4950-8633-a63fc8f88508
 ms.topic: conceptual
-ms.manager: douge
 monikerRange: '>= tfs-2017'
-ms.author: elbatk
-author: elbatk
+ms.author: chcomley
+author: chcomley
 ms.date: 08/29/2016
 ---
 
 # Auth and security
 
+[!INCLUDE [version-tfs-2017-through-vsts](../../includes/version-tfs-2017-through-vsts.md)]
+
+> [!NOTE]
+> This page pertains only to _web extensions_, and not Pipelines task extensions or service endpoint extensions. For those tasks, you can use the [Publish to Azure Service Bus Task](../../pipelines/tasks/utility/publish-to-azure-service-bus.md).
+
+[!INCLUDE [extension-docs-new-sdk](../../includes/extension-docs-new-sdk.md)]
+
 ## Calling REST APIs from your extension
 
-Most extensions have a need to call Azure DevOps Services REST APIs on behalf of the current user. 
+Most extensions have a need to call Azure DevOps REST APIs on behalf of the current user. 
 * If you are using the provided `JavaScript REST clients`, authentication is automatically handled for you. These clients automatically request an access token from the core SDK and set it in the Authorization header of the request.
 * If you are not using the provided clients, you need to request a token from the `Core SDK` and set it in the Authorization header of your request:
 
@@ -34,7 +39,7 @@ Most extensions have a need to call Azure DevOps Services REST APIs on behalf of
 
 ## Authenticating requests to your service
 
-A common scenario is to make calls to a back-end service from an extension. To verify these calls are coming from your extension running in Azure DevOps Services and to verify the authenticity of the current user (and other context information), a special type of token is made available to your extension. This token contains information about who is making the call and also a signature that you can validate to know that the request came from your extension. 
+A common scenario is to make calls to a back-end service from an extension. To verify these calls are coming from your extension running in Azure DevOps and to verify the authenticity of the current user (and other context information), a special type of token is made available to your extension. This token contains information about who is making the call and also a signature that you can validate to know that the request came from your extension. 
 
 ### Get your extension's key
 
@@ -42,10 +47,10 @@ Your extension's unique key (which is generated when the extension is published)
 
 To get this key, right-click a [published extension](../publish/overview.md) and select **Certificate**.
 
-![key](./_img/get-extension-key.png)
+![key](./media/get-extension-key.png)
 
 > [!WARNING]
-> Scope changes in an extension will cause the certificate to change. If you make changes to the scope, you will need a new extension key.
+> Scope changes in an extension cause the certificate to change. If you make changes to the scope, you need a new extension key.
 
 ### Generate a token to provide to your service
 
@@ -61,11 +66,11 @@ To get this key, right-click a [published extension](../publish/overview.md) and
 
 ### Parse and validate the token
 
-Here is a sample of parsing the token.  First download and store the secret for your extension.  You can get this from your publisher page.  This secret will need to be available to your application.
+Here is a sample of parsing the token.  First download and store the secret for your extension.  You can get this from your publisher page.  This secret needs to be available to your application.
 
 #### .NET Framework
 
-You will need to add 1 reference to get this sample to compile.
+You must add 1 reference to get this sample to compile.
 
 1. Open the NuGet Package Manager and add a reference to *System.IdentityModel.Tokens.Jwt*. This sample was built with version 5.2.2 of this package.
 
@@ -104,7 +109,7 @@ namespace TokenSample
 
 #### .NET Core - WebAPI
 
-You will need to add 1 reference to get this sample to compile.
+You must add 1 reference to get this sample to compile.
 
 1. Open the NuGet Package Manager and add a reference to *System.IdentityModel.Tokens.Jwt*. This sample was built with version 5.1.4 of this package.
 
@@ -154,6 +159,7 @@ namespace TokenSample.Core.API
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseAuthentication();
+            app.UseAuthorization();
             app.UseMvc();
             app.UseStaticFiles();
         }

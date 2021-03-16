@@ -1,72 +1,95 @@
 ---
-ms.prod: devops
 ms.technology: devops-collab
 ms.topic: conceptual
-title: Jenkins with Azure DevOps Services
-description: Use Jenkins with your Azure DevOps Services organization
+title: Create a service hook with Jenkins
+description: Use Jenkins with your Azure DevOps organization
 ms.assetid: 3e9cf797-092f-48da-a515-e4d0cc93c4a1
-ms.manager: douge
 monikerRange: '>= tfs-2017'
-ms.author: elbatk
-author: elbatk
-ms.date: 08/04/2016
+ms.date: 10/01/2020
 ---
 
-# Jenkins with Azure DevOps Services
+# Create a service hook for Azure DevOps with Jenkins
 
-If you use Jenkins to build your apps, you can store your code in Azure DevOps Services
-and continue to use Jenkins for your continuous integration builds.
+[!INCLUDE [version](../../includes/version-tfs-2017-through-vsts.md)]
+
+If you use Jenkins to build your apps, you can store your code in Azure DevOps and continue to use Jenkins for your continuous integration builds.
 You can trigger a Jenkins build when you push code to your project's
-Git repository or when you check code in to Team Foundation version control.
+Git repository or when you check in code to Team Foundation version control.
+
+[!INCLUDE [alt-creds-deprecation-notice](../../includes/alt-creds-deprecation-notice.md)]
 
 ## Configure Jenkins
 
-1. If you haven't already, set up a [Jenkins](http://jenkins-ci.org/) server.
+1. If you haven't already, set up a [Jenkins](https://jenkins-ci.org/) server.
 
-2. If you're setting up Jenkins on-premises, [enable HTTPS](https://wiki.jenkins-ci.org/display/JENKINS/Starting+and+Accessing+Jenkins).
+2. If you're setting up Jenkins on-premises, [enable HTTPS](https://jenkins.io/doc/book/installing/#configuring-http).
 
 ## Set up a Jenkins build
 
 1. In Jenkins, create a new item.
 
-   <img alt="New item link in Jenkins" src="./_img/jenkins/new-item.png" style="border: 1px solid #CCCCCC" />
+   <img alt="New item link in Jenkins" src="./media/jenkins/new-item.png" style="border: 1px solid #CCCCCC" />
 
 2. Create the type of build that's appropriate for your project.
 
-   <img alt="Build name and type in Jenkins" src="./_img/jenkins/my-build.png" style="border: 1px solid #CCCCCC" />
+   <img alt="Build name and type in Jenkins" src="./media/jenkins/my-build.png" style="border: 1px solid #CCCCCC" />
 
 3. Set the URL for your Git repository in Azure DevOps Services.
 The URL is in the form ```https://dev.azure.com/{orgName}/DefaultCollection/_git/{projectName}```.
 
-   <img alt="Source code management settings with Git selected" src="./_img/jenkins/source-code-management-settings.png" style="border: 1px solid #CCCCCC" />
+   <img alt="Source code management settings with Git selected" src="./media/jenkins/source-code-management-settings.png" style="border: 1px solid #CCCCCC" />
 
-## Trigger Jenkins from Azure DevOps Services 
+## Trigger Jenkins
 
-1. If you haven't already, enable alternate credentials in your Azure DevOps Services profile.
-Be sure to set a secondary user name because you won't be able to use your email account
-to connect Azure DevOps Services to Jenkins.
+::: moniker range=">= azure-devops-2019"
 
-   <img alt="Profile, credentials tab, alternative credentials enabled with a secondary user name" src="./_img/jenkins/alternate-credentials.png" style="border: 1px solid #CCCCCC" />
+1. Go to your project Service Hooks page: 
 
-0. Go to your Azure DevOps Services project service hooks page: `https://dev.azure.com/{orgName}/{projectName}/_apps/hub/ms.vss-servicehooks-web.manageServiceHooks-project`
+    `https://{orgName}/{project_name}/_settings/serviceHooks`
 
-	![Project administration page](./_img/add-service-hook.png)
+    ![Screenshot of project administration page, Azure DevOps Server 2019 and on.](./media/add-devops-service-hook.png)
 
-	Click **Create Subscription**.
+    Select **Create Subscription**.
 
-4. Add Jenkins.
+2. Add Jenkins.
 
-   <img alt="Select target service dialog box, Jenkins selected" src="./_img/jenkins/target-service.png" style="border: 1px solid #CCCCCC" />
+   <img alt="Select target service dialog box, Jenkins selected" src="./media/jenkins/target-service.png" style="border: 1px solid #CCCCCC" />
 
-5. Pick the event from Azure DevOps Services that you want to trigger a Jenkins build.
+3. Pick the event from Azure DevOps Services that you want to trigger a Jenkins build.
 
-   <img alt="Configure event dialog box" src="./_img/jenkins/configure-event.png" style="border: 1px solid #CCCCCC" />
+   <img alt="Configure event dialog box" src="./media/jenkins/configure-event.png" style="border: 1px solid #CCCCCC" />
 
-6. Configure the action to take in Jenkins.
+4. Configure the action to take in Jenkins.
 
-   <img alt="New service hook subscription dialog box" src="./_img/jenkins/subscription.png" style="border: 1px solid #CCCCCC" />
+   <img alt="New service hook subscription dialog box" src="./media/jenkins/subscription.png" style="border: 1px solid #CCCCCC" />
 
-Now, when that event occurs in Azure DevOps Services, your Jenkins build will be triggered.
+::: moniker-end
+
+::: moniker range=">= tfs-2017 < azure-devops-2019"
+
+1. Go to your project Service Hooks page: 
+
+    `https://dev.azure.com/{orgName}/{project_name}/_apps/hub/ms.vss-servicehooks-web.manageServiceHooks-project`
+
+    ![Screenshot of project administration page, TFS.](./media/add-service-hook.png)
+
+    Select **Create Subscription**.
+
+2. Add Jenkins.
+
+   <img alt="Select target service dialog box, Jenkins selected" src="./media/jenkins/target-service.png" style="border: 1px solid #CCCCCC" />
+
+3. Pick the event from Azure DevOps Services that you want to trigger a Jenkins build.
+
+   <img alt="Configure event dialog box" src="./media/jenkins/configure-event.png" style="border: 1px solid #CCCCCC" />
+
+4. Configure the action to take in Jenkins.
+
+   <img alt="New service hook subscription dialog box" src="./media/jenkins/subscription.png" style="border: 1px solid #CCCCCC" />
+
+::: moniker-end
+
+Now, when that event occurs in Azure DevOps Services, your Jenkins build gets triggered.
 
 ## Pricing
 Azure DevOps Services doesn't charge for the framework for integrating with external services. Check out the specific service's site

@@ -2,18 +2,19 @@
 title: Combine pick list types 
 titleSuffix: Azure DevOps & TFS 
 description: Examples that show how to create pick lists or drop-down menus by combining different types. 
-ms.prod: devops
 ms.technology: devops-agile
+ms.custom: process
 ms.assetid: 04f1daff-fe12-4c1f-8625-e884f0fb2c7c
-ms.author: kaelliauthor: KathrynEE
-ms.manager: douge
+ms.author: kaelli
+author: KathrynEE
 ms.topic: conceptual
+monikerRange: '< azure-devops' 
 ms.date: 04/05/2017
 ---
 
 # Combine list types
 
-[!INCLUDE [temp](../../_shared/customization-phase-0-and-1-plus-version-header.md)]  
+[!INCLUDE [temp](../../includes/customization-phase-0-and-1-plus-version-header.md)]  
 
 You can specify multiple types of lists for a single field. This topic defines how the resulting list of items is determined.  
   
@@ -45,7 +46,7 @@ If {set S} has no entries and {set A} has entries
 ```  
   
 ## Specify multiple lists  
- If you specify multiple `<ALLOWEDVALUE>` sets at a particular point in time (for example, a work item type-wide `<ALLOWEDVALUE>` set plus a state-scoped `<ALLOWEDVALUE>` set), the intersection of these multiple sets is used as the final set, {set A}.  
+ If you specify multiple `<ALLOWEDVALUES>` sets at a particular point in time (for example, a work item type-wide `<ALLOWEDVALUES>` set plus a state-scoped `<ALLOWEDVALUES>` set), the intersection of these multiple sets is used as the final set, {set A}.  
   
  If you specify multiple `<SUGGESTEDVALUES>` sets or `<PROHIBITEDVALUES>` sets, the union of each of these multiple sets is taken as the final set, {set S} or {set P}, respectively.  
   

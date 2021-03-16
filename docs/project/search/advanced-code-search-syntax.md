@@ -1,25 +1,24 @@
 ---
-title: Advanced search options in Microsoft Code Search in Azure DevOps and TFS
-description: How To Use Code Search - Advanced options for using Code Search across all your projects in Azure DevOps and Team Foundation Server
+title: Use advanced code search options
+titleSuffix: Azure Repos
+description: Advanced options for using Code Search across all your projects in Azure DevOps
 ms.assetid: 936AA33C-4AEF-461E-B49B-C98A59098282
-ms.prod: devops
 ms.technology: devops-collab
 ms.topic: conceptual
-ms.manager: douge
-ms.author: ahomer
-author: alexhomer1
-ms.date: 08/24/2018
+ms.author: chcomley
+author: chcomley
 monikerRange: '>= tfs-2017'
+ms.date: 10/10/2019
 ---
 
-# How To: Use Code Search
+# Advanced code search  
 
-[!INCLUDE [version-header](_shared/version-header.md)]
+[!INCLUDE [version-header](../../includes/version-tfs-2017-through-vsts.md)]
 
-By using Code Search you can:
+By using Code Search you can do the following tasks:
 
 * **Search across all of your projects**:
-  Search in your own codebase and your partner teams' codebases. Use cross-project 
+  Search in your own codebase and your partner teams' code bases. Use cross-project 
   searches over all the code in your Azure DevOps or TFS instance to search 
   across your enterprise's entire codebase. Narrow your search by using project, repository, 
   path, file name, and other filter operators. Use wildcards to widen your search and 
@@ -39,7 +38,12 @@ By using Code Search you can:
   by using the shortcut menu to search for related items such as definitions and 
   references - directly from inside a file.<p />
 
+> [!NOTE]
+> You cannot search code in forked repositories. 
+
+
 <a name="syntaxdetails"></a>
+
 ## Syntax for simple and compound searches
 
 Use simple search strings for words or phrases. The default is a whole word search; 
@@ -54,23 +58,21 @@ You must escape the special characters `(`,  `)`, `[`, `]`, `:`, `*`, and `?`
 by enclosing them in a phrase delimited with double-quotes `"` and `"`.
 
 When you search from inside a project, the default is to search only within that 
-project. You can navigate up to higher levels to broaden your search.
+project. You can go up to higher levels to broaden your search.
 
 In a Git project, you see a list of the repositories it contains. 
 Use the project and repository checkboxes to widen your search to more or all projects, or to 
-narrow your search to fewer projects and repositories. If there is more than a few 
+narrow your search to fewer projects and repositories. If there are more than a few 
 projects or repositories, use the **Show more** link to see them all.
 
 Code Search can index multiple branches in a Git repository - by default it indexes 
-files in only the default branch of your Git repositories (usually this is the **master** branch).
+files in only the default branch of your Git repositories (usually this is the **main** branch).
 Specify the branches for each repository that you want Code
 Search to index in the **Options** tab of the **Repositories** section in the
 [project settings page](../navigation/go-to-service-page.md#open-project-settings).
 
-::: moniker range="= vsts"
-
-![Configure Git branches to include in search](_img/advanced-work-item-search-syntax/configure-branches.png)
-
+::: moniker range=">= azure-devops-2019"
+![Configure Git branches to include in search](media/advanced-work-item-search-syntax/configure-branches.png)
 ::: moniker-end
 
 In a TFVC project, you see a list of folder paths in that project for 
@@ -127,7 +129,7 @@ You can use more than one `?` wildcard to match more than one character.
 
 ------------------
 
-![Warning](_img/_shared/Warning-hightop.png) **No results found for ...**  
+![Warning](media/shared/Warning-hightop.png) **No results found for ...**  
 If there is a very large number of hits when using a wildcard search, such 
 as when using a very simple wildcard search string, you may see a message that no 
 matching files were found. In this case, narrow your search to reduce the number
@@ -149,7 +151,8 @@ Within a phrase:
 
 ### Search for special characters
 
-> **Note**: This feature is currently available only for Azure DevOps Services customers and not TFS.
+> [!NOTE]
+> This feature is currently available only for Azure DevOps Services.
 
 You can include special characters in a search string, or search specifically for special characters,
 according to the following rules:
@@ -166,7 +169,25 @@ according to the following rules:
   escape character `\` and enclosing the search string in double-quotes.
   For example, `"\"react-redux\""` will find the literal string `"react-redux"`. 
 
+### Search based on proximity
+
+You can search for files based on the term *vicinity* using proximity operators: NEAR, BEFORE, and AFTER (must be uppercase). By default, proximity search looks for terms within five tokens distance. 
+
+For example:
+
+- BEFORE: `term1` BEFORE `term2` - returns all files where `term1` occurs BEFORE `term2` within a distance of five tokens between them.
+- AFTER: `term1` AFTER `term2`: returns the same results as `term2` BEFORE `term1`.
+- NEAR: `term1` NEAR `term2`: returns all files where `term1` is within five token distance from `term2` in any direction. `term1` NEAR `term2` returns the same results as `term1` BEFORE `term2` OR `term2` BEFORE `term1`.
+
+> [!NOTE]
+> - This feature is currently available only for Azure DevOps Services customers and not TFS.
+> - Wildcards and composite proximity searches, such as `term1` BEFORE `term2` AFTER `term3` aren't supported. 
+> - You can combine proximity operators with other filters and operators to narrow your search.
+> - There isn't support to customize the token distance, which defaults to five. 
+
+
 <a name="codefunctions"></a>
+
 ## Functions to find specific types of code
 
 As you type in the search box, select functions and keywords from the drop-down 
@@ -182,47 +203,48 @@ C#, C, C++, Java, and Visual Basic.NET code.
 
 | To find code where _findThis_ appears as a ... | ... search for argument **arg:**_findThis_ |
 | --- | --- |
-| Argument | **arg:**_findThis_ | 
+| Argument | **arg:**_findThis_ ```Deprecated in July 2019```| 
 | Base type | **basetype:**_findThis_ | 
-| Calling function | **caller:**_findThis_ |
+| Calling function | **caller:**_findThis_ ```Deprecated in July 2019```|
 | Class definition or declaration | **class:**_findThis_ |
-| Class declaration | **classdecl:**_findThis_ |
-| Class definition | **classdef:**_findThis_ |
+| Class declaration | **classdecl:**_findThis_ ```Merged with class:```|
+| Class definition | **classdef:**_findThis_  ```Merged with class:```|
 | Comment | **comment:**_findThis_ |
-| Constructor | **ctor:**_findThis_ |
+| Constructor | **ctor:**_findThis_ ```Merged with method:```|
 | Declaration | **decl:**_findThis_ |
 | Definition | **def:**_findThis_ |
-| Destructor | **dtor:**_findThis_ |
+| Destructor | **dtor:**_findThis_ ```Merged with method:```|
 | Enumerator | **enum:**_findThis_ |
-| Extern | **extern:**_findThis_ |
+| Extern | **extern:**_findThis_ ```Deprecated in July 2019```|
 | Field | **field:**_findThis_ |
-| Friend function | **friend:**_findThis_ |
-| Function | **func:**_findThis_ |
-| Function declaration | **funcdecl:**_findThis_ |
-| Function definition | **funcdef:**_findThis_ |
-| Global | **global:**_findThis_ |
-| Header | **header:**_findThis_ |
+| Friend function | **friend:**_findThis_ ```Deprecated in July 2019```|
+| Function | **func:**_findThis_ ```Merged with method:```|
+| Function declaration | **funcdecl:**_findThis_ ```Merged with method:```|
+| Function definition | **funcdef:**_findThis_ ```Merged with method:```|
+| Global | **global:**_findThis_ ```Deprecated in July 2019```|
+| Header | **header:**_findThis_ ```Deprecated in July 2019```|
 | Interface | **interface:**_findThis_ |
 | Macro | **macro:**_findThis_ |
-| Macro definition | **macrodef:**_findThis_ |
-| Macro reference | **macroref:**_findThis_ |
+| Macro definition | **macrodef:**_findThis_ ```Merged with macro:```|
+| Macro reference | **macroref:**_findThis_ ```Merged with macro:```|
 | Method | **method:**_findThis_ |
-| Method declaration | **methoddecl:**_findThis_ |
-| Method definition | **methoddef:**_findThis_ |
+| Method declaration | **methoddecl:**_findThis_ ```Merged with method:```|
+| Method definition | **methoddef:**_findThis_ ```Merged with method:```|
 | Namespace | **namespace:**_findThis_ |
 | Property | **prop:**_findThis_ |
 | Reference | **ref:**_findThis_ |
 | String literal | **strlit:**_findThis_ |
-| Struct | **struct:**_findThis_ |
-| Struct declaration | **structdecl:**_findThis_ |
-| Struct definition | **structdef:**_findThis_ |
-| Template argument | **tmplarg:**_findThis_ |
-| Template specification | **tmplspec:**_findThis_ |
+| Struct | **struct:**_findThis_ ```Merged with type:```|
+| Struct declaration | **structdecl:**_findThis_ ```Merged with type:```|
+| Struct definition | **structdef:**_findThis_ ```Merged with type:```|
+| Template argument | **tmplarg:**_findThis_ ```Deprecated in July 2019```|
+| Template specification | **tmplspec:**_findThis_ ```Deprecated in July 2019```|
 | Type | **type:**_findThis_ |
-| Typedef | **typedef:**_findThis_ |
-| Union | **union:**_findThis_ |
+| Typedef | **typedef:**_findThis_ ```Merged with type:```|
+| Union | **union:**_findThis_ ```Deprecated in July 2019```|
 
 <a name="locationfunctions"></a>
+
 ## Functions to select projects, repositories, paths, and files
 
 Functions make it easy to narrow the search to specified locations, 
@@ -242,6 +264,7 @@ Narrow the search to specific files using the `file` or `ext` filters:
 
 * `QueueJobsNow file:queueRegister*` finds all occurrences of the word **QueueJobsNow** in all 
   files where the filename starts with **queueRegister**.
+  Use quotes to find files without extensions: file:"queueRegister" finds all files with the name QueueRegister without an extension.
 * `QueueJobsNow ext:cs` finds all occurrences of the word **QueueJobsNow** in only C# source files.
 * A plain text search string that does not include file type functions 
   will also find files where the string matches part of the filename.
@@ -276,10 +299,8 @@ Some more examples of search strings are:
 
 * You can use the code type search functions with files written in C#, C, C++, Java, and Visual Basic.NET.
 
-Open the search results in a new browser tab from either search box by
-pressing _Ctrl_ + _Enter_ or by holding _Ctrl_ and clicking  the
-![start search icon](_img/_shared/start-search-icon.png) icon.
-In Google Chrome, press _Ctrl_ + _Shift_ + _Enter_ to switch the focus
+Open the search results in a new browser tab from either search box and
+press _Ctrl_ + _Enter_. In Google Chrome, select _Ctrl_ + _Shift_ + _Enter_ to switch the focus
 to the new browser tab. 
 
-[!INCLUDE [shared-got-feedback](_shared/shared-got-feedback.md)]
+

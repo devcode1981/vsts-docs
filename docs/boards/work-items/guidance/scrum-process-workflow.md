@@ -2,28 +2,31 @@
 title: Scrum process work items types & workflow
 titleSuffix: Azure Boards
 description: How to guide for using the Scrum process  work item types and workflow to track work in Azure Boards, Azure DevOps, & Team Foundation Server 
+ms.custom: work-items
 ms.technology: devops-agile
-ms.prod: devops
 ms.assetid: 34c866ea-a130-4371-bfc4-a3d9f87dccca
 ms.topic: conceptual
-ms.manager: douge
 ms.author: kaelli
 author: KathrynEE
 monikerRange: '>= tfs-2013'
 ms.date: 11/19/2018
---- 
+---
 
 # Scrum process work item types and workflow  
 
-[!INCLUDE [temp](../../_shared/version-vsts-tfs-all-versions.md)]
+[!INCLUDE [temp](../../includes/version-all.md)]
 
 To plan a software project and track software defects using Scrum, teams use the product backlog item (PBI) and bug work item types (WITs). To gain insight into a portfolio of features, scenarios, or user experiences, product owners and program managers can map PBIs and bugs to features. When teams work in sprints, they define tasks which automatically link to PBIs and bugs.
 
-<img src="_img/scrum-process-plan-wits.png" alt="Scrum process, WITs used to plan and track" style="border: 2px solid #C3C3C3;" />
+![Scrum process, WITs used to plan and track](media/scrum-process-plan-wits.png) 
 
-Using the web portal or Microsoft Test Manager, testers can create and run test cases and create bugs to track code defects. Impediments track blocking issues.
+> [!NOTE]  
+> If you are new to the Scrum process, review [About Sprints, Scrum and project management](../../sprints/scrum-overview.md) to get started. 
 
-[!INCLUDE [temp](../../_shared/note-work-item-form-differences.md)]   
+Using the web portal or Microsoft Test Manager, testers can create and run test cases and create bugs to track code defects. Impediments track blocking issues. 
+
+
+[!INCLUDE [temp](../../includes/note-work-item-form-differences.md)]   
 
 ## Define PBIs and bugs  
 
@@ -31,15 +34,15 @@ When you define a product backlog item, you want to focus on the value that your
 
 You can create PBIs and bugs from the [quick add panel on the product backlog page](../../backlogs/create-your-backlog.md).  
 
-<img src="_img/IC675707.png" alt="Web portal, Agile process, Quick add panel " style="border: 1px solid #C3C3C3;" /> 
+<img src="media/IC675707.png" alt="Web portal, Agile process, Quick add panel " style="border: 1px solid #C3C3C3;" /> 
 
 Later, you can open each PBI or bug to provide more details and estimate the effort. Also, by prioritizing the PBIs and bugs on the backlog page (which is captured in the Backlog Priority field), product owners can indicate which items should be given higher priority.  
 
-![Product backlog item work item form](_img/new-form-product-backlog-item.png)  
+![Product backlog item work item form](media/new-form-product-backlog-item.png)  
 
 
 By defining the **Effort** for PBIs and bugs, teams can use the forecast feature and velocity charts to estimate future sprints or work efforts. By defining the **Business Value**, product owners can specify priorities separate from the changeable backlog stack ranking.
- 
+
 Use the following guidance and that provided for [fields used in common across work item types](#definitions-in-common) when filling out the form. For details about creating bugs, see [Manage bugs](../../backlogs/manage-bugs.md). 
 
 <table>
@@ -48,21 +51,21 @@ Use the following guidance and that provided for [fields used in common across w
 </thead>
 <tbody valign="top">
 <tr>
-	<td width="20%"><p>[Effort](../../queries/query-numeric.md)</p></td>
-	<td><p>Estimate the amount of work required to complete a PBI using any unit of measurement your team prefers, such as story points or time. A numeric value is required. </p><p>Agile [velocity charts](../../../report/dashboards/velocity-chart-data-store.md) and [forecast](../../sprints/forecast.md) tools reference the values in this field. For additional guidance, see the [Estimating](https://msdn.microsoft.com/library/hh765979) white paper.</p></td></tr>
+    <td width="20%"><p><a href="../../queries/query-numeric.md" data-raw-source="[Effort](../../queries/query-numeric.md)">Effort</a></p></td>
+    <td><p>Estimate the amount of work required to complete a PBI using any unit of measurement your team prefers, such as story points or time. A numeric value is required. </p><p>Agile <a href="../../../report/dashboards/team-velocity.md" data-raw-source="[velocity charts](../../../report/dashboards/team-velocity.md)">velocity charts</a> and <a href="../../sprints/forecast.md" data-raw-source="[forecast](../../sprints/forecast.md)">forecast</a> tools reference the values in this field. For additional guidance, see the <a href="/previous-versions/visualstudio/visual-studio-2013/hh765979(v=vs.120)" data-raw-source="[Estimating](/previous-versions/visualstudio/visual-studio-2013/hh765979(v=vs.120))">Estimating</a> white paper.</p></td></tr>
 <tr>
-	<td><p>[Business Value](../../queries/query-numeric.md)</p></td>
-	<td><p>Specify a number that captures the relative value of a PBI compared to other PBIs. The higher the number, the greater the business value.</p></td>
+    <td><p><a href="../../queries/query-numeric.md" data-raw-source="[Business Value](../../queries/query-numeric.md)">Business Value</a></p></td>
+    <td><p>Specify a number that captures the relative value of a PBI compared to other PBIs. The higher the number, the greater the business value.</p></td>
 
 </tr>
 <tr>
-	<td><p>[Description](../../queries/titles-ids-descriptions.md)  </p></td>
-	<td><p>Provide enough detail for estimating how much work will be required to implement the item. Focus on who the feature is for, what users want to accomplish, and why. Don't describe how the feature should be developed. Do provide sufficient details so that your team can write tasks and test cases to implement the item. </p>
-	</td>
+    <td><p><a href="../../queries/titles-ids-descriptions.md" data-raw-source="[Description](../../queries/titles-ids-descriptions.md)">Description</a>  </p></td>
+    <td><p>Provide enough detail for estimating how much work will be required to implement the item. Focus on who the feature is for, what users want to accomplish, and why. Don&#39;t describe how the feature should be developed. Do provide sufficient details so that your team can write tasks and test cases to implement the item. </p>
+    </td>
 </tr>
 <tr>
-	<td><p>[Acceptance Criteria](../../queries/titles-ids-descriptions.md) </p></td>
-	<td><p>Define what "Done" means by describing the criteria that the team should use to verify whether the PBI or the bug fix has been fully implemented.<br /><br />Before work begins on a PBI or bug, describe the criteria for customer acceptance as clearly as possible. Conversations between the team and customers to determine the acceptance criteria helps ensure a common understanding within the team to meet customers'  expectations. The acceptance criteria can be used as the basis for acceptance tests so that the team can more effectively evaluate whether an item has been satisfactorily completed.</p>
+    <td><p><a href="../../queries/titles-ids-descriptions.md" data-raw-source="[Acceptance Criteria](../../queries/titles-ids-descriptions.md)">Acceptance Criteria</a> </p></td>
+    <td><p>Define what &quot;Done&quot; means by describing the criteria that the team should use to verify whether the PBI or the bug fix has been fully implemented.<br /><br />Before work begins on a PBI or bug, describe the criteria for customer acceptance as clearly as possible. Conversations between the team and customers to determine the acceptance criteria helps ensure a common understanding within the team to meet customers&#39;  expectations. The acceptance criteria can be used as the basis for acceptance tests so that the team can more effectively evaluate whether an item has been satisfactorily completed.</p>
 
 </td>
 </tr>
@@ -71,14 +74,14 @@ Use the following guidance and that provided for [fields used in common across w
 </table>
 
 
-[!INCLUDE [temp](../../_shared/discussion-tip.md)] 
+[!INCLUDE [temp](../../includes/discussion-tip.md)] 
 
 ## Track progress
 
 
 As work progresses, you change the State field to update the status. Optionally, you can specify a reason. The state and reason fields appear on the work item form in the header area. 
 
-<img src="_img/scrum-bug-workflow-header-form.png" alt="Bug work item form, header area" style="border: 1px solid #C3C3C3;" /> 
+<img src="media/scrum-bug-workflow-header-form.png" alt="Bug work item form, header area" style="border: 1px solid #C3C3C3;" /> 
 
 
 ### Scrum workflow states 
@@ -88,7 +91,7 @@ By updating the State, teams know which items are new, in progress, or completed
 > [!div class="mx-tdBreakAll"]  
 > |Product Backlog Item |Bug |Task |  
 > |-------------|----------|---------| 
-> |<img src="_img/ALM_PT_Scrum_WF_PBI.png" title="Product Backlog Item workflow states, Scrum process " alt="Product Backlog Item workflow states, Scrum process" /> |<img src="_img/ALM_PT_Scrum_WF_Bug.png" title="Bug workflow states, Scrum process" style="padding-left:20px;" alt="Bug workflow states, Scrum process" /> |<img src="_img/ALM_PT_Scrum_WF_Task.png" title="Task workflow states, Scrum process " style="padding-left:30px;" alt="Task workflow states, Scrum process" /> |
+> |<img src="media/ALM_PT_Scrum_WF_PBI.png" title="Product Backlog Item workflow states, Scrum process " alt="Product Backlog Item workflow states, Scrum process" /> |<img src="media/ALM_PT_Scrum_WF_Bug.png" title="Bug workflow states, Scrum process" style="padding-left:20px;" alt="Bug workflow states, Scrum process" /> |<img src="media/ALM_PT_Scrum_WF_Task.png" title="Task workflow states, Scrum process " style="padding-left:30px;" alt="Task workflow states, Scrum process" /> |
 
 PBIs and bugs follow this typical workflow progression:
 
@@ -102,7 +105,7 @@ PBIs and bugs follow this typical workflow progression:
 
 Teams can use the [Kanban board](../../boards/kanban-basics.md) to update the status of PBIs, and the [sprint taskboard](../../sprints/task-board.md) to update the status of tasks. Dragging items to a new state column updates both the State and Reason fields.
 
-![Track progress on the Kanban board](../../boards/_img/ALM_CC_MoveCard.png)
+![Track progress on the Kanban board](../../boards/media/ALM_CC_MoveCard.png)
 
 You can customize the Kanban board to support additional [swim lanes](../../boards/expedite-work.md) or [columns](../../boards/add-columns.md). For additional customization options, see [Customize your work tracking experience](#customize-work-tracking).
 
@@ -117,11 +120,11 @@ Using portfolio backlogs, you can [drill down from one backlog to another](../..
 
 When your team manages their work in sprints, they can use the sprint backlog page to break down the work to be accomplished into distinct tasks.
 
-![Add a task to an item in the sprint backlog](_img/IC795962.png)  
+![Add a task to an item in the sprint backlog](media/IC795962.png)  
 
 Name the task and estimate the work it will take.
 
-<img src="_img/scrum-task-form.png" alt="Scrum process, Task work item form" style="border: 1px solid #C3C3C3;" />  
+<img src="media/scrum-task-form.png" alt="Scrum process, Task work item form" style="border: 1px solid #C3C3C3;" />  
 
 Using Scrum, teams forecast work and define tasks at the start of each sprint, and each team member performs a subset of those tasks. Tasks can include development, testing, and other kinds of work. For example, a developer can define tasks to implement PBIs, and a tester can define tasks to write and run test cases.
 
@@ -129,16 +132,13 @@ When teams estimate work using hours or days, they define tasks and the **Remain
 
 <table><thead>
 <tr><th><p>Field/tab</p></th><th><p>Usage</p></th></tr></thead>
-<tbody valign="top">  
-<tr>
-	<td width="18%"><p>[Remaining Work](../../queries/query-numeric.md) </p></td>
-	<td><p>Indicate how many hours or days of work remain to complete a task. As work progresses, update this field. It's used to calculate capacity charts, the sprint burndown chart, and the [Sprint Burndown (Scrum)](../../../report/sql-reports/sprint-burndown-scrum.md) report.<br />If you divide a task into subtasks, specify Remaining Work for the subtasks only. You can specify work in any unit of measurement your team chooses.</p></td>
+<tbody valign="top"><br/><tr>
+    <td width="18%"><p><a href="../../queries/query-numeric.md" data-raw-source="[Remaining Work](../../queries/query-numeric.md)">Remaining Work</a> </p></td>
+    <td><p>Indicate how many hours or days of work remain to complete a task. As work progresses, update this field. It&#39;s used to calculate capacity charts, the sprint burndown chart, and the <a href="../../../report/sql-reports/sprint-burndown-scrum.md" data-raw-source="[Sprint Burndown (Scrum)](../../../report/sql-reports/sprint-burndown-scrum.md)">Sprint Burndown (Scrum)</a> report.<br />If you divide a task into subtasks, specify Remaining Work for the subtasks only. You can specify work in any unit of measurement your team chooses.</p></td>
 </tr>
-
-
 <tr>
-	<td><p>[Activity](../../queries/query-numeric.md) </p></td>
-	<td><p>Select the type of activity this task represents when your team estimates sprint capacity by activity.</p></td></tr>
+    <td><p><a href="../../queries/query-numeric.md" data-raw-source="[Activity](../../queries/query-numeric.md)">Activity</a> </p></td>
+    <td><p>Select the type of activity this task represents when your team estimates sprint capacity by activity.</p></td></tr>
 </tbody>
 </table>  
 
@@ -147,42 +147,42 @@ When teams estimate work using hours or days, they define tasks and the **Remain
 
 ### Test PBIs  
 
-From the web portal or Test Manager, you can [create test cases that automatically link to a PBI or bug](../../../test/create-test-cases.md). Or, you can link a PBI or bug to a test case from the ![Links tab icon](../../backlogs/_img/icon-links-tab-wi.png) (links tab).  
+From the web portal or Test Manager, you can [create test cases that automatically link to a PBI or bug](../../../test/create-test-cases.md). Or, you can link a PBI or bug to a test case from the :::image type="icon" source="../../backlogs/media/icon-links-tab-wi.png" border="false"::: (links tab).  
 
 
-<img src="_img/IC793453.png" alt="Web portal, Select the test suite and add a test case" style="border: 1px solid #C3C3C3;" /> 
+<img src="media/IC793453.png" alt="Web portal, Select the test suite and add a test case" style="border: 1px solid #C3C3C3;" /> 
 
 
 The test case contains a number of fields, many of which are automated and integrated with Test Manager and the build process. For a description of each field, see [Query based on build and test integration fields](../../queries/build-test-integration.md).
 
-![Scrum Test case work item form](_img/scrum-test-case-form.png)  
+![Scrum Test case work item form](media/scrum-test-case-form.png)  
 
-The ![Links tab icon](../../backlogs/_img/icon-links-tab-wi.png) (links tab) captures the links to all the PBIs and bugs in a test case. By linking PBIs and bugs to test cases, the team can track the progress made in testing each item.  
+The :::image type="icon" source="../../backlogs/media/icon-links-tab-wi.png" border="false"::: (links tab) captures the links to all the PBIs and bugs in a test case. By linking PBIs and bugs to test cases, the team can track the progress made in testing each item.  
 
 ### Track code defects
 
 You can [create bugs from the web portal web portal, Visual Studio, or when testing with Test Manager](../../backlogs/manage-bugs.md). 
 
-[!INCLUDE [temp](../../_shared/common-work-item-fields.md)]   
+[!INCLUDE [temp](../../includes/common-work-item-fields.md)]   
 
 ## Customize work item types
-[!INCLUDE [temp](../../_shared/customize-work-tracking.md)] 
+[!INCLUDE [temp](../../includes/customize-work-tracking.md)] 
 
 ## Related articles
 
-[!INCLUDE [temp](../../_shared/create-team-project-links.md)]  
-  
+[!INCLUDE [temp](../../includes/create-team-project-links.md)]  
+
 
 
 ### Track impediments
 
 Use the impediment WIT to track events that may block progress or ship a PBI. Use the Bug WIT exclusively to track code defects.  
 
-You can add an impediment from the [New work item widget](../../../report/dashboards/widget-catalog.md#new-work-item-widget) added to a [team dashboard](../../../Report/dashboards.md), or from the **New** menu on the Queries page. 
+You can add an impediment from the [New work item widget](../../../report/dashboards/widget-catalog.md#new-work-item-widget) added to a [team dashboard](../../../report/dashboards/dashboards.md), or from the **New** menu on the Queries page. 
 
-![Add work item from a New work item widget](_img/scrum-new-work-item-widget.png)  
+![Add work item from a New work item widget](media/scrum-new-work-item-widget.png)  
 
-Work items you add from the widget are automatically scoped to your [team's default area and iteration paths](../../../organizations/settings/set-team-defaults.md). To change the team context, see [Switch team context](../../../project/navigation/go-to-project-repo.md?toc=/azure/devops/boards/plans/toc.json&bc=/azure/devops/boards/plans/breadcrumb/toc.json).  
+Work items you add from the widget are automatically scoped to your team's default area and iteration paths. To change the team context, see [Switch team context](../../../project/navigation/go-to-project-repo.md?toc=/azure/devops/boards/plans/toc.json&bc=/azure/devops/boards/plans/breadcrumb/toc.json).  
 
 
 ### Backlog list order
@@ -283,7 +283,3 @@ Work item forms displayed in a client and the web portal for TFS 2015 and earlie
 </tr>
 </tbody>
 </table>
-
-
-
-[!INCLUDE [temp](../../../_shared/help-support-shared.md)]

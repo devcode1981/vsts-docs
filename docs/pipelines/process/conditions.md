@@ -1,15 +1,10 @@
 ---
-title: Conditional tasks
-titleSuffix: Azure Pipelines & TFS
-description: Learn about how you can write custom conditions for running your task in Azure Pipelines or Team Foundation Server (TFS).
+title: Conditions
+ms.custom: seodec18
+description: Learn about how you can write custom conditions in Azure Pipelines or Team Foundation Server (TFS).
 ms.topic: conceptual
-ms.prod: devops
-ms.technology: devops-cicd
 ms.assetid: C79149CC-6E0D-4A39-B8D1-EB36C8D3AB89
-ms.manager: douge
-ms.author: alewis
-author: andyjlewis
-ms.date: 03/22/2017
+ms.date: 10/08/2020
 monikerRange: '>= tfs-2017'
 ---
 
@@ -17,47 +12,79 @@ monikerRange: '>= tfs-2017'
 
 **Azure Pipelines | TFS 2018 | TFS 2017.3** 
 
+You can specify the conditions under which each stage, job, or step runs.
+By default, a job or stage runs if it does not depend on any other job or stage, or if all of the jobs or stages that it depends on have completed and succeeded.
+By default, a step runs if nothing in its job has failed yet and the step immediately preceding it has finished.
+You can customize this behavior by forcing a stage, job, or step to run even if a previous dependency fails or by specifying a custom condition.
+
 ::: moniker range="<= tfs-2018"
-[!INCLUDE [temp](../_shared/concept-rename-note.md)]
+[!INCLUDE [temp](../includes/concept-rename-note.md)]
 ::: moniker-end
 
-# [YAML](#tab/yaml)
+#### [YAML](#tab/yaml/)
+::: moniker range=">=azure-devops-2020"
 
-::: moniker range="vsts"
-
-On each step and job, you can specify the conditions under which the step or job will run.
-[!INCLUDE [include](_shared/task-run-built-in-conditions.md)]
+You can specify conditions under which a step, job, or stage will run.
+[!INCLUDE [include](includes/task-run-built-in-conditions.md)]
 * Custom conditions
+
+By default, steps, jobs, and stages run if all previous steps/jobs have succeeded.
+It's as if you specified "condition: succeeded()" (see [Job status functions](expressions.md#job-status-functions)).
 
 ```yaml
 jobs:
 - job: Foo
-  
+
   steps:
   - script: echo Hello!
-    condition: always() # this step will always run, even if the pipeline is cancelled
+    condition: always() # this step will always run, even if the pipeline is canceled
 
 - job: Bar
   dependsOn: Foo
   condition: failed() # this job will only run if Foo fails
 ```
 
+You can also use variables in conditions. 
+
+```yaml
+variables:
+  isMain: $[eq(variables['Build.SourceBranch'], 'refs/heads/main')]
+
+stages:
+- stage: A
+  jobs:
+  - job: A1
+    steps:
+      - script: echo Hello Stage A!
+
+- stage: B
+  condition: and(succeeded(), eq(variables.isMain, true))
+  jobs:
+  - job: B1
+    steps:
+      - script: echo Hello Stage B!
+      - script: echo $(isMain)
+```
+
+Conditions are evaluated to decide whether to start a stage, job, or step.
+This means that nothing computed at runtime inside that unit of work will be available.
+For example, if you have a job which sets a variable using a runtime expression using `$[ ]` syntax, you can't use that variable in your custom condition. 
+
 ::: moniker-end
 
-::: moniker range="< vsts"
+::: moniker range="< azure-devops"
 YAML is not yet supported in TFS.
 ::: moniker-end
 
-# [Designer](#tab/designer)
+#### [Classic](#tab/classic/)
 
 Inside the **Control Options** of each task, and in the **Additional options** for a job in a release pipeline,
 you can specify the conditions under which the task or job will run:
 
-[!INCLUDE [include](_shared/task-run-built-in-conditions.md)]
+[!INCLUDE [include](includes/task-run-built-in-conditions.md)]
 * Custom conditions
 
----
-
+* * *
 ## Enable a custom condition
 
 If the built-in conditions don't meet your needs, then you can specify **custom conditions**.
@@ -67,26 +94,26 @@ If the built-in conditions don't meet your needs, then you can specify **custom 
 > In TFS 2017.3, custom task conditions are available in the user interface only for Build pipelines. You can use the Release [REST APIs](../../integrate/index.md) to establish custom conditions for Release pipelines.
 
 ::: moniker-end
- 
+
 Conditions are written as expressions.
 The agent evaluates the expression beginning with the innermost function and works its way out.
-The final result is a boolean value that determines if the task is run or not.
+The final result is a boolean value that determines if the task, job, or stage should run or not.
 See the [expressions](expressions.md) topic for a full guide to the syntax.
 
-Do any of your conditions make it possible for the task to run even after the build is canceled by a user? If so, then specify a reasonable value for **Build job cancel timeout in minutes** [in the options](../build/options.md) so that these kinds of tasks have enough time to complete after the user clicks **Cancel**.
+Do any of your conditions make it possible for the task to run even after the build is canceled by a user? If so, then specify a reasonable value for [cancel timeout](phases.md#timeouts) so that these kinds of tasks have enough time to complete after the user cancels a run.
 
 ## Examples
 
-### Run for the master branch, if succeeding
+### Run for the main branch, if succeeding
 
 ```
-and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
 ```
 
-### Run if the branch is not master, if succeeding
+### Run if the branch is not main, if succeeding
 
 ```
-and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
+and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/main'))
 ```
 
 ### Run for user topic branches, if succeeding
@@ -115,101 +142,167 @@ and(always(), eq(variables['Build.Reason'], 'Schedule'))
 
 > **Release.Artifacts.{artifact-alias}.SourceBranch** is equivalent to **Build.SourceBranch**.
 
-## Job status functions
+### Run if a variable is null
 
-In addition to the [general functions](expressions.md#functions) available in expressions,
-you can use the following as shortcuts for common job status checks.
+```yaml
+variables:
+- name: testNull
+  value: ''
 
-<h3 id="always">always</h3>
-* Always evaluates to `True` (even when canceled). Note: A critical failure may still prevent a task from running. For example, if getting sources failed.
-
-### canceled
-* Evaluates to `True` if the pipeline was canceled.
-
-### failed
-* For a step, equivalent to `eq(variables['Agent.JobStatus'], 'Failed')`.
-* For a job:
- * With no arguments, evaluates to `True` only if any previous job in the dependency graph failed.
- * With job names as arguments, evaluates to `True` only if any of those jobs failed.
-
-### succeeded
-* For a step, equivalent to `in(variables['Agent.JobStatus'], 'Succeeded', 'SucceededWithIssues')`
-* For a job:
- * With no arguments, evaluates to `True` only if all previous jobs in the dependency graph succeeded or partially succeeded.
- * With job names as arguments, evaluates to `True` if all of those jobs succeeded or partially succeeded.
-
-### succeededOrFailed
-* For a step, equivalent to `in(variables['Agent.JobStatus'], 'Succeeded', 'SucceededWithIssues', 'Failed')`
-* For a job:
- * With no arguments, evaluates to `True` regardless of whether any jobs in the dependency graph succeeded or failed.
- * With job names as arguments, evaluates to `True` whether any of those jobs succeeded or failed.
-
- > This is like `always()`, except it will evaluate `False` when the pipeline is canceled.
-
-## Variables
-
-[Build](../build/variables.md) or [Release](../release/variables.md) variables are available.
-For agent jobs, variables marked agent-scoped are available.
-
-Some of the more useful predefined variables include:
-
-* `Build.Reason` which you can use to check whether the build was the result of a [build trigger](../build/triggers.md), a [Git PR affected by a branch policy](../../repos/git/branch-policies.md), or a [TFVC gated check-in](../../repos/tfvc/check-folder-controlled-by-gated-check-build-process.md).
-* `Build.SourceBranch`
-* `Release.Artifacts.{artifact-alias}.SourceBranch`
-
-## Dependencies
-
-For jobs which depend on other jobs, expressions may also use context about previous jobs in the dependency graph.
-The context is called `dependencies` and works much like [`variables`](expressions.md#variables).
-
-Structurally, the `dependencies` object is a map of job names to `results` and `outputs`.
-Expressed as JSON, it would look like:
-
-```json
-"dependencies": {
-  "<JOB_NAME>" : {
-    "result": "Succeeded|SucceededWithIssues|Skipped|Failed|Canceled",
-    "outputs": { // only variables explicitly made outputs will appear here
-      "variable1": "value1",
-      "variable2": "value2"
-    }
-  },
-  "...": {
-    // another job
-  }
-}
+jobs:
+  - job: A
+    steps:
+    - script: echo testNull is blank
+    condition: eq('${{ variables.testNull }}', '')
 ```
 
-::: moniker range="vsts"
+### Use a template parameter as part of a condition
 
-For instance, in a YAML pipeline, you could use it like this:
+When you declare a parameter in the same pipeline that you have a condition, parameter expansion happens before conditions are considered. In this case, you can embed parameters inside conditions. The script in this YAML file will run because `parameters.doThing` is true.
+
+```yaml
+parameters:
+- name: doThing
+  default: true
+  type: boolean
+
+steps:
+- script: echo I did a thing
+  condition: and(succeeded(), eq('${{ parameters.doThing }}', true))
+```
+
+ However, when you pass a parameter to a template, the parameter will not have a value when the condition gets evaluated. As a result, if you set the parameter value in both the template and the pipeline YAML files, the pipeline value from the template will get used in your condition. 
+
+```yaml
+# parameters.yml
+parameters:
+- name: doThing
+  default: false # value passed to the condition
+  type: boolean
+
+jobs:
+  - job: B
+    steps:
+    - script: echo I did a thing
+    condition: and(succeeded(), eq('${{ parameters.doThing }}', true))
+```
+
+```yaml
+# azure-pipeline.yml
+parameters:
+- name: doThing
+  default: true # will not be evaluated in time
+  type: boolean
+
+trigger:
+- none
+
+extends:
+  template: parameters.yml
+```
+
+### Use the output variable from a job in a condition in a subsequent job
+
+You can make a variable available to future jobs and specify it in a condition. Variables available to future jobs must be marked as [multi-job output variables](./variables.md#set-a-multi-job-output-variable) using `isOutput=true`. 
+
+```yaml
+jobs:
+- job: Foo
+  steps:
+  - bash: |
+      echo "This is job Foo."
+      echo "##vso[task.setvariable variable=doThing;isOutput=true]Yes" #set variable doThing to Yes
+    name: DetermineResult
+- job: Bar
+  dependsOn: Foo
+  condition: eq(dependencies.Foo.outputs['DetermineResult.doThing'], 'Yes') #map doThing and check the value
+  steps:
+  - script: echo "Job Foo ran and doThing is Yes."
+```
+
+## FAQ
+
+<!-- BEGINSECTION class="md-qanda" -->
+
+### I've got a conditional step that runs even when a job is canceled. Does my conditional step affect a job that I canceled in the queue?
+
+No. If you cancel a job while it's in the queue, then the entire job is canceled, including conditional steps.
+
+### I've got a conditional step that should run even when the deployment is canceled. How do I specify this?
+
+If you defined the pipelines using a YAML file, then this is supported. This scenario is not yet supported for release pipelines.
+
+### How can I trigger a job if a previous job succeeded with issues? 
+
+You can use the result of the previous job. For example, in this YAML file, the condition `eq(dependencies.A.result,'SucceededWithIssues')` allows the job to run because Job A succeeded with issues. 
 
 ```yaml
 jobs:
 - job: A
+  displayName: Job A
+  continueOnError: true # next job starts even if this one fails
   steps:
-  - script: "echo ##vso[task.setvariable variable=skipsubsequent;isOutput=true]false"
-    name: printvar
+  - script: echo Job A ran
+  - script: exit 1
 
 - job: B
-  condition: and(succeeded(), ne(dependencies.A.outputs['printvar.skipsubsequent'], 'true'))
   dependsOn: A
+  condition: eq(dependencies.A.result,'SucceededWithIssues') # targets the result of the previous job 
+  displayName: Job B
   steps:
-  - script: echo hello from B
+  - script: echo Job B ran
 ```
 
-::: moniker-end
+### I've got a conditional step that runs even when a job is canceled. How do I manage to cancel all jobs at once?
 
-## Q&A
+You'll experience this issue if the condition that's configured in the stage doesn't include a job status check function. To resolve the issue, add a job status check function to the condition. If you cancel a job while it's in the queue, the entire job is canceled, including all the other stages, with this function configured. For more information, see [Job status functions](expressions.md#job-status-functions).
 
-<!-- BEGINSECTION class="md-qanda" -->
+```yaml
+stages:
+- stage: Stage1
+  displayName: Stage 1
+  dependsOn: []
+  condition: and(contains(variables['build.sourceBranch'], 'refs/heads/main'), succeeded())
+  jobs:
+  - job: ShowVariables
+    displayName: Show variables
+    steps:
+    - task: CmdLine@2
+      displayName: Show variables
+      inputs:
+        script: 'printenv'
 
-### I've got a condition that runs even when build was cancelled. Does this affect a build that I cancelled in the queue?
-
-No. If you cancel a build while it's in the queue, then the entire build is canceled, including tasks like this.
-
-### I've got a task condition that runs even when the deployment was canceled. How do I specify this?
-
-This scenario is not yet supported for release pipelines.
+- stage: Stage2
+  displayName: stage 2
+  dependsOn: Stage1
+  condition: contains(variables['build.sourceBranch'], 'refs/heads/main')
+  jobs:
+  - job: ShowVariables
+    displayName: Show variables 2
+    steps:
+    - task: CmdLine@2
+      displayName: Show variables 2
+      inputs:
+        script: 'printenv'
+          
+- stage: Stage3
+  displayName: stage 3
+  dependsOn: Stage2
+  condition: and(contains(variables['build.sourceBranch'], 'refs/heads/main'), succeeded())
+  jobs:
+  - job: ShowVariables
+    displayName: Show variables 3
+    steps:
+    - task: CmdLine@2
+      displayName: Show variables 3
+      inputs:
+        script: 'printenv'
+```
 
 <!-- ENDSECTION -->
+
+
+## Related articles
+
+- [Specify jobs in your pipeline](../process/phases.md)  
+- [Add stages, dependencies, & conditions](../process/stages.md)

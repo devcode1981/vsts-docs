@@ -1,26 +1,23 @@
 ---
 title: Shell Script task
-titleSuffix: Azure Pipelines & TFS
 description: Execute a bash script when building code in Azure Pipelines and Team Foundation Server (TFS)
 ms.topic: reference
-ms.prod: devops
-ms.technology: devops-cicd
 ms.assetid: 8D152C13-0934-4665-8D08-30E2A7841351
-ms.manager: douge
-ms.author: alewis
-author: andyjlewis
-ms.date: 11/19/2018
+ms.custom: seodec18
+ms.date: 12/07/2018
 monikerRange: '>= tfs-2015'
 ---
 
 # Shell Script task
 
-[!INCLUDE [temp](../../_shared/version-tfs-2015-rtm.md)]
+[!INCLUDE [temp](../../includes/version-tfs-2015-rtm.md)]
 
-Use this task in a build or release pipeline to run a shell script using bash.
+Use this task to run a shell script using bash.
 
 ::: moniker range="<= tfs-2018"
-[!INCLUDE [temp](../../_shared/concept-rename-note.md)]
+
+[!INCLUDE [temp](../../includes/concept-rename-note.md)]
+
 ::: moniker-end
 
 ## Demands
@@ -28,7 +25,9 @@ Use this task in a build or release pipeline to run a shell script using bash.
 sh
 
 ::: moniker range="> tfs-2018"
+
 ## YAML snippet
+
 ```YAML
 - task: ShellScript@2
   inputs:
@@ -76,7 +75,12 @@ Working directory in which you want to run the script.  If you leave it empty it
 Select if you want this task to fail if any errors are written to the StandardError stream.
 </td>
 </tr>
-[!INCLUDE [temp](../_shared/control-options-arguments.md)]
+
+
+<tr>
+<th style="text-align: center" colspan="2"><a href="~/pipelines/process/tasks.md#controloptions" data-raw-source="[Control options](../../process/tasks.md#controloptions)">Control options</a></th>
+</tr>
+
 </table>
 
 ## Example
@@ -98,15 +102,19 @@ echo "SYSTEM_HOSTTYPE is $SYSTEM_HOSTTYPE"
 echo "Over and out."
 ```
 
-On the [Build tab](../../index.md) of a build pipeline, add this task:
+On the [Build tab](../../index.yml) of a build pipeline, add this task:
 
 <table>
 <tr>
-<td>![](_img/shell-script.png)<br/>**Utility: Shell Script**</td>
+<td>
+
+:::image type="icon" source="media/shell-script.png" border="false":::
+
+<br/>**Utility: Shell Script**</td>
 <td>
 <p>Run test.bat.</p>
 <ul>
-<li>Script Path: ```test.sh```</li>
+<li>Script Path: <code>test.sh</code></li>
 </ul>
 </td>
 </tr>
@@ -118,7 +126,7 @@ This example also works with release pipelines.
 
 This task is open source [on GitHub](https://github.com/Microsoft/azure-pipelines-tasks). Feedback and contributions are welcome.
 
-## Q & A
+## FAQ
 
 <!-- BEGINSECTION class="md-qanda" -->
 
@@ -128,14 +136,16 @@ This task is open source [on GitHub](https://github.com/Microsoft/azure-pipeline
 
 [Awesome Bash](https://github.com/alebcay/awesome-shell#awesome-bash) to go deeper.
 
-[!INCLUDE [include](../../_shared/variable-set-in-script-qa.md)]
+[!INCLUDE [include](../../includes/variable-set-in-script-qa.md)]
 
-[!INCLUDE [temp](../_shared/build-step-common-qa.md)]
+[!INCLUDE [temp](../includes/build-step-common-qa.md)]
 
-[!INCLUDE [temp](../../_shared/qa-agents.md)]
+[!INCLUDE [temp](../../includes/qa-agents.md)]
 
-::: moniker range="< vsts"
-[!INCLUDE [temp](../../_shared/qa-versions.md)]
+::: moniker range="< azure-devops"
+
+[!INCLUDE [temp](../../includes/qa-versions.md)]
+
 ::: moniker-end
 
 <!-- ENDSECTION -->

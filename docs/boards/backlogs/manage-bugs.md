@@ -1,23 +1,19 @@
 ---
-title: Create & manage bugs using Agile tools
+title: Define & manage bugs or code defects
 titleSuffix: Azure Boards 
-ms.global_help.title: Manage bugs
-ms.global_help.keywords: ms.vss-work-web.work-items-hub, 5
-description: Manage technical debt and triage bugs using Agile tools in Azure Boards, Azure DevOps, & Team Foundation Server
+description: Manage technical debt and triage bugs using Agile tools in Azure Boards & TFS 
+ms.custom: "boards-backlogs, seodec18"
 ms.technology: devops-agile
-ms.prod: devops
 ms.assetid: 6E5710EE-21C8-4264-AD65-A827D186F134
-ms.manager: douge
 ms.author: kaelli
 author: KathrynEE
 ms.topic: quickstart
-ms.date: 11/19/2018
+ms.date: 11/06/2020
 ---
 
-# Manage bugs
+# Define, triage, and manage bugs
 
-
-[!INCLUDE [temp](../_shared/version-vsts-tfs-all-versions.md)]
+[!INCLUDE [temp](../includes/version-all.md)]
 
 How do you track and manage defects in your code? How do you make sure software problems and customer feedback get addressed in a timely manner to support high-quality software deployments? And, how do you do this while making good progress on new features? 
 
@@ -31,31 +27,48 @@ In a nutshell, you manage bugs through the following tasks:
 > * Update bug status throughout the bug lifecycle  
 > * Monitor bug assignments and trends    
 
+Each team can choose how [bugs show up on their backlogs and boards](../../organizations/settings/show-bugs-on-backlog.md). 
 
-> [!NOTE]  
-> Depending on the process chosen to create your project&mdash;[Agile](../work-items/guidance/agile-process.md), [Scrum](../work-items/guidance/scrum-process.md), or [CMMI](../work-items/guidance/cmmi-process.md)&mdash;
-the items in your backlog may be called user stories, product backlog items (PBIs), or requirements. All three are similar: they describe the customer value to be delivered and the work to be performed.   
->
->By default, user stories on Agile backlogs, product backlog items (PBIs) and bugs appear on Scrum backlogs, and requirements on CMMI backlogs. Each team can choose how [bugs show up on their backlogs and boards](../../organizations/settings/show-bugs-on-backlog.md). 
+[!INCLUDE [temp](../includes/basic-process-bug-note.md)]  
 
-[!INCLUDE [temp](../_shared/prerequisites-work-items.md)]    
+[!INCLUDE [temp](../includes/prerequisites-work-items.md)]    
 
-## Capture bugs  
-You can track bugs in much the same way that you track product backlog items (PBIs) or user stories. Using the bug work item form, you capture the code defect in the Title, Steps to Reproduce, and other fields.  
+## Define and list bugs  
 
-You can create bugs from the [web portal](add-work-items.md), Visual Studio/Team Explorer, a [work item template](work-item-template.md), or through one of the [testing tools](../../test/overview.md).  
+When bugs are managed along with requirements, you can add them through the [product backlog](create-your-backlog.md) or [Kanban board](../boards/kanban-quickstart.md). When bugs are managed along with tasks, you can add them to a [sprint backlog or taskboard](../sprints/add-tasks.md). 
 
-### Bug work item form 
+Or, you can define a bug from the [web portal](add-work-items.md), Visual Studio/Team Explorer, a [work item template](work-item-template.md), or using [test tools](#test-tools). Using the bug work item form, you capture the code defect in the Title, Steps to Reproduce, and other fields.  
+
+You can review bugs defined for your project by creating a query and specifying the **Work Item Type=Bug**. Or, open a predefined query, **Active Bugs** (Agile and CMMI) or **Work in Progress** (Scrum). For other bug related tasks, see the following articles:  
+
+::: moniker range=">= azure-devops-2019"
+- [View, run, or email a work item query](../../boards/queries/view-run-query.md)
+- [View and add work items using the Work Items page](../../boards/work-items/view-add-work-items.md)
+- [Triage work items](../../boards/queries/triage-work-items.md)
+- [Query by assignment or workflow changes](../../boards/queries/query-by-workflow-changes.md)
+
+::: moniker-end
+
+::: moniker range="<= tfs-2018"
+- [View, run, or email a work item query](../../boards/queries/view-run-query.md)
+- [Triage work items](../../boards/queries/triage-work-items.md)
+- [Query by assignment or workflow changes](../../boards/queries/query-by-workflow-changes.md)
+
+::: moniker-end
+
+
+## Bug work item form 
 
 The bug work item form tracks similar information to the one shown for the Scrum process. 
 
-[!INCLUDE [temp](../_shared/image-differences-with-wits.md)] 
+[!INCLUDE [temp](../includes/image-differences-with-wits.md)] 
 
-# [New web form](#tab/new-web-form)
+#### [New web form](#tab/new-web-form/)
+
 ::: moniker range=">= tfs-2017"  
 The new web form provides a number of experiences not provided with the old web form. To learn more, see [New work item experience](../../reference/process/new-work-item-experience.md). 
 
-![Scrum bug work item form](_img/manage-bugs-scrum-bug-from-ts.png)  
+![Scrum bug work item form](media/manage-bugs-scrum-bug-from-ts.png)  
 
 > [!TIP]
 > Use the [Discussion section](../work-items/work-item-form-controls.md#discussion) to add and review comments made about the work being performed to resolve the bug.  
@@ -66,7 +79,7 @@ The new web form is only available from TFS 2017 and later versions.
 ::: moniker-end  
 
 
-# [Old web form](#tab/old-web-form)  
+#### [Old web form](#tab/old-web-form/)
 
 ::: moniker range=">= tfs-2018"  
 The old web form is only available for TFS 2017 and earlier versions.  
@@ -74,13 +87,12 @@ The old web form is only available for TFS 2017 and earlier versions.
 ::: moniker range=">= tfs-2013 <= tfs-2017"  
 To learn more about working in the old web form, see [Add work items to plan and track your project](add-work-items.md).  
 
-![Scrum bug work item form, TFS 2015 or earlier versions](_img/scrum-bug-wi-form.png)  
+![Scrum bug work item form, TFS 2015 or earlier versions](media/scrum-bug-wi-form.png)  
 ::: moniker-end  
 
 
----
-
-### Fields specific to bugs
+* * *
+## Fields specific to bugs
 
 When defining a bug, use these fields to capture both the initial issue and ongoing discoveries made when triaging, investigating, fixing, and closing the bug.  
 
@@ -96,7 +108,7 @@ When defining a bug, use these fields to capture both the initial issue and ongo
 </tr>
 <tr>
 <td>
-[Steps to Reproduce](../queries/titles-ids-descriptions.md) (friendly name=Repro Steps)
+<a href="../queries/titles-ids-descriptions.md" data-raw-source="[Steps to Reproduce](../queries/titles-ids-descriptions.md)">Steps to Reproduce</a> (friendly name=Repro Steps)
 </td>
 <td>
 <p>Capture enough information so that other team members can understand the full impact of the problem as well as whether they have fixed the bug. This includes actions taken to find or reproduce the bug and expected behavior. </p>
@@ -105,93 +117,95 @@ When defining a bug, use these fields to capture both the initial issue and ongo
 </tr>
 <tr>
 <td>
-<p>[System Info](../queries/titles-ids-descriptions.md)</p>
+<p><a href="../queries/titles-ids-descriptions.md" data-raw-source="[System Info](../queries/titles-ids-descriptions.md)">System Info</a></p>
 </td>
 <td>
 <p>Information about the software and system configuration that is relevant to the test.</p>
 </td>
 </tr>
-
 <tr>
-	<td><p>[Acceptance Criteria](../queries/titles-ids-descriptions.md)  </p></td>
-	<td><p>Provide the criteria to be met before the bug or user story can be closed. Before work begins, describe the customer acceptance criteria as clearly as possible. The acceptance criteria can be used as the basis for acceptance tests so that you can more effectively evaluate whether an item has been satisfactorily completed.</p>
+    <td><p><a href="../queries/titles-ids-descriptions.md" data-raw-source="[Acceptance Criteria](../queries/titles-ids-descriptions.md)">Acceptance Criteria</a>  </p></td>
+    <td><p>Provide the criteria to be met before the bug or user story can be closed. Before work begins, describe the customer acceptance criteria as clearly as possible. The acceptance criteria can be used as the basis for acceptance tests so that you can more effectively evaluate whether an item has been satisfactorily completed.</p>
 </td>
 </tr>
 <tr>
 <td>
-<p>[Found In Build](../queries/build-test-integration.md)</p>
-<p>[Integrated in Build](../queries/build-test-integration.md)</p>
+<p><a href="../queries/build-test-integration.md" data-raw-source="[Found In Build](../queries/build-test-integration.md)">Found In Build</a></p>
+<p><a href="../queries/build-test-integration.md" data-raw-source="[Integrated in Build](../queries/build-test-integration.md)">Integrated in Build</a></p>
 </td>
 <td>
-<p>When Test Manager creates bugs, it automatically populates **System Info** and **Found in Build** with information about the software environment and build where the bug occurred. To learn more about defining the software environments, see [Test different configurations](../../test/test-different-configurations.md).</p>
-<p>When you resolve the bug, use **Integrated in Build** to indicate the name of the build that incorporates the code that fixes the bug. </p>
-<p>For on-premises TFS, to access a drop-down menu of all builds that have been run, you can update the ```FIELD``` definitions for Found in Build and Integrated in Build to reference a global list. The global list is automatically updated with each build that is run. To learn more, see [Query based on build and test integration fields](../queries/build-test-integration.md).</p>
-<p>For information about how to define build names, see [build number format options](../../pipelines/build/options.md). </p>
+<p>When Test Manager creates bugs, it automatically populates <strong>System Info</strong> and <strong>Found in Build</strong> with information about the software environment and build where the bug occurred. To learn more about defining the software environments, see <a href="../../test/test-different-configurations.md" data-raw-source="[Test different configurations](../../test/test-different-configurations.md)">Test different configurations</a>.</p>
+<p>When you resolve the bug, use <strong>Integrated in Build</strong> to indicate the name of the build that incorporates the code that fixes the bug. </p>
+<p>For on-premises Azure DevOps, to access a drop-down menu of all builds that have been run, you can update the <code>FIELD</code> definitions for Found in Build and Integrated in Build to reference a global list. The global list is automatically updated with each build that is run. To learn more, see <a href="../queries/build-test-integration.md" data-raw-source="[Query based on build and test integration fields](../queries/build-test-integration.md)">Query based on build and test integration fields</a>.</p>
+<p>For information about how to define build names, see <a href="../../pipelines/build/options.md" data-raw-source="[build number format options](../../pipelines/build/options.md)">build number format options</a>. </p>
 </td>
 </tr>
 <tr>
 <td>
-[Priority](../queries/planning-ranking-priorities.md) <sup>1</sup>
+<a href="../queries/planning-ranking-priorities.md" data-raw-source="[Priority](../queries/planning-ranking-priorities.md)">Priority</a> <sup>1</sup>
 </td>
 <td>
 <p>A subjective rating of the bug as it relates to the business or customer requirements. Priority indicates the order in which code defects should be fixed. You can specify the following values:</p>
 <ul>
   <li>
-      **1**: Product cannot ship without the successful resolution of the work item, and it should be addressed as soon as possible.
+      <strong>1</strong>: Product cannot ship without the successful resolution of the work item, and it should be addressed as soon as possible.
   </li>
   <li>
-      **2**: Product cannot ship without the successful resolution of the work item, but it does not need to be addressed immediately.
+      <strong>2</strong>: Product cannot ship without the successful resolution of the work item, but it does not need to be addressed immediately.
   </li>
   <li>
-      **3**: Resolution of the work item is optional based on resources, time, and risk.
+      <strong>3</strong>: Resolution of the work item is optional based on resources, time, and risk.
   </li>
 </ul>
 </td>
 </tr>
-
 <tr>
 <td>
-[Severity](../queries/planning-ranking-priorities.md) <sup>1</sup>
+<a href="../queries/planning-ranking-priorities.md" data-raw-source="[Severity](../queries/planning-ranking-priorities.md)">Severity</a> <sup>1</sup>
 </td>
 <td>
 A subjective rating of the impact of a bug on the project or software system. For example: If clicking a remote link (a rare event) causes an application or web page to crash (a severe customer experience), you might specify Severity = 2 - High and Priority = 3.  Allowed values and suggested guidelines are:
 <ul>
   <li>
-      **1 - Critical**: Must fix. A defect that causes termination of one or more system components or the complete system, or causes extensive data corruption. And, there are no acceptable alternative methods to achieve required results.
+      <strong>1 - Critical</strong>: Must fix. A defect that causes termination of one or more system components or the complete system, or causes extensive data corruption. And, there are no acceptable alternative methods to achieve required results.
   </li>
   <li>
-      **2 - High**: Consider fix. A defect that causes termination of one or more system components or the complete system, or causes extensive data corruption. However, an acceptable alternative method exists to achieve required results.
+      <strong>2 - High</strong>: Consider fix. A defect that causes termination of one or more system components or the complete system, or causes extensive data corruption. However, an acceptable alternative method exists to achieve required results.
   </li>
   <li>
-      **3 - Medium**: (Default) A defect that causes the system to produce incorrect, incomplete or inconsistent results.
+      <strong>3 - Medium</strong>: (Default) A defect that causes the system to produce incorrect, incomplete or inconsistent results.
   </li>
   <li>
-      **4 - Low**: A minor or cosmetic defect that has acceptable workarounds to achieve required results. 
+      <strong>4 - Low</strong>: A minor or cosmetic defect that has acceptable workarounds to achieve required results. 
   </li>
 </ul>
 </td>
 </tr>
-
 </tbody>
-</table>  
- 
-<sup>1</sup> To change the menu selection or pick list, see [Customize the work tracking experience](../../reference/customize-work.md). The customization method depends on the process model used by your project. 
+</table>
+
+#### Notes: 
+
+<sup>1</sup> To change the menu selection or picklist, see <a href="../../reference/customize-work.md" data-raw-source="[Customize the work tracking experience](../../reference/customize-work.md)">Customize the work tracking experience</a>. The customization method depends on the process model used by your project. 
 
 For information about fields specific to the CMMI process, see [Bugs, issues, and risks field reference](../work-items/guidance/cmmi/guidance-bugs-issues-risks-field-reference-cmmi.md). For information about all other fields, see [Work item field index](../work-items/guidance/work-item-field.md). 
 
 
-[!INCLUDE [temp](../_shared/discussion-tip.md)] 
+[!INCLUDE [temp](../includes/discussion-tip.md)] 
+
+<a id="test-tools"> </a>
 
 ## Capture bugs using test tools
 
 You can create bugs during test sessions using one of the following tools: 
 - **Test & Feedback extension**: see [Exploratory testing with the Test & Feedback extension](../../test/connected-mode-exploratory-testing.md)   
-- **Test Runner**: see [Update an existing bug while using Test Runner](https://msdn.microsoft.com/library/dd286731.aspx).  
+- **Test Runner**: see [Update an existing bug while using Test Runner](/previous-versions/dd286731(v=vs.140)).  
 
 
 <a id="triage"> </a>
+
 ## Triage bugs  
- 
+
 Once you've started coding and testing, you'll want to hold periodic triage meetings to review and prioritize your bugs. How frequently you meet and for how long depends on your situation. Typically, the project owner runs the bug triage meetings, and team leads, business analysts and other stakeholders who can speak about specific project risks attend them.
 
 The project owner can create or open a shared query for new and reopened bugs to generate a list of bugs to be triaged. 
@@ -212,17 +226,18 @@ From the query results page, you can quickly move up and down within the list of
 To learn more, see [Triage work items](../queries/triage-work-items.md). 
 
 
-### Assign bugs to a sprint  
+## Assign bugs to a sprint  
 Once bugs have been triaged, it's time to assign them to a sprint to get fixed. By addressing a set of bugs to get fixed every sprint, your team can keep the total number of bugs to a reasonable size.  
 
-When bugs appear on the product backlog, you can [assign bugs to sprints in the same way you do PBIs and user stories](../sprints/assign-work-sprint.md) during your sprint planning sessions. 
+When bugs appear on the product backlog, you can [assign bugs to sprints in the same way you do a Product Backlog Item (PBI) and user story](../sprints/assign-work-sprint.md) during your sprint planning sessions. 
 
 When bugs are treated as tasks, they're often automatically linked to a PBI or user story. So, assigning their parent PBI or user story to a sprint will [assign the linked bugs to the same sprint as the parent PBI or user story](../sprints/task-board.md) during your sprint planning sessions. 
- 
+
 Your team should consider fixing all bugs found during a sprint when testing a feature in development.  
 
 
 <a id="fix-resolve-close">  </a>
+
 ## Fix, resolve and close bugs (update status) 
 
 Bug fixes that involve more than a single section of code may require significant regression testing and may involve other team members. Record any conversations that relate to assessing the risk of bug fixes in the bug work item history.
@@ -234,35 +249,46 @@ Once you fix a bug, you should update its workflow State. State choices vary dep
 
 | Agile | Scrum | CMMI | 
 |------------|------------|-----------| 
-| ![Bug workflow states, Agile process template](../work-items/guidance/_img/ALM_PT_Agile_WF_Bug.png) | ![Bug workflow states, Scrum process template](../work-items/guidance/_img/ALM_PT_Scrum_WF_Bug.png) |  ![Bug workflow states, CMMI process template](../work-items/guidance/_img/ALM_PT_CMMI_WF_Bug.png) |  
+| ![Bug workflow states, Agile process template](../work-items/guidance/media/ALM_PT_Agile_WF_Bug.png) | ![Bug workflow states, Scrum process template](../work-items/guidance/media/ALM_PT_Scrum_WF_Bug.png) |  ![Bug workflow states, CMMI process template](../work-items/guidance/media/ALM_PT_CMMI_WF_Bug.png) |  
+
+> [!NOTE]  
+> The Agile process bug work item type previously had a rule which reassigned the bug to the person who created it. This rule has been [removed from the default system process](../work-items/guidance/changes-to-process-templates.md). You can reinstate this automation by adding a rule. For an Inheritance process, see [Apply rules to workflow states, Automate reassignment based on state change](../../organizations/settings/work/apply-rules-to-workflow-states.md#reassign).
 
 For Scrum bugs, you simply change the State from Committed (similar to Active) to Done. For Agile and CMMI, you first resolve the bug, indicating that the bug has been fixed. Typically, the person who created the bug then verifies the fix and updates the State from Resolved to Closed. If more work has been found after a bug has been resolved or closed, it can be reactivated by setting the State to Committed or Active. 
 
 
 ### Verify a fix 
+
 To verify a fix, a developer or tester should attempt to reproduce the bug and look for additional unexpected behavior. If necessary, they should reactivate the bug.
 
 When verifying a bug resolution, you may find that the bug was not completely fixed or you may disagree with the resolution. In this case, discuss the bug with the person who resolved it, come to an agreement, and possibly reactivate the bug. If you reactivate a bug, include the reasons for reactivating the bug in the bug description.
- 
+
 ::: moniker range=">= tfs-2017"  
 
 <a id="verify-bug">  </a>
-###Verify a bug, re-run tests defined for web apps 
+
+### Verify a bug, re-run tests defined for web apps 
+
 ::: moniker-end  
-::: moniker range="vsts"  
-Choose the **Verify** option to re-run tests which identified the bug. You can invoke the Verify option from the bug work item form context menu to launch the relevant test case in the web runner. Perform your validation using the web runner and update the bug work item directly within the web runner.
+
+::: moniker range=">= tfs-2018"  
+Choose the **Verify** option to re-run tests which identified the bug. You can invoke the **Verify** option from the bug work item form context menu to launch the relevant test case in the web runner. Perform your validation using the web runner and update the bug work item directly within the web runner.
 ::: moniker-end  
-::: moniker range=">= tfs-2017 <= tfs-2018"
-Choose the **Verify** option to re-run tests which identified the bug. (Requires TFS 2017.1 or later version.) You can invoke the Verify option from the bug work item form context menu to launch the relevant test case in the web runner. Perform your validation using the web runner and update the bug work item directly within the web runner.  
+
+::: moniker range="tfs-2017"
+Choose the **Verify** option to re-run tests which identified the bug. (Requires TFS 2017.1 or later version.) You can invoke the **Verify** option from the bug work item form context menu to launch the relevant test case in the web runner. Perform your validation using the web runner and update the bug work item directly within the web runner.  
 ::: moniker-end  
+
 ::: moniker range=">= tfs-2017"  
-<img src="../_shared/_img/verify-bug-menu-option.png" alt="Bug work item form, Actions menu, Verify option" style="border: 1px solid #C3C3C3;" />  
- 
+![Bug work item form, Actions menu, Verify option](../media/verify-bug-menu-option.png)  
+
 To learn more about running test from the web portal, see [Run tests for web apps](../../test/run-manual-tests.md).
 ::: moniker-end  
 
 <a id="close">  </a>
+
 ### Close a bug  
+
 You close a bug once it's verified as fixed. However, you may also close a bug for one of these reasons:
 
 - Deferred - deferring a fix until the next product release
@@ -272,6 +298,9 @@ You close a bug once it's verified as fixed. However, you may also close a bug f
 - Obsolete - the bug's feature is no longer in the product
 - Copied to Backlog - a PBI or user story has been opened to track the bug
 
+> [!TIP]   
+> Once a bug has been closed and the fix is actively released in deployments, recommended practice is to never reopen it due to regression. Instead, you should consider opening a new bug and link to the older, closed bug.   
+
 It's always a good idea to describe any additional details for closing a bug in the Discussion field (new web form) or the History field (old web form) to avoid future confusion as to why the bug was closed. 
 
 ## Monitor bug status, assignments, and trends  
@@ -280,14 +309,15 @@ You can track the bug status, assignments, and trends using queries which you ca
 
 For example, here are two examples showing active bugs by priority trend and a snapshot of bugs by priority.
 
-![Bug trend chart from query](_img/manage-bugs-trend-chart.png)   ![Bug snapshot by priority](_img/manage-bugs-priority-chart.png)   
+![Bug trend chart from query](media/manage-bugs-trend-chart.png)   ![Bug snapshot by priority](media/manage-bugs-priority-chart.png)   
 
-To learn more about queries, charts, and dashboards; see [Create managed queries](../queries/example-queries.md) and [Charts](../../report/dashboards/charts.md), and [Dashboards](../../report/dashboards/dashboards.md).    
+To learn more about queries, charts, and dashboards; see [About managed queries](../queries/about-managed-queries.md) and [Charts](../../report/dashboards/charts.md), and [Dashboards](../../report/dashboards/dashboards.md).    
 
 <a id="customize"> </a>
+
 ## Customize the bug form
 
-[!INCLUDE [temp](../_shared/customize-work-tracking.md)] 
+[!INCLUDE [temp](../includes/customize-work-tracking.md)] 
 
 
 ## Try this next
@@ -305,29 +335,35 @@ To track your bugs and integrate with other resources available to you, see thes
 - [Pre-populate fields using a template](work-item-template.md)
 - [Copy or clone a work item](copy-clone-work-items.md#copy-clone)
 
+### Marketplace extensions
+
+- [Reactivations Report](https://marketplace.visualstudio.com/items?itemName=EnterpriseServicesDevOpsTeam.ServicesBugReactivationReport&ssr=false#overview)
+- [Bug Bash Pro](https://marketplace.visualstudio.com/items?itemName=mohitbagra.bugbashpro&ssr=false#overview)
+
 <a id="integrate"> </a>
+
 ### Integrate & Test resources
-- [UserVoice](../../service-hooks/services/uservoice.md)  
-- [Zendesk](../../service-hooks/services/zendesk.md)  
+
+- [UserVoice](../../service-hooks/overview.md)  
+- [Zendesk](../../service-hooks/overview.md)  
 - [Developer testing tools scenarios and capabilities](/visualstudio/test/developer-testing-scenarios)  
 - [Run tests for desktop apps](../../test/run-manual-tests.md#run-desktop)  
-  
 
-::: moniker range="vsts"  
+
+::: moniker range=">= azure-devops-2019"
 
 ### Use the Analytics service to create bug reports
+
 You can use Power BI to create more complex reports than what you can get from a query. To learn more, see [Connect with Power BI Data Connector](../../report/powerbi/data-connector-connect.md). 
 
 ::: moniker-end  
 
-
-
-::: moniker range=">= tfs-2013 <= tfs-2018"  
+::: moniker range="< azure-devops"  
 
 
 ### Pre-defined SQL Server bug reports
 
-If you work from an on-premises TFS and you have SQL Server Analysis Services and SQL Server Reporting Services configured for your project, you have access to the following reports (Agile and CMMI processes only).  
+If you work from an on-premises Azure DevOps Server and you have SQL Server Analysis Services and SQL Server Reporting Services configured for your project, you have access to the following reports (Agile and CMMI processes only).  
 
 - [Bug Status](../../report/sql-reports/bug-status-report.md)  
 - [Bug Trends](../../report/sql-reports/bug-trends-report.md)  
@@ -338,15 +374,14 @@ To learn how to add SQL Server reports for a project, see [Add reports to a proj
 ::: moniker-end  
 
 
-
 ### Use SonarQube to help manage technical debt
 
 SonarQube provides a way of automatically measuring some technical debt. SonarQube finds important violations of best coding practices. You implement Sonar to ensure that developers follow important code metrics like appropriate class and method size or low cyclomatic complexity (a quantitative measure of the number of linearly independent paths through a program's source code).  
 
-By integrating your on-premises TFS with a SonarQube server, you can get the following data:  
+By integrating your on-premises Azure DevOps with a SonarQube server, you can get the following data:  
 - Results of .NET and JavaScript code analysis  
 - Code clone analysis  
 - Code coverage data from tests  
 - Metrics for .NET and JavaScript  
 
-See [Technical Debt Management: Announcing SonarQube integration with MSBuild and Team Build](http://blogs.msdn.com/b/visualstudioalm/archive/2015/05/05/technical-debt-management-announcing-sonarqube-integration-with-msbuild-and-team-build.aspx) for details.
+See [Technical Debt Management: Announcing SonarQube integration with MSBuild and Team Build](https://devblogs.microsoft.com/devops/technical-debt-management-announcing-sonarqube-integration-with-msbuild-and-team-build/) for details.

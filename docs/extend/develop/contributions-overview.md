@@ -1,23 +1,25 @@
 ---
-ms.prod: devops
 ms.technology: devops-ecosystem
-title: Contributions Model Fundamentals | Extensions for Azure DevOps Services
-description: Overview of the contribution model, including an overview of contributions, types, and targeting other contributions
+title: Contributions Model Fundamentals | Extensions for Azure DevOps
+description: Overview of the contribution model, including an overview of contributions, types, and targeting other contributions for Azure DevOps or Team Foundation Server (TFS).
 ms.assetid: 96509f47-bac2-4319-9085-2621ff8f814a
 ms.topic: conceptual
-ms.manager: douge
 monikerRange: '>= tfs-2017'
-ms.author: elbatk
-author: elbatk
+ms.author: chcomley
+author: chcomley
 ms.date: 08/04/2016
 ---
 
 # Contribution model
 
+[!INCLUDE [version-tfs-2017-through-vsts](../../includes/version-tfs-2017-through-vsts.md)]
+
 Extensions add new capabilities into the system by providing contributions and by defining ways for other extensions to plug in to them.
 A contribution type defines something that can be added to the system. A contribution is a specific instance of a contribution type. For
 example, `hub` is a contribution type defined by a core, Microsoft-provided extension. The `Explorer` hub under the Build hub group is a 
 specific contribution of type `hub`.
+
+[!INCLUDE [extension-docs-new-sdk](../../includes/extension-docs-new-sdk.md)]
 
 ### Contribution types
 
@@ -37,7 +39,7 @@ Here is an example of a contribution type declaration in an extension manifest:
         {
             "id": "hub",
             "name": "Web Access Hub",
-            "description": "A hub that will appear in the hubs menu at the top of web pages.",
+            "description": "A hub that appears in the hubs menu at the top of web pages.",
             "properties": {
                 "name": {
                     "description": "The text to display for the hub",
@@ -119,5 +121,5 @@ a dot (.). For example: "ms.vss-web.hub" is the full identifier for the contribu
 by the `ms` (Microsoft) publisher.
 
 *Relative* contribution references may be used within an extension manifest for a contribution's reference to another contribution or contribution
-type within that same extension. In this case, the publisher and extension IDs are NOT included, and the ID is simply a dot (.) followed
-by the contribution id. For example, ".hub" may be used within the "vss-web" extension mentioned above as a shortcut for "ms.vss-web.hub".
+type within that same extension. In this case, the publisher and extension IDs are NOT included, and the ID is a dot (.) followed
+by the contribution id. For example, ".hub" may be used within the "vss-web" extension mentioned previously as a shortcut for "ms.vss-web.hub".

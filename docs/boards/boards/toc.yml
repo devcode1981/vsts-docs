@@ -1,48 +1,30 @@
-- name: Boards (Kanban) 
-  href: index.md
-- name: Overview
-  expanded: true
+- name: About Boards and Kanban
+  href: kanban-overview.md
+- name: Kanban board quickstart
+  href: kanban-quickstart.md
+- name: Reorder cards
+  href: reorder-cards.md
+- name: Add task checklists
+  href: add-task-checklists.md
+- name: Define features & epics
+  href: kanban-epics-features-stories.md
+- name: Filter your Kanban board
+  href: ../backlogs/filter-backlogs-boards-plans.md 
+  displayname: reorder, group, parent, tags  
+- name: Kanban board basics
+  href: kanban-basics.md
+- name: Add, run, & update inline tests
+  href: add-run-update-tests.md
+- name: Customize your boards
   items:
-  - name: About boards & Kanban
-    href: kanban-overview.md
-  - name: "Backlogs, boards, & plans"
-    href: ../backlogs/backlogs-boards-plans.md?toc=/azure/devops/boards/boards/toc.json&bc=/azure/devops/boards/boards/breadcrumb/toc.json  
-  - name: Start using Azure Boards
-    href: ../get-started/index.md 
-- name: Quickstarts
-  items:
-  - name: Kanban board quickstart
-    href: kanban-quickstart.md
+  - name: Kanban board controls
+    href: kanban-board-controls.md
   - name: Enable live updates
     href: live-updates.md
-  - name: Drive Git development
-    href: ../backlogs/connect-work-items-to-git-dev-ops.md?toc=/azure/devops/boards/boards/toc.json&bc=/azure/devops/boards/boards/breadcrumb/toc.json  
-- name: Tutorials
-  items:
-  - name: Kanban board basics
-    href: kanban-basics.md
-  - name: Add task checklists
-    href: add-task-checklists.md
-  - name: "Add, run, & update inline tests"
-    href: add-run-update-tests.md
-  - name: "Define features & epics"
-    href: kanban-epics-features-stories.md
-- name: Concepts
-  items:
-  - name: Kanban best practices
-    href: best-practices-kanban.md
-  - name: Kanban key concepts
-    href: kanban-key-concepts.md
-  - name: "Workflow states & state categories"
-    href: ../work-items/workflow-and-state-categories.md?toc=/azure/devops/boards/boards/toc.json&bc=/azure/devops/boards/boards/breadcrumb/toc.json 
-  - name: About teams and Agile tools
-    href: ../../organizations/settings/about-teams-and-settings.md?toc=/azure/devops/boards/boards/toc.json&bc=/azure/devops/boards/boards/breadcrumb/toc.json 
-- name: How-to guides 
-  items:
   - name: Add or edit columns
     href: add-columns.md
   - name: Customize cards
-    href: ../../boards/boards/customize-cards.md?toc=/azure/devops/boards/boards/toc.json&bc=/azure/devops/boards/boards/breadcrumb/toc.json  
+    href: customize-cards.md  
   - name: WIP limits
     href: wip-limits.md
   - name: Expedite work (swimlanes)
@@ -51,41 +33,15 @@
     href: split-columns.md
   - name: Definition of done
     href: definition-of-done.md
-  - name: Reorder cards
-    href: ../../boards/boards/reorder-cards.md?toc=/azure/devops/boards/boards/toc.json&bc=/azure/devops/boards/boards/breadcrumb/toc.json
-  - name: Filter your Kanban board
-    href: filter-kanban-board.md 
-  - name: "Manage permissions (Security)"
-    href: ../../organizations/security/set-permissions-access-work-tracking.md?toc=/azure/devops/boards/boards/toc.json&bc=/azure/devops/boards/boards/breadcrumb/toc.json 
-- name: Samples
+  - name: Show bugs on backlogs & boards
+    href: ../../organizations/settings/show-bugs-on-backlog.md?bc=%252fazure%252fdevops%252fboards%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fdevops%252fboards%252ftoc.json
+- name: Best practices, monitoring, & reports
   items:
-  - name: Boards (Kanban) query examples 
-    href: ../queries/query-by-workflow-changes.md?toc=/azure/devops/boards/boards/toc.json&bc=/azure/devops/boards/boards/breadcrumb/toc.json  
-- name: Reference
-  items:
-  - name: Boards (Kanban) board controls
-    href: kanban-board-controls.md
-  - name: Boards (Kanban) board keyboard shortcuts
-    href: kanban-board-keyboard-shortcuts.md
-  - name: Work item field index
-    href: ../work-items/guidance/work-item-field.md?toc=/azure/devops/boards/boards/toc.json&bc=/azure/devops/boards/boards/breadcrumb/toc.json 
-  - name: "Default permissions (Security)"
-    href: ../../organizations/security/permissions-access-work-tracking.md?toc=/azure/devops/boards/boards/toc.json&bc=/azure/devops/boards/boards/breadcrumb/toc.json 
-  - name: REST API, Boards
-    href: /rest/api/vsts/work/boards/set%20board%20options
-- name: Resources
-  items:
-  - name: Backlogs
-    href: ../backlogs/index.md
-  - name: Sprints (Scrum)  
-    href: ../sprints/index.md
-  - name: Queries
-    href: ../queries/index.md
-  - name: Customization
-    href: ../../reference/index.md
-  - name: "Scale & Configure Teams"
-    href: ../../organizations/settings/scale/index.md
-  - name: "What is Agile?"
-    href: /azure/devops/agile/what-is-agile
-  - name: "What is Agile development?"
-    href: /azure/devops/agile/what-is-agile-development
+  - name: Kanban best practices
+    href: best-practices-kanban.md
+  - name: Kanban concepts
+    href: kanban-key-concepts.md
+  - name: View/configure CFD
+    href: ../../report/dashboards/cumulative-flow.md?toc=/azure/devops/boards/toc.json&bc=/azure/devops/boards/breadcrumb/toc.json 
+  - name: Configure Lead/Cycle time widget
+    href: ../../report/dashboards/cycle-time-and-lead-time.md?toc=/azure/devops/boards/toc.json&bc=/azure/devops/boards/breadcrumb/toc.json

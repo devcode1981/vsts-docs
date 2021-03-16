@@ -1,24 +1,21 @@
 ---
-title: Use approvals and gates to control your deployment
-titleSuffix: Azure Pipelines & TFS
+title: Control deployments with approvals and gates
+ms.custom: seodec18
 description: DevOps CI CD - Use a combination of manual deployment approvals, gates, and manual intervention to control your deployment in Azure Pipelines and TFS
 ms.assetid: 3D22D4B3-DE1F-482C-BBD4-475C829452C1
-ms.prod: devops
-ms.technology: devops-cicd
 ms.topic: tutorial
-ms.manager: douge
-ms.author: ahomer
-author: alexhomer1
-ms.date: 08/24/2018
+ms.author: shashban
+author: azooinmyluggage
+ms.date: 01/12/2021
 monikerRange: '>= tfs-2018'
 ---
 
 # Use approvals and gates to control your deployment
 
-**Azure Pipelines | TFS 2018**
+[!INCLUDE [version-tfs-2018](../includes/version-tfs-2018.md)]
 
 ::: moniker range="<= tfs-2018"
-[!INCLUDE [temp](../_shared/concept-rename-note.md)]
+[!INCLUDE [temp](../includes/concept-rename-note.md)]
 ::: moniker-end
 
 By using a combination of manual deployment approvals, gates, and manual
@@ -29,8 +26,9 @@ for your DevOps CI/CD processes.
 In this tutorial, you learn about:
 
 > [!div class="checklist"]
-> * Extending the approval process with gates
-> * Extending the approval process with manual intervention
+> * Extending the approval process with gates for classic pipelines
+> * Extending the approval process with manual intervention classic pipelines
+> * Extending the approval process with manual validation for YAML pipelines
 > * Viewing and monitoring approvals and gates
 
 ## Prerequisites
@@ -64,12 +62,12 @@ meets a wide range or criteria, without requiring user intervention.
 1. In the **Releases** tab of **Azure Pipelines**, select your release
    pipeline and choose **Edit** to open the pipeline editor.
 
-   ![Opening the release pipeline](_img/deploy-using-approvals/open-pipeline.png)
+   ![Opening the release pipeline](media/deploy-using-approvals/open-pipeline.png)
 
 1. Choose the pre-deployment conditions icon for the **Production** stage to
    open the conditions panel. Enable gates by using the switch control in the **Gates** section.   
 
-   ![Enabling release approval gates](_img/deploy-using-approvals/gates-01.png)
+   ![Enabling release approval gates](media/deploy-using-approvals/gates-01.png)
  
 1. To allow gate functions to initialize and stabilize (it may take some time for them
    to begin returning accurate results), you configure a delay before the results
@@ -77,27 +75,28 @@ meets a wide range or criteria, without requiring user intervention.
    For this example, so that you can see a result reasonably quickly, set the delay
    to a short period such as one minute.
 
-   ![Configuring the delay before evaluation](_img/deploy-using-approvals/gates-02.png)
+   ![Configuring the delay before evaluation](media/deploy-using-approvals/gates-02.png)
 
 1. Choose **+ Add** and select the **Query Work Items** gate.
 
-   ![Adding a Query Work Items approval gate](_img/deploy-using-approvals/gates-03.png)
+   ![Adding a Query Work Items approval gate](media/deploy-using-approvals/gates-03.png)
 
 1. Configure the gate by selecting an existing work item query. You can use one of the built-in
    Azure Pipelines and TFS queries, or [create your own query](../../boards/queries/using-queries.md).
    Depending on how many work items you expect it to return, set the maximum and minimum
    thresholds (run the query in the **Work** hub if you're not sure what to expect).
 
-   ![Configuring the Query Work Items approval gate](_img/deploy-using-approvals/gates-04.png)
+   ![Configuring the Query Work Items approval gate](media/deploy-using-approvals/gates-04.png)
 
-   >You'll need to open the **Advanced** section to see the **Maximum Threshold** setting.
-   For more details about the gate arguments, see [Work Item Query task](../tasks/utility/work-item-query.md).
+   > You'll need to open the **Advanced** section to see the **Lower Threshold** setting.
+   > You can also set an **Output Variable** to be returned from the gate task. 
+   > For more details about the gate arguments, see [Work Item Query task](../tasks/utility/work-item-query.md).
 
-1. Open the **Options for all gates** section and specify the timeout and the sampling interval.
+1. Open the **Evaluation options** section and specify the timeout and the sampling interval.
    For this example, choose short periods so that you can see the results reasonably quickly.
    The minimum values you can specify are 6 minutes timeout and 5 minutes sampling interval.
 
-   ![Configuring the options for all gates](_img/deploy-using-approvals/gates-05.png)
+   ![Configuring the options for all gates](media/deploy-using-approvals/gates-05.png)
 
    >The sampling interval and timeout work together so that the gates will call their functions
    at suitable intervals, and reject the deployment if they don't all succeed during the same sampling
@@ -106,7 +105,7 @@ meets a wide range or criteria, without requiring user intervention.
 
 1. Save you release pipeline.
 
-   ![Saving the release pipeline](_img/deploy-using-approvals/gates-06.png)
+   ![Saving the release pipeline](media/deploy-using-approvals/gates-06.png)
 
 For more information about using other types of approval gates, see [Approvals and gates](../release/approvals/index.md).
 
@@ -114,7 +113,7 @@ For more information about using other types of approval gates, see [Approvals a
 
 <a name="configure-maninter"></a>
    
-## Configure a manual intervention
+## Configure a manual intervention 
 
 Sometimes, you may need to introduce manual intervention into a release pipeline.
 For example, there may be tasks that cannot be accomplished automatically such as
@@ -124,23 +123,23 @@ Intervention** task in your pipeline.
 
 1. In the release pipeline editor, open the **Tasks** editor for the **QA** stage.
 
-   ![Opening the QA tasks editor](_img/deploy-using-approvals/open-qa-tasks.png)
+   ![Opening the QA tasks editor](media/deploy-using-approvals/open-qa-tasks.png)
 
 1. Choose the ellipses (**...**) in the **QA** deployment pipeline bar and then choose **Add agentless job**.
 
-   ![Adding an Agentless job to the task list](_img/deploy-using-approvals/add-agentless-phase.png)
+   ![Adding an Agentless job to the task list](media/deploy-using-approvals/add-agentless-phase.png)
 
    Several tasks, including the **Manual Intervention** task, can be used only in an
-   [agentless job](../process/server-phases.md).
+   [agentless job](../process/phases.md#server-jobs).
 
 1. Drag and drop the new agentless job to the start of the QA process, before the existing agent job.
    Then choose **+** in the **Agentless job** bar and add a **Manual Intervention** task to the job.
 
-   ![Adding a Manual Intervention task](_img/deploy-using-approvals/add-maninter-task.png)
+   ![Adding a Manual Intervention task](media/deploy-using-approvals/add-maninter-task.png)
 
 1. Configure the task by entering a message (the **Instructions**) to display when it executes and pauses the release pipeline.
 
-   ![Configuring the Manual Intervention task](_img/deploy-using-approvals/manual-intervention-task.png)
+   ![Configuring the Manual Intervention task](media/deploy-using-approvals/manual-intervention-task.png)
 
    Notice that you can specify a list of users who will receive a notification that the deployment
    is waiting for manual approval. You can also specify a timeout and the action (approve or reject)
@@ -149,10 +148,45 @@ Intervention** task in your pipeline.
 
 1. Save the release pipeline and then start a new release.
 
-   ![Starting a new release](_img/deploy-using-approvals/start-release.png)
+   ![Starting a new release](media/deploy-using-approvals/start-release.png)
 
 <a name="view-approvals"></a>
 
+
+## Configure manual validation 
+
+You can use the [manual validation task](../tasks/utility/manual-validation.md) to pause a YAML pipeline run and perform manual activities. You can then resume or reject the run. Manual validation is especially useful in scenarios where you want to pause a pipeline and validate configuration settings or build package before moving onto a computation-intensive job.
+
+In this pipeline, `myPostValidationJob` does not run until you give manual approval. There's a prompt within the Pipeline UI to review and provide validation. The email addresses listed in `notifyUsers` will receive emails asking them to approve the pipeline. 
+
+:::image type="content" source="media/needs-validation-prompt.png" alt-text="Add validation for the pipeline to continue.":::
+    
+
+```yaml
+pool: 
+   vmImage: ubuntu-latest
+
+jobs:
+- job: waitForValidation
+  displayName: Wait for external validation  
+  pool: server    
+  timeoutInMinutes: 4320 # job times out in 3 days
+  steps:   
+   - task: ManualValidation@0
+     timeoutInMinutes: 1440 # task times out in 1 day
+     inputs:
+         notifyUsers: |
+            someone@example.com
+         instructions: 'Please validate the build configuration and resume'
+         onTimeout: 'resume'
+
+- job: myPostValidationJob
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - bash: echo "Hello world"
+
+```
 ## View the logs for approvals 
 
 You typically need to validate and audit a release and the associated deployments
@@ -164,32 +198,32 @@ granted. The comprehensive logging capabilities provide this information.
    link in the information bar in the release editor after you create the release,
    or directly from the **Releases** tab of **Azure Pipelines**.
 
-   ![Opening the release summary](_img/deploy-using-approvals/open-summary.png)
+   ![Opening the release summary](media/deploy-using-approvals/open-summary.png)
 
 1. You'll see the live status for each step in the release pipeline. It indicates that a 
    manual intervention is pending (this pre-deployment approval was configured in the
    previous tutorial [Define your multi-stage continuous deployment pipeline](define-multistage-release-process.md)).
    Choose the **Resume** link.  
 
-   ![Viewing the status for the manual intervention](_img/deploy-using-approvals/view-log-03.png)
+   ![Viewing the status for the manual intervention](media/deploy-using-approvals/view-log-03.png)
 
 1. You see the intervention message, and can choose to resume or reject the deployment.
    Enter some text response to the intervention and choose **Resume**.
 
-   ![Resuming or rejecting the deployment](_img/deploy-using-approvals/view-log-01.png)
+   ![Resuming or rejecting the deployment](media/deploy-using-approvals/view-log-01.png)
    
 1. Go back to the pipeline view of the release. After deployment to the QA stage succeeds,
    you see the pre-deployment approval pending message for the **Production** environment.
 
-   ![Pre-deployment approval required](_img/deploy-using-approvals/view-log-05.png)
+   ![Pre-deployment approval required](media/deploy-using-approvals/view-log-05.png)
 
 1. Enter your approval message and choose **Approve** to continue the deployment.
 
-   ![Approve the deployment](_img/deploy-using-approvals/view-log-06.png)
+   ![Approve the deployment](media/deploy-using-approvals/view-log-06.png)
 
 1. Go back to the pipeline view of the release. Now you see that the gates are being processed before the release continues.  
 
-   ![Status while executing gates in the deployment](_img/deploy-using-approvals/view-log-04.png)
+   ![Status while executing gates in the deployment](media/deploy-using-approvals/view-log-04.png)
 
 1. After the gate evaluation has successfully completed, the deployment occurs for the Production stage.
    Choose the **Production** stage icon in the release summary to see more details of the approvals and gate evaluations.
@@ -201,4 +235,4 @@ auditing capabilities you may require.
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Deploy to IIS web servers on Windows](../apps/cd/deploy-webdeploy-iis-deploygroups.md)
+> [Integrate with ServiceNow change management](approvals/servicenow.md)

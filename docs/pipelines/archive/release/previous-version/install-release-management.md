@@ -1,23 +1,20 @@
 ---
 title: Install RM server/client for Visual Studio
-titleSuffix: Azure Pipelines & TFS
+ms.custom: seodec18
 description: Learn how you can install the Release Management server/client for Visual Studio 2015 and Team Foundation Server (TFS) 2015 
 ms.assetid: AEED8FFC-D902-4789-8FBA-A6DAD4F6D34B
-ms.prod: devops
-ms.technology: devops-cicd
 ms.topic: conceptual
-ms.manager: douge
-ms.author: ahomer
-author: alexhomer1
+ms.author: ronai
+author: RoopeshNair
 ms.date: 07/16/2018
-monikerRange: '>= tfs-2013'
+monikerRange: '>= tfs-2015'
 ---
 
 # Install Release Management server/client for VS 2015 and TFS 2015
 
-[!INCLUDE [previous-version-header](../_shared/previous-version-header.md)]
+[!INCLUDE [previous-version-header](../includes/previous-version-header.md)]
 
-![Install Release Management with Team Foundation Server](_img/install-rm-01.png)
+![Install Release Management with Team Foundation Server](media/install-rm-01.png)
 
 Release Management provides a continuous deployment solution that makes release
 cycles repeatable, visible, and more efficient by automating deployments 
@@ -31,7 +28,7 @@ for details of compatible versions. If you haven't set up TFS yet,
 You can use the same SQL Server instance for TFS and the 
 Release Management server (as we will in this guide) or you can use a 
 different SQL Server instance (or even 
-**[install a new instance](/tfs/server/install/sql-server/install-sql-server)**).
+**[install a new instance](/azure/devops/server/install/sql-server/install-sql-server)**).
 Next, install Release Management Client. After the client and the server are set up, 
 you'll set up the machines to deploy your app for your releases. You can 
 install deployment agents on each machine. Or, you can use Windows PowerShell, 
@@ -73,11 +70,11 @@ ready to manage releases.
 
   ***Important:*** _This is a 90-day trial version of Release Management. For information about obtaining 
   a non-trial version, see 
-  [How to buy Release Management](http://visualstudio.microsoft.com/products/how-to-buy-release-management-vs)
+  [How to buy Release Management](https://visualstudio.microsoft.com/products/how-to-buy-release-management-vs)
   or 
-  [Release Management Licensing](http://visualstudio.microsoft.com/release-mgmt-licensing-vs).
+  [Release Management Licensing](https://visualstudio.microsoft.com/release-mgmt-licensing-vs).
   If you are an MSDN subscriber, you can download a non-trial version from the 
-  [MSDN Subscriber website](https://msdn.microsoft.com/subscriptions/downloads/)._ 
+  [MSDN Subscriber website](/powerapps/developer/common-data-service/org-service/subscribe-sdk-assembly-updates-using-nuget)._ 
 
 * On computers that will make up the environments where you will deploy 
   your release, 
@@ -92,7 +89,7 @@ ready to manage releases.
   **[adding team members to Release Management](add-users-and-groups.md)**, 
   or configuring an SMTP server for email notifications.
 
-   ![Set security for Release Management with Team Foundation Server](_img/install-rm-04.png)
+   ![Set security for Release Management with Team Foundation Server](media/install-rm-04.png)
 
 ## Related topics
 
@@ -104,6 +101,6 @@ ready to manage releases.
 * [Manage users, groups, and permissions](add-users-and-groups.md)
 * [Manage your release](manage-your-release.md)
  
-[!INCLUDE [wpfver-back-to-index-shared](../_shared/wpfver-back-to-index-shared.md)]
+[!INCLUDE [wpfver-back-to-index-shared](../includes/wpfver-back-to-index-shared.md)]
  
-[!INCLUDE [wpfver-support-shared](../_shared/wpfver-support-shared.md)]
+[!INCLUDE [wpfver-support-shared](../includes/wpfver-support-shared.md)]

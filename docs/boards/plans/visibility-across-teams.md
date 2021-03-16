@@ -3,10 +3,9 @@ title: Visibility across teams
 titleSuffix: Azure Boards
 description: Determine which methods best support your ability to monitor status and progress across several teams in Azure Boards, Azure DevOps, & Team Foundation Server  
 ms.technology: devops-agile
-ms.prod: devops
 ms.assetid: C9F129A7-97F9-4C1A-91E2-F59D6EFABE2E
-ms.manager: douge
-ms.author: kaelliauthor: KathrynEE
+ms.author: kaelli
+author: KathrynEE
 ms.topic: conceptual
 monikerRange: '>= tfs-2013'
 ms.date: 11/19/2018
@@ -15,7 +14,7 @@ ms.date: 11/19/2018
 
 # Visibility across teams
 
-[!INCLUDE [temp](../../_shared/version-vsts-tfs-all-versions.md)]
+[!INCLUDE [temp](../includes/version-all.md)]
 
 Agile tools provide each team a wealth of ways to gain visibility into their work&mdash;to manage priorities and status and to monitor progress and trends. However, how do you gain visibility across several teams? What tools should you use?
 
@@ -37,7 +36,14 @@ With a Delivery Plan, you gain a tailor-made view across several teams and their
 
 When you configure a Delivery Plan, you select the teams and backlog levels of interest. You can then interact with the plan to update it and drill into more details. To learn more about Delivery Plans, see [Review team plans](review-team-plans.md).
 
-<img src="_img/plans_move1.png" alt="Interactive plan elements" style="border: 2px solid #C3C3C3;" />
+
+::: moniker range="azure-devops"  
+:::image type="content" source="media/plans/overview-preview-with-callouts.png " border="false" alt-text="Screenshot with callouts of Delivery Plans, collapsed teams.":::   
+::: moniker-end 
+
+::: moniker range="< azure-devops"  
+<img src="media/plans-view-2.png" alt="Interactive plan elements" style="border: 2px solid #C3C3C3;" />
+::: moniker-end 
 
 <a id="portfolio-backlogs">  </a>
 ## Use portfolio backlogs to track features and epics
@@ -54,7 +60,7 @@ The management team creates the epics, and then they or their feature teams brea
 > [!TIP]
 >By breaking down large goals, epics, scenarios, or features into smaller ones, teams can make better estimates and identify risks and dependencies.
 
-Limiting the backlog levels for each team&#151;Epics for management teams and Features and Stories for feature teams&#151;helps each team to stay focused on monitoring the progress of their work. For details on managing team backlog levels, see [Select backlog navigation levels](../../organizations/settings/select-backlog-navigation-levels.md).
+Limiting the backlog levels for each team&mdash;Epics for management teams and Features and Stories for feature teams&mdash;helps each team to stay focused on monitoring the progress of their work. For details on managing team backlog levels, see [Select backlog navigation levels](../../organizations/settings/select-backlog-navigation-levels.md).
 
 With the multi-team portfolio backlog view, you can:
 - Review priorities with your team and reorder features to support current priorities
@@ -65,32 +71,23 @@ With the multi-team portfolio backlog view, you can:
 ### View child items owned by other teams 
 Management teams can drill down from their portfolio backlog to see how **Epics** are progressing. Drilling down, you can see all the backlog items and features, even though they belong to one of three different teams: Customer Service, Phone, and Web.
 
-[!INCLUDE [temp](../../_shared/new-navigation-azd.md)] 
-
-# [New navigation](#tab/new-nav)
-
-::: moniker range=">= azdevserver-2019"
-Items that are owned by other teams appear with an information icon, ![ ](../../_img/icons/info.png).  
+::: moniker range=">= azure-devops-2019"
+Items that are owned by other teams appear with an information icon,  :::image type="icon" source="../../media/icons/info.png" border="false"::: .  
 
 > [!div class="mx-imgBorder"]  
-> ![Backlog that shows parents and multi-team ownership, new navigation](../backlogs/_img/multi-ownership/management-team-backlog-epics.png)   
+> ![Backlog that shows parents and multi-team ownership](../backlogs/media/multi-ownership/management-team-backlog-epics.png)   
 
 > [!TIP]    
 > Add the **Node Name** field as a column to identify the area path/team associated with the work items. 
 
 ::: moniker-end 
 
-::: moniker range="<= tfs-2018" 
-[!INCLUDE [temp](../../_shared/new-navigation-not-supported.md)] 
-::: moniker-end 
 
-# [Previous navigation](#tab/previous-nav)
-
-::: moniker range=">= tfs-2017 <= tfs-2018 || vsts"  
-Items that are owned by other teams appear with an information icon, ![ ](../../_img/icons/info.png).  
+::: moniker range=">= tfs-2017 <= tfs-2018"  
+Items that are owned by other teams appear with an information icon,  :::image type="icon" source="../../media/icons/info.png" border="false"::: .  
 
 > [!div class="mx-imgBorder"]  
-> ![Backlog that shows parents and multi-team ownership, new navigation](../backlogs/_img/multi-ownership/management-team-backlog-epics-pre-nav.png)  
+> ![Backlog that shows parents and multi-team ownership](../backlogs/media/multi-ownership/management-team-backlog-epics-pre-nav.png)  
 
 > [!TIP]    
 > Add the **Node Name** field as a column to identify the area path/team associated with the work items. 
@@ -101,60 +98,41 @@ Items that are owned by other teams appear with an information icon, ![ ](../../
 
 Items that are owned by other teams appear with hollow-filled bars.  
 
-<img src="_img/visibility-management-team-epics.png" alt="Management teams, Epic portfolio backlog expanded" style="border: 2px solid #C3C3C3;" /> 
+<img src="media/visibility-management-team-epics.png" alt="Management teams, Epic portfolio backlog expanded" style="border: 2px solid #C3C3C3;" /> 
 
 ::: moniker-end 
-
-::: moniker range="azdevserver-2019"
-[!INCLUDE [temp](../../_shared/previous-navigation-not-supported-azd.md)] 
-::: moniker-end
-
----
 
 ### View backlog items and parent items owned by other teams
 
 Feature teams can turn **Show parents** on their backlogs to see context and those items owned by other teams. 
 
-# [New navigation](#tab/new-nav)
+::: moniker range=">= azure-devops-2019"
 
-::: moniker range=">= azdevserver-2019"
-
-Items that are owned by other teams appear with an information icon, ![ ](../../_img/icons/info.png). 
+Items that are owned by other teams appear with an information icon,  :::image type="icon" source="../../media/icons/info.png" border="false"::: . 
 
 > [!div class="mx-imgBorder"]  
-> ![Backlog that shows parents and multi-team ownership, new navigation](_img/visibility/web-team-backlog-multi-team-ownership-new-nav.png)   
+> ![Items that are owned by other teams appear with an information icon.](media/visibility/web-team-backlog-multi-team-ownership-new-nav.png)   
 
 ::: moniker-end 
 
-::: moniker range=">= tfs-2013 <= tfs-2018" 
-[!INCLUDE [temp](../../_shared/new-navigation-not-supported.md)] 
-::: moniker-end 
 
-# [Previous navigation](#tab/previous-nav)
-
-::: moniker range=">= tfs-2017 <= tfs-2018 || vsts"  
-Items that are owned by other teams appear with an information icon, ![ ](../../_img/icons/info.png). 
+::: moniker range=">= tfs-2017 <= tfs-2018"  
+Items that are owned by other teams appear with an information icon,  :::image type="icon" source="../../media/icons/info.png" border="false"::: . 
    
 > [!div class="mx-imgBorder"]  
-> ![Backlog that shows parents and multi-team ownership, new navigation](_img/visibility/web-team-backlog-multi-team-ownership-prev-nav.png)   
+> ![Items that are owned by other teams appear with an information icon.](media/visibility/web-team-backlog-multi-team-ownership-prev-nav.png)   
 ::: moniker-end 
 
 ::: moniker range="<= tfs-2015" 
 Items that are owned by other teams appear with hollow-filled bars.  
 
-<img src="_img/visibility-feature-team-backlog-show-parents.png" alt="Feature teams, Portfolio backlog with show parents" style="border: 2px solid #C3C3C3;" />
+<img src="media/visibility-feature-team-backlog-show-parents.png" alt="Feature teams, Portfolio backlog with show parents" style="border: 2px solid #C3C3C3;" />
 
 ::: moniker-end 
 
 
-::: moniker range="azdevserver-2019"
-[!INCLUDE [temp](../../_shared/previous-navigation-not-supported-azd.md)] 
-::: moniker-end
-
----
-
 > [!TIP]
-> When estimating stories or product backlog items, start with one story point per person per day. Feature teams can later calibrate and adjust those estimates as needed. For example, the [velocity](../../report/dashboards/velocity-chart-data-store.md) of a seasoned team will be higher than a new team. The size of the work stays the same, but a seasoned team can just deliver faster.
+> When estimating stories or product backlog items, start with one story point per person per day. Feature teams can later calibrate and adjust those estimates as needed. For example, the [velocity](../../report/dashboards/team-velocity.md) of a seasoned team will be higher than a new team. The size of the work stays the same, but a seasoned team can just deliver faster.
 
 To learn more about this configuration, see [Portfolio management](portfolio-management.md), [Add teams](../../organizations/settings/add-teams.md), and [Organize your backlog](../backlogs/organize-backlog.md).
 
@@ -165,11 +143,11 @@ To learn more about this configuration, see [Portfolio management](portfolio-man
 
 A second method for gaining visibility across teams is to define multi-team focused dashboards that let you view progress, status, and trends. You do this primarily by defining queries that either capture the progress of a single team or several teams. You can then create charts and view trends for each team or for several teams.
 
-The two areas of most interest to management teams are project health and bug debt. The widget catalog provides 10+ widgets you can add to a dashboard to track the status, progress, and health of your project and teams. Also, you can find additional widgets in the [Visual Studio Marketplace](https://marketplace.visualstudio.com/search?term=widgets&target=VSTS&sortBy=Relevance).  
+The two areas of most interest to management teams are project health and bug debt. The widget catalog provides 10+ widgets you can add to a dashboard to track the status, progress, and health of your project and teams. Also, you can find additional widgets in the [Visual Studio Marketplace](https://marketplace.visualstudio.com/search?term=widgets&target=AzureDevOps&category=All%20categories&sortBy=Relevance), Azure DevOps tab.  
 
 For example, here we've added three query-based charts, one for each team, to a dashboard that shows the active and resolved bugs over the previous 4 weeks.
 
-<img src="_img/visibility-bug-debt-email-team.png" alt="Bug debt, Email team" style="border: 1px solid #C3C3C3;" />  <img src="_img/visibility-bug-debt-voice-team.png" alt="Bug debt, Voice team" style="border: 1px solid #C3C3C3;" />  <img src="_img/visibility-bug-debt-web-team.png" alt="Bug debt, Web team" style="border: 2px solid #C3C3C3;" />
+<img src="media/visibility-bug-debt-email-team.png" alt="Bug debt, Email team" style="border: 1px solid #C3C3C3;" />  <img src="media/visibility-bug-debt-voice-team.png" alt="Bug debt, Voice team" style="border: 1px solid #C3C3C3;" />  <img src="media/visibility-bug-debt-web-team.png" alt="Bug debt, Web team" style="border: 2px solid #C3C3C3;" />
 
 
 When defining multi-team dashboards, consider the following:
@@ -214,12 +192,27 @@ Another measure of project health and the health of the teams is to monitor bug 
 For tips on creating queries based on counts or numeric fields, see [Query by numeric field](../queries/query-numeric.md).
 
  
-::: moniker range=">= azdevserver-2019"
+::: moniker range=">= azure-devops-2019"
 ## Use Analytics to gain visibility across teams   
 
-You can add [Widgets based on the Analytics Service](../../report/analytics/analytics-widgets.md) to a dashboard that show progress for a team. From one dashboard, you can add widgets for any team within the project. 
+You can add [Widgets based on the Analytics Service](../../report/dashboards/analytics-widgets.md) to a dashboard that show progress for a team. From one dashboard, you can add widgets for any team within the project. 
 
 ::: moniker-end
+
+
+## Track capacity when working on more than one team 
+
+You can track capacity for individuals that participate on more than one team. To learn how, see [Set sprint capacity, Track capacity when working on more than one team](../sprints/set-capacity.md#track-capacity-per-team).
+
+
+
+## Limitations of multi-team Kanban board views 
+
+While the management teams you configure can use the Kanban board to monitor feature progress by turning on the Features backlog, there are limitations inherent within these views. Even if the management team and the feature teams configure their Feature [Kanban board columns](../boards/add-columns.md) with identical workflow mapping, updating the Features on one team's Kanban board won't be reflected on another team's Kanban board. 
+Only when the work item state changes does the card column reflect the same on all boards.
+
+> [!IMPORTANT]   
+> Work items that appear on more than one team's Kanban board can yield query results that don't meet your expectations. Because each team can customize the Kanban board columns and swimlanes, the values assigned to work items which appear on different boards may not be the same. The primary work around for this issue is to maintain single ownership of work items by [team area path](../../organizations/settings/set-area-paths.md). Another option is to add custom workflow states which all teams can use. For details, see [Customize your work tracking experience](../../reference/customize-work.md). 
 
 ## Related articles
 
@@ -231,67 +224,4 @@ Here are some additional topics that address working with multiple teams:
 - [Review team plans](review-team-plans.md)
 - [Add teams](../../organizations/settings/add-teams.md)
 - [Portfolio management](portfolio-management.md)
-
-
-## Limitations of multi-team Kanban board views 
-
-While the management teams you configure can use the Kanban board to monitor feature progress by turning on the Features backlog, there are limitations inherent within these views. Even if the management team and the feature teams configure their Feature [Kanban board columns](../boards/add-columns.md) with identical workflow mapping, updating the Features on one team's Kanban board won't be reflected on another team's Kanban board. 
-Only when the work item state changes does the card column reflect the same on all boards.
-
-> [!IMPORTANT]   
->Work items that appear on more than one team's Kanban board can yield query results that don't meet your expectations. Because each team can customize the Kanban board columns and swimlanes, the values assigned to work items which appear on different boards may not be the same. The primary work around for this issue is to maintain single ownership of work items by [team area path](../../organizations/settings/../../organizations/settings/set-team-defaults.md). Another option is to add custom workflow states which all teams can use. For details, see [Customize your work tracking experience](../../reference/customize-work.md). 
-
-
-<!---
-![Multi-team Kanban board view](_img/visibility-multi-team-kanban-board-features.png)
-
-With the multi-team Kanban board view, you can:
-- View and update the status of work items
-- Drill down to see the status of child user stories or PBIs
-- [Filter product and portfolio backlogs](/azure/devops/boards/backlogs/filter-backlogs) to view items by feature team, feature owner, tag, or expected delivery date
-- Monitor the [cumulative flow](../../report/dashboards/cumulative-flow.md) of all features being worked on by your teams
-- Organize features into swimlanes to track work that you want to expedite
-
-### Rollup of estimates and remaining work across multiple teams
-
-Many project managers are interested in getting numeric rollup of estimates&mdash;Story Points or Effort&mdash; or the Remaining Work field. Rollup provides summed values of select fields for all child work items of a parent.
-
-Natively, Azure Boards and TFS provide rollup of Remaining Work for tasks on the taskboard.
-
-![Rollup of remaining work](_img/visibility-rollup-remaining-work.png)
-
-To learn about other methods available to you to support rollup, see [Support rollup of work and other fields](https://msdn.microsoft.com/library/dn217871.aspx).
-
-Waterfall -  corresponding method with Project and Project Professional
-Dashboards, and suggestions for dashboard development (drawing from how Agile team uses dashboards)
-Plans - for visibility across time and teams
-Account pages - quick access to your work
-
-Progress against an agreed upon goal
-Issues and Risks
-Customer value prop
-Key metrics and how they are changing
-	Velocity
-	Bug debt trends
-
-Overall project health
-Agile &mdash;Team's Velocity any changes over time
-Waterfall &mdash;completeness of milestone delivery
-Dependencies status
-Different metrics than VP &mdash;code coverage, % complete, burndown
-Code coverage
-% Complete
-Burndown
-
-For example, a manager with five teams tracks the features across teams using the Features Kanban board. Each team tracks and prioritizes their user stories using their own backlogs and boards.
-
-To accomplish this, the following configurations are made:
-6 teams are defined, one for each feature team and one for the management team
-The management team configures its backlogs to only view Features and Epics
-Feature teams configure their backlogs to view User Stories and Features
-
-This configuration supports management's ability to monitor progress across the five teams at the level they need to monitor, and allow each individual feature team to stay focused on their product backlog of user stories.
-
-You can replicate this further for program managers who want to monitor progress across broad initiatives by setting up a program management team that monitors Epics.
--->
 

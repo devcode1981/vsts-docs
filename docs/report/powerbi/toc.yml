@@ -1,46 +1,34 @@
-- name: "Power BI (Azure DevOps Analytics)"
-  href: index.md
-- name: Overview
+- name: About Power BI integration
+  href: overview.md
+- name: Set Analytics permissions (Security)
+  href: analytics-security.md
+- name: Analytics views
   items:
-  - name: Power BI integration
-    href: overview.md
   - name: What are Analytics views?
-    href: ../analytics/what-are-analytics-views.md?toc=/azure/devops/report/powerbi/toc.json&bc=/azure/devops/report/powerbi/breadcrumb/toc.json
-  - name: Reporting roadmap
-    href: ../analytics/reporting-roadmap.md?toc=/azure/devops/report/powerbi/toc.json&bc=/azure/devops/report/powerbi/breadcrumb/toc.json
-- name: Quickstarts
+    href: what-are-analytics-views.md
+  - name: Default Analytics views
+    href: analytics-default-views.md
+  - name: Create an Analytics view
+    href: analytics-views-create.md?
+  - name: Manage Analytics views
+    href: analytics-views-manage.md
+  - name: Analytics views dataset design
+    href: data-connector-dataset.md
+- name: Power BI reports
   items:
   - name: Create a report using an Analytics view
     href: create-quick-report.md
-- name: Tutorials
-  items:
-  - name: Create an Analytics view
-    href: ../analytics/analytics-views-create.md?toc=/azure/devops/report/powerbi/toc.json&bc=/azure/devops/report/powerbi/breadcrumb/toc.json
-  - name: Manage Analytics views
-    href: ../analytics/analytics-views-manage.md?toc=/azure/devops/report/powerbi/toc.json&bc=/azure/devops/report/powerbi/breadcrumb/toc.json
-- name: Concepts
-  items:
-  - name: Data available
-    href: ../analytics/data-available-in-analytics.md?toc=/azure/devops/report/powerbi/toc.json&bc=/azure/devops/report/powerbi/breadcrumb/toc.json
-  - name: Default Analytics views
-    href: ../analytics/analytics-default-views.md?toc=/azure/devops/report/powerbi/toc.json&bc=/azure/devops/report/powerbi/breadcrumb/toc.json
-  - name: Filters applied to historical data
-    href: ../analytics/analytics-historical-filtering.md?toc=/azure/devops/report/powerbi/toc.json&bc=/azure/devops/report/powerbi/breadcrumb/toc.json
-- name: How-to Guides
-  items:
-  - name: Connect using Data Connector 
+  - name: Create a report using an OData query
+    href: create-quick-report-odataq.md
+  - name: Connect using Analytics Views 
     href: data-connector-connect.md
-  - name: Connect using OData
+  - name: Connect using OData queries
+    href: odataquery-connect.md
+  - name: Connect using the OData Feed
     href: access-analytics-power-bi.md
-  - name: Connect using Power Query (Advanced)
+  - name: Connect using Advanced Functions
     href: data-connector-functions.md
-  - name: Client OData authentication 
-    href: ../analytics/client-authentication-options.md?toc=/azure/devops/report/powerbi/toc.json&bc=/azure/devops/report/powerbi/breadcrumb/toc.json
-  - name: "Publish to PowerBI.com"
-    href: publish-power-bi-desktop-to-power-bi.md  
-  - name: Set permissions (Security)
-    href: ../analytics/analytics-security.md
-- name: Samples
+- name: Sample reports-Analytics views
   items:
   - name: Active bugs report 
     href: active-bugs-sample-report.md
@@ -52,27 +40,95 @@
     href: create-team-filter.md  
   - name: Calculate time-in-state 
     href: create-timeinstate-report.md
+- name: Sample reports-OData query
+  items:
+  - name: Sample OData reports overview
+    href: sample-odata-overview.md
+  - name: Boards
+    items:
+    - name: Open bugs
+      href: sample-boards-openbugs.md
+    - name: Bug trends
+      href: sample-boards-bugtrend.md
+    - name: Rollup
+      href: sample-boards-rollup.md
+    - name: Feature progress
+      href: sample-boards-featureprogress.md
+    - name: Work Items and Direct Links
+      href: sample-boards-directlinks.md
+    - name: Release burndown
+      href: sample-boards-releaseburndown.md
+    - name: Sprint burndown
+      href: sample-boards-sprintburndown.md
+    - name: Cumulative Flow Diagram 
+      href: sample-boards-cfd.md
+      displayname: CFD 
+    - name: Lead/Cycle time
+      href: sample-boards-leadcycletime.md
+    - name: Add a team slicer
+      href: sample-boards-teamslicer.md
+  - name: Pipelines
+    items:
+    - name: Outcome summary
+      href: sample-pipelines-outcome-summary.md
+    - name: Outcome summary for all pipelines
+      href: sample-pipelines-allpipelines.md
+    - name: Pass rate trend
+      href: sample-pipelines-pass-rate-trend.md
+    - name: Stage wise failures
+      href: sample-pipelines-stagewise-failures.md
+    - name: Duration
+      href: sample-pipelines-duration.md
+    - name: Duration trend
+      href: sample-pipelines-duration-trend.md
+    - name: Task duration
+      href: sample-pipelines-task-duration.md
+    - name: Task duration trend
+      href: sample-pipelines-task-duration-trend.md
+  - name: Pipelines test sample reports
+    items:
+      - name: Test summary
+        href: sample-test-analytics-test-summary.md
+      - name: Test summary trend
+        href: sample-test-summary-trend.md
+      - name: Failed tests
+        href: sample-test-analytics-failed-tests.md
+      - name: Flaky tests
+        href: sample-test-analytics-flaky-tests.md
+      - name: Test duration
+        href: sample-test-analytics-test-duration.md
+      - name: Test duration trend
+        href: sample-test-analyics-test-duration-trend.md
+      - name: Pass rate trend of test
+        href: sample-test-analytics-pass-rate-trend-test.md
+  - name: Test Plans
+    items:
+    - name: Progress status
+      href: sample-test-plans-progress-status.md
+    - name: Requirements tracking
+      href: sample-stories-overview.md
+    - name: Requirements tracking - Rollup
+      href: sample-stories-overview-rollup.md
+    - name: Execution trends
+      href: sample-test-plans-execution-trend.md
+    - name: Suite-level aggregation
+      href: sample-test-plans-aggregate-data-level.md
+    - name: Tester by outcome matrix
+      href: sample-test-plans-tester-by-outcome.md
+    - name: Configuration by outcome matrix
+      href: sample-test-plans-configuration-by-outcome.md
 - name: Troubleshooting
   items:
   - name: Resolve errors with an Analytics view
-    href: ../analytics/troubleshooting-views.md?toc=/azure/devops/report/powerbi/toc.json&bc=/azure/devops/report/powerbi/breadcrumb/toc.json
+    href: troubleshooting-views.md
 - name: Reference
   items:
-  - name: Work item field index
-    href: ../../boards/work-items/guidance/work-item-field.md?toc=/azure/devops/report/analytics/toc.json&bc=/azure/devops/report/analytics/breadcrumb/toc.json
+  - name: Data available from Analytics
+    href: data-available-in-analytics.md
   - name: Dataset design 
-    href: data-connector-dataset.md?toc=/azure/devops/report/powerbi/toc.json&bc=/azure/devops/report/powerbi/breadcrumb/toc.json
-- name: Resources
-  items:
-  - name: Analytics
-    href: ../analytics/index.md
-  - name: Extend Analytics with OData
-    href: ../extend-analytics/index.md
-  - name: Dashboards
-    href: ../dashboards/index.md
-  - name: Power BI Desktop
-    href: /power-bi/desktop-getting-started
-  - name: Power BI Documentation
-    href: /power-bi/
-  - name: "Developer Community: PowerBI support forum"
-    href: https://developercommunity.visualstudio.com/search.html?f=&type=question+OR+problem&type=question+OR+problem&c=&redirect=search%2Fsearch&sort=relevance&q=PowerBI
+    href: data-connector-dataset.md
+  - name: Filters applied to historical data
+    href: analytics-historical-filtering.md
+  - name: Performance & latency
+    href: performance-latency.md
+

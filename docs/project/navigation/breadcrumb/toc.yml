@@ -1,7 +1,0 @@
-- name: Azure DevOps & TFS
-  tocHref: /azure/devops/
-  topicHref: /azure/devops/index
-  items: 
-  - name: Web portal navigation
-    tocHref: /azure/devops/
-    topicHref: /azure/devops/project/navigation/index

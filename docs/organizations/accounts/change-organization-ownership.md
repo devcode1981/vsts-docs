@@ -1,91 +1,63 @@
 ---
-title: Change the Azure DevOps organization owner 
-description: Learn how to assign a different user as the owner for your organization, and learn what permissions are required to make updates in Azure DevOps.
-ms.prod: devops
+title: Change the owner of an organization
+titleSuffix: Azure DevOps Services
+ms.custom: seodec18
+description: Learn how to assign a different user as the owner for your organization. Also learn what permissions are required to make updates.
 ms.technology: devops-accounts
 ms.assetid: ec935536-6a5e-4b62-adf2-4207a70440bd
 ms.topic: conceptual
-ms.manager: douge
 ms.author: chcomley
 author: chcomley
-ms.date: 11/14/2018
-monikerRange: 'vsts'
+ms.date: 01/24/2020
+monikerRange: 'azure-devops'
 ---
 
-# Change the organization owner in Azure DevOps
+# Change the organization owner
 
-[!INCLUDE [version-vsts-only](../../_shared/version-vsts-only.md)]
+[!INCLUDE [version-vsts-only](../../includes/version-vsts-only.md)]
 
-When your team's roles and responsibilities change, you can assign a different user as the owner for your organization. Learn what permissions are required to make these updates in Azure DevOps.
+As roles and responsibilities change, you can change the owner for your organization. Learn how to update the organization owner in Azure DevOps.
+
+For organizations connected to Azure Active Directory (Azure AD),  if your organization Owner and any other Project Collection Administrators are no longer active, you can [transfer ownership to another user](resolve-orphaned-organization.md).  
 
 <a name="ChangeOwner"></a>
 
 ## Prerequisites
 
-To change the organization owner, you must have [*project collection administrator* or *organization owner* permissions](faq-change-organization-ownership.md#find-owner-pca).
+You must be a [Project Collection Administrator or an organization Owner](../security/lookup-organization-owner-admin.md).
+
 If no one in the organization has these permissions, contact
-[Azure DevOps Support](https://azure.microsoft.com/support/devops).
+[Azure DevOps Support](https://developercommunity.visualstudio.com/spaces/21/index.html).
 
-Make sure that the new owner:
+Make sure the new owner has completed the following tasks:
 
-* Has been added and invited to your organization (`https://<yourorganization>.visualstudio.com`).
-* Has signed in to your organization, created a profile, and agreed to the Terms of Service.
-* Has accessed the organization at least once after creating an initial profile.
+* Signed in to your organization, created a profile, and agreed to the Terms of Service.
+* Accessed the organization at least once after creating an initial profile.
 
-   ![Last access date](_img/change-organization-ownership/user-last-access.png)
+   ![Last access date](media/change-organization-ownership/user-last-access.png)
 
-## Change organization owner
-
-[!INCLUDE [temp](../../_shared/new-navigation-cloud.md)] 
-
-# [New navigation](#tab/new-nav)
+## Change organization Owner
 
 1. Sign in to your organization (`https://dev.azure.com/{yourorganization}`).
 
-2. Select ![gear icon](../../_img/icons/gear-icon.png) **Organization settings** .
+1. Select ![gear icon](../../media/icons/gear-icon.png) **Organization settings**.
 
-   ![Select "Organization settings"](../../_shared/_img/settings/open-admin-settings-vert.png)
+    ![Select "Organization settings"](../../media/settings/open-admin-settings-vert.png)
 
-3. Select **Overview**. The organization owner is listed under *Organization information*.
+1. Select **Overview**, and then **Change owner**.  
 
-   ![Overview pane displaying the organization owner](_img/change-organization-ownership/find-organization-owner.png)
+    ![Select Overview, and then Change owner](media/change-organization-ownership/change-organization-owner.png)
 
-4. To change the organization owner, select **X**.
+1. Select a user from the dropdown menu, or search for a user by entering the user's name, and then select **Change**.
 
-   ![Change organization owner](_img/change-organization-ownership/change-organization-owner.png)
+    ![Enter and save a new organization Owner](media/change-organization-ownership/save-new-organization-owner.png)
 
-5. Enter a new organization owner name, and then select **Save**.
+   Your organization has a new owner.
 
-   ![Enter and save a new organization owner](_img/change-organization-ownership/save-new-organization-owner.png)  
+## Related articles
 
-# [Previous navigation](#tab/previous-nav)
+- [Assign a new owner to your orphaned organization](resolve-orphaned-organization.md)
+- [Change organization location](change-organization-location.md)
+- [Connect your organization to Azure AD](connect-organization-to-azure-ad.md)
 
-1. Sign in to your organization (`https://<yourorganization>.visualstudio.com`).
-
-   [Why am I asked to choose between my work or school account and my personal account?](faq-change-organization-ownership.md)
-
-2. To find the current organization owner, go to **Organization settings**.
-
-   ![Organization settings pane](../../_shared/_img/settings/open-account-settings.png)
-
-3. Find the current organization owner.
-
-   ![Find the current organization owner](_img/change-organization-ownership/find-organization-owner.png)
-
-4. To change the organization owner, select **X**.
-
-   ![Change current organization owner](_img/change-organization-ownership/change-organization-owner.png)
-
-5. Find and select the new organization owner.
-
-   ![Find and select the organization owner](_img/change-organization-ownership/vsofindneworganizationowner.png)
-
-   [Can't find the person you want?](faq-change-organization-ownership.md#NoNewOwner)
-
-6. Save your changes.
-
-   ![Select new organization owner, and save changes](_img/change-organization-ownership/vsosaveneworganizationowner.png)
-
----
-
-   You have successfully changed your organization owner.
+ 

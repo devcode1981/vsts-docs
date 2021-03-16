@@ -1,15 +1,12 @@
 ---
 title: Delay task
-titleSuffix: Azure Pipelines & TFS
 description: Pause execution of a build or release pipeline for a fixed delay time 
 ms.assetid: 1EFDAB02-66D7-4B8A-A8BC-43AF2C43F282
-ms.prod: devops
-ms.technology: devops-cicd
 ms.topic: reference
-ms.manager: douge
-ms.author: ahomer
-author: alexhomer1
-ms.date: 08/24/2018
+ms.custom: seodec18
+ms.author: ronai
+author: RoopeshNair
+ms.date: 02/12/2020
 monikerRange: '> tfs-2018'
 ---
 
@@ -17,35 +14,36 @@ monikerRange: '> tfs-2018'
 
 **Azure Pipelines**
 
-Use this task in a build or release pipeline to pause execution of the pipeline for a fixed delay time.
+Use this task in an [agentless job](../../process/phases.md#server-jobs) of a release pipeline to pause execution of the pipeline for a fixed delay time.
 
 ## Demands
 
-Can be used in only an [agentless job](../../process/server-phases.md) of a release pipeline.
+Can be used in only an [agentless job](../../process/phases.md#server-jobs) of a release pipeline.
 
-::: moniker range="vsts"
+::: moniker range="azure-devops"
+
 ## YAML snippet
-[!INCLUDE [temp](../_shared/yaml/DelayV1.md)]
+
+[!INCLUDE [temp](../includes/yaml/DelayV1.md)]
+
 ::: moniker-end
 
 ## Arguments
 
-| Parameter | Comments |
+| Arguments | Description |
 | --- | --- |
-| **Display name** | Required. The name to display for this task. |
-| **Delay Time (minutes)** | Required. The number of minutes to delay execution. |
-| **Control options** | See [Control options](../../process/tasks.md#controloptions) |
+| `delayForMinutes`<br/>Delay Time (minutes)| (Required) Delay the execution of the workflow by specified time in minutes. <br/>0 value means that workflow execution will start without delay <br/>Default value: `0`|
 
-Also see this task on [GitHub](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/Delay).
+Also see this task on [GitHub](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/DelayV1).
 
 ## Open source
 
 This task is open source [on GitHub](https://github.com/Microsoft/azure-pipelines-tasks). Feedback and contributions are welcome.
 
-## Q & A
+## FAQ
 
 <!-- BEGINSECTION class="md-qanda" -->
 
-[!INCLUDE [temp](../../_shared/qa-agents.md)]
+[!INCLUDE [temp](../../includes/qa-agents.md)]
 
 <!-- ENDSECTION -->

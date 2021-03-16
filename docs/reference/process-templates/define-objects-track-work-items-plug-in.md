@@ -1,20 +1,19 @@
----
+﻿---
 title: Define work item types for a process template 
 titleSuffix: Azure DevOps & TFS
 description: Use the plug-in for tracking work items and defining a project's initial objects for tracking work for Team Foundation Server 
-ms.prod: devops
 ms.technology: devops-agile
 ms.assetid: 6d6103d6-2558-460c-b022-9eda2ffe4023
-ms.manager: douge
-ms.author: kaelliauthor: KathrynEE
+ms.author: kaelli
+author: KathrynEE
 ms.topic: reference
-monikerRange: '>= tfs-2013 <= azdevserver-2019'
+monikerRange: '< azure-devops-2019'
 ms.date: 09/08/2017
 ---
 
 # Define objects for tracking work items using the work Item tracking plug-in
 
-[!INCLUDE [temp](../../_shared/customization-phase-0-and-1-plus-version-header.md)]
+[!INCLUDE [temp](../../includes/customization-phase-0-and-1-plus-version-header.md)]
 
 By using the plug-in for tracking work items, you define a project's initial objects for tracking work. These objects include types of work items, work item queries, categories, link types, and instances of work items. After you create a project, you can modify these objects by using the **witadmin** command-line tool.  
   
@@ -24,7 +23,7 @@ By using the plug-in for tracking work items, you define a project's initial obj
 > You must specify the tasks to upload files and define queries in a specific sequence: link types first, then work item types, and then queries. Each definition file for these objects depends on the definitions that are specified in the tasks that precede them. In general, you should maintain the task sequence that is defined in the process template that you are customizing. For more information, see [Define dependencies for task groups and tasks](define-dependencies-plug-ins-groups-tasks.md).  
   
 <a name="plugin"></a> 
-##Plug-in name and location  
+## Plug-in name and location  
 
 The names of the file, the folder, and the plug-in for the default process templates are as follows:  
     
@@ -53,56 +52,59 @@ The names of the file, the folder, and the plug-in for the default process templ
  For a description of each element, see [Element reference](#elements) later in this topic.  
   
 > [!div class="tabbedCodeSnippets"]
-```XML 
-<?xml version="1.0" encoding="utf-8"?>  
-<tasks>  
-  <task id="LinkTypes" name="LinkType definitions" plugin="Microsoft.ProjectCreationWizard.WorkItemTracking" completionMessage="Work item link types created">  
-    <taskXml>  
-      <LINKTYPES>  
-        <LINKTYPE />  
-      . . .   
-      </LINKTYPES>  
-    </taskXml>  
-  </task>  
-  <task id="WITs" name="WorkItemType definitions" plugin="Microsoft.ProjectCreationWizard.WorkItemTracking" completionMessage="Work item types created">  
-    <dependencies>  
-      <dependency taskId="LinkTypes" />  
-    </dependencies>  
-    <taskXml>  
-      <WORKITEMTYPES>  
-        <WORKITEMTYPE />  
-      . . .   
-      </WORKITEMTYPES>  
-    </taskXml>  
-  </task>  
-  <task id="Queries" name="Stored Query Definitions" plugin="Microsoft.ProjectCreationWizard.WorkItemTracking" completionMessage="Work item queries uploaded">  
-    <dependencies>  
-      <dependency taskId="WITs" />  
-    </dependencies>  
-    <taskXml>  
-      <QUERIES>  
-        <Permission />  
-      . . .   
-        <QueryFolder >  
-          <Query />  
-      . . .   
-        </QueryFolder>  
-      . . .   
-      </QUERIES>  
-    </taskXml>  
-  </task>  
-  <task id="Categories" name="Categories definitions" plugin="Microsoft.ProjectCreationWizard.WorkItemTracking" completionMessage="Work item type categories created">  
-    <dependencies>  
-      <dependency taskId="WITs" />  
-    </dependencies>  
-    <taskXml>  
-      <CATEGORIES fileName="WorkItem Tracking\Categories.xml" />  
-    </taskXml>  
-  </task>  
-</tasks>  
-```  
+> ```XML 
+> <?xml version="1.0" encoding="utf-8"?>  
+> <tasks>  
+>   <task id="LinkTypes" name="LinkType definitions" plugin="Microsoft.ProjectCreationWizard.WorkItemTracking" completionMessage="Work item link types created">  
+>     <taskXml>  
+>       <LINKTYPES>  
+>         <LINKTYPE />  
+>       . . .   
+>       </LINKTYPES>  
+>     </taskXml>  
+>   </task>  
+>   <task id="WITs" name="WorkItemType definitions" plugin="Microsoft.ProjectCreationWizard.WorkItemTracking" completionMessage="Work item types created">  
+>     <dependencies>  
+>       <dependency taskId="LinkTypes" />  
+>     </dependencies>  
+>     <taskXml>  
+>       <WORKITEMTYPES>  
+>         <WORKITEMTYPE />  
+>       . . .   
+>       </WORKITEMTYPES>  
+>     </taskXml>  
+>   </task>  
+>   <task id="Queries" name="Stored Query Definitions" plugin="Microsoft.ProjectCreationWizard.WorkItemTracking" completionMessage="Work item queries uploaded">  
+>     <dependencies>  
+>       <dependency taskId="WITs" />  
+>     </dependencies>  
+>     <taskXml>  
+>       <QUERIES>  
+>         <Permission />  
+>       . . .   
+>         <QueryFolder >  
+>           <Query />  
+>       . . .   
+>         </QueryFolder>  
+>       . . .   
+>       </QUERIES>  
+>     </taskXml>  
+>   </task>  
+>   <task id="Categories" name="Categories definitions" plugin="Microsoft.ProjectCreationWizard.WorkItemTracking" completionMessage="Work item type categories created">  
+>     <dependencies>  
+>       <dependency taskId="WITs" />  
+>     </dependencies>  
+>     <taskXml>  
+>       <CATEGORIES fileName="WorkItem Tracking\Categories.xml" />  
+>     </taskXml>  
+>   </task>  
+> </tasks>  
+> ```  
   
-##  <a name="elements"></a> Element reference  
+<a name="elements"></a> 
+
+##  Element reference 
+
  The following table describes the elements that you use to upload work item tracking objects. You specify these elements within a **taskXml** container element in the WorkItemTracking plug-in file. For information about the task, dependency, and taskXml elements, see [Define the tasks to process a plug-in](define-tasks-to-process-a-plug-in.md).  
   
 |Element|Syntax|Description|  
@@ -121,7 +123,8 @@ The names of the file, the folder, and the plug-in for the default process templ
 |**WORKITEMTYPE**|`<WORKITEMTYPE fileName="WITFilePathName" />`|Required child element of **WORKITEMTYPES**.<br /><br /> Specifies the path and name of the file that contains a type definition to upload.|  
 |**WORKITEMTYPES**|`<WORKITEMTYPES>      <WORKITEMTYPE />  . . . </WORKITEMTYPES>`|Required child element of the WorkItemTracking plug-in.<br /><br /> Contains a collection of **WORKITEMTYPE** elements that each specify a definition file to upload.|  
   
-## Related articles  
- [Customize a process](customize-process.md)   
- [Customize your work tracking experience](../customize-work.md)   
- [Overview of process template files](overview-process-template-files.md)
+## Related articles 
+ 
+- [Customize a process](customize-process.md)   
+- [Customize your work tracking experience](../customize-work.md)   
+- [Overview of process template files](overview-process-template-files.md)

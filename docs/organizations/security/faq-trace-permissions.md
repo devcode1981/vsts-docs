@@ -1,52 +1,97 @@
 ---
-title: Troubleshoot tracing permissions
-description: Learn how to trace permissions if you are having permissions issues with Azure DevOps
-ms.prod: devops
-ms.technology: devops-accounts
+title: Trace permissions
+description: Learn how to trace permissions if you're having permissions issues with Azure DevOps
+ms.technology: devops-security
 ms.assetid: 12cffcaf-295a-4931-9844-81a12c512158
-ms.topic: conceptual
-ms.manager: douge
+ms.topic: troubleshooting
 ms.author: kaelli
 author: KathrynEE
-ms.date: 04/23/2018
-monikerRange: 'vsts'
----
-# Troubleshoot tracing permissions
+monikerRange: '<= azure-devops'
+ms.date: 11/16/2020
+--- 
 
-**Azure DevOps**
+# Trace permissions
 
-### Q: Why doesn't a user have access to something?
+[!INCLUDE [version-all](../../includes/version-all.md)]
 
-A 1: Their permissions are specified by multiple groups
+You use permission tracing to determine why a user's permissions aren't allowing them access. Learn how a user or an administrator can investigate the inheritance of permissions.
 
-If one of your users is having permissions issues and you make use of default security groups or custom groups for permissions, administrators can investigate where those permissions are coming from by making use of our permissions tracing. Users can receive their effective permissions either directly or via groups. By following these steps, administrators can understand where exactly those permissions are coming from and adjust them as needed.
+For more information, see [About permissions](about-permissions.md).
 
-1. Go to the **Security** page for the project that the user is having access problems.
+## Trace a user's specific permission
 
-2. Enter their name into the box in the upper left-hand corner.
+If a user is having permissions issues and you use default security groups or custom groups for permissions, you can investigate where those permissions are coming from by using our permissions tracing. Permissions issues could be due to one of the following scenarios:
 
-   ![Enter user name to view permissions](_img/security-page-enter-user-name.png)
+- Their permissions haven't propagated yet. It can take up to 1 hour for Azure AD group memberships or permissions changes to propagate throughout Azure DevOps. If a user's having issues that don't resolve immediately, wait a day to see if they resolve.
 
-3. You should now have a user-specific view which shows what permissions they have. To trace why a user does or does not have any of the listed permissions, hover over the permission and choose **Why**.
+- The user doesn't have the necessary access level. Access levels enable administrators to provide their users base access to the features they need, and only pay for those features. Several features can only be accessed with a Basic access level or higher. To assign access levels or check the access level of a user in your account, see the following article.
 
-   ![Choose Why in permissions list view for project level information](_img/permissions-list-view-project-level-information.png)
+::: moniker range="azure-devops"
 
-4. The resulting trace will let you know how they are inheriting the listed permission. You can then adjust the user's permissions by adjusting those provided to the groups which they are in.
+- The user has been added to the **Project-Scoped Users** group which limits access to organization information and projects when the **Limit user visibility for projects** preview feature is enabled. To learn more, see [About projects and scaling your organization, Project-scoped Users group ](../projects/about-projects.md#project-scoped-user-group).  
 
-   ![Trace showing inherited permissions](_img/trace-permission-group-member-inheritance.png)
+For information on adding users to an organization and setting their access level, see [Manage users and access in Azure DevOps](../accounts/add-organization-users.md).  
 
-A 2: Their permissions haven't propagated yet
+::: moniker-end
 
-It can take from 1 hour to 24 hours for Azure AD group memberships or permissions changes to propagate throughout Azure DevOps. If a user is having issues that do not seem to clear up immediately, please wait a day to see if they resolve.
+::: moniker range="< azure-devops"
 
-A 3: The user does not have the necessary access level
+For information on setting access levels, see [Change access levels](./change-access-levels.md)
 
-Access levels enable administrators to provide their users base access to the features they need, and only pay for those features. Several features can only be accessed with a Basic access level or higher. To assign access levels or check the access level of a user in your account, see the following topics:
+::: moniker-end
 
-* For Azure DevOps: [Manage users and access in Azure DevOps](../accounts/add-organization-users.md) 
-* For on-premises TFS: [Change access levels](/azure/devops/organizations/security/change-access-levels?view=vsts)
+Users can receive their effective permissions either directly or via groups.
+
+By following these steps, administrators can understand where exactly those permissions are coming from and adjust them, as needed.
+
+::: moniker range="azure-devops"
+
+1. Select **Project settings** > **Permissions** > **Users**, and then select the user.
+
+   :::image type="content" source="media/permissions-page-enter-user-name.png" alt-text="Enter user name into filter box":::
+
+   You should now have a user-specific view that shows what permissions they have.
+
+2.  To trace why a user does or doesn't have any of the listed permissions, select the information icon next to the permission in question.
+
+   :::image type="content" source="media/select-information-icon.png" alt-text="Select the information icon next to the permission in question":::
+
+The resulting trace lets you know how they're inheriting the listed permission. You can then adjust the user's permissions by adjusting the permissions that are provided to the groups they're in.
+
+::: moniker-end
+
+::: moniker range="azure-devops-2019 || azure-devops-2020"
+
+1. Select **Project settings** > **Security**, and then enter the user name into the filter box.
+
+   :::image type="content" source="media/security-page-enter-user-name-2019.png" alt-text="Enter user name into the filter box":::
+
+2. You should now have a user-specific view that shows what permissions they have. To trace why a user does or doesn't have any of the listed permissions, hover over the permission and choose **Why**.
+
+   ![Choose Why in permissions list view for project level information](media/permissions-list-view-project-level-information-2019.png)
+
+The resulting trace lets you know how they're inheriting the listed permission. You can then adjust the user's permissions by adjusting the permissions that are provided to the groups they're in.
+
+   :::image type="content" source="media/trace-permission-group-member-inheritance-2019.png" alt-text="Trace showing inherited permissions":::
+
+::: moniker-end
+
+::: moniker range="<= tfs-2018"
+
+1.	Go to the Security page for the project that the user is having access problems.
+2.	Enter their name into the box in the upper left-hand corner.
+   
+   ![Enter user name to view permissions](media/security-page-enter-user-name.png)
+
+3.	You should now have a user-specific view that shows what permissions they have. To trace why a user does or doesn't have any of the listed permissions, hover over the permission and choose **Why**.
+
+   :::image type="content" source="media/permissions-list-view-project-level-information.png" alt-text="Select Why to trace the permissions":::
+
+The resulting trace lets you know how they're inheriting the listed permission. You can then adjust the user's permissions by adjusting those provided to the groups they're in.
+
+::: moniker-end
 
 ## Related articles
 
-* [Grant or restrict access to select features and functions](/azure/devops/organizations/security/restrict-access?view=vsts)
-* [Change individual permissions](/azure/devops/organizations/security/change-individual-permissions?view=vsts)
+* [Grant or restrict access to select features and functions](./restrict-access.md)
+* [Change individual permissions](./change-individual-permissions.md)

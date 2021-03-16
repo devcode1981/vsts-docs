@@ -1,27 +1,25 @@
 ---
 title: Bug Trends Report 
 titleSuffix: TFS 
-ms.prod: devops
 ms.technology: devops-analytics
 ms.topic: reference
 description: Track the rate at which your team is discovering and resolving bugs - Team Foundation Server  
 ms.assetid: 631ec793-644f-4eff-8403-e48e746e369e
-ms.author: kaelliauthor: KathrynEE
-ms.manager: douge
-ms.date: 10/17/17
+ms.author: kaelli
+ms.date: 10/17/2017
 ---
 
 
 # Bug Trends Report
 
-[!INCLUDE [temp](../_shared/tfs-report-platform-version.md)]
+[!INCLUDE [temp](../includes/tfs-report-platform-version.md)]
 
 You can use the Bug Trends report to help track the rate at which your team is discovering and resolving bugs. This report shows a rolling or moving average of bugs being reported, resolved, and closed over time. When you manage a large team or a large number of bugs, you can monitor the Bug Trends report weekly to gain insight into how well the team is finding, resolving, and closing bugs.  
   
  For information about how to access, refresh, or manage reports, see [Reporting Services Reports](reporting-services-reports.md).  
   
 > [!NOTE]
->  This report requires that the team project collection that contains your team project was provisioned with SQL Server Reporting Services. This report is not available if ![Report](_img/icon_reportte.png "Icon_reportTE") **Reports** does not appear when you open Team Explorer and expand your team project node.  
+>  This report requires that the team project collection that contains your team project was provisioned with SQL Server Reporting Services. This report is not available if ![Report](media/icon_reportte.png "Icon_reportTE") **Reports** does not appear when you open Team Explorer and expand your team project node.  
   
 **You can use this report to answer the following questions**:<br /><br /> -   How many bugs is the team reporting, resolving, and closing per day?<br />-   What is the overall trend at which the team is processing bugs?<br />-   Are bug activation and resolution rates declining toward the end of the iteration as expected? 
   
@@ -34,28 +32,28 @@ You can use the Bug Trends report to help track the rate at which your team is d
   
  The following illustration displays an example of the Bug Trends report.  
   
- ![Example of Bug Trends report](_img/procguid_bugs_bugtrends.png "ProcGuid_Bugs_BugTrends")  
+ ![Example of Bug Trends report](media/procguid_bugs_bugtrends.png "ProcGuid_Bugs_BugTrends")  
   
  This report displays up to three line graphs, and each graph represents the rolling averages of the numbers of activated, resolved, and closed bugs.  
   
  You can filter the report in the following ways:  
   
--   Change the start and end dates for the report.  
+- Change the start and end dates for the report.  
   
--   Filter the bugs that are counted in the report by specifying iteration and area paths or bug state, priority, or severity.  
+- Filter the bugs that are counted in the report by specifying iteration and area paths or bug state, priority, or severity.  
   
- For more information, see [Filtering the Report](#Changing) later in this topic.  
+  For more information, see [Filtering the Report](#Changing) later in this article.  
   
 ### Required Activities for Tracking Bugs  
  For the Bug Trends report to be useful and accurate, the team must perform the following activities:  
   
--   Define bugs, and specify their **Iteration** and **Area** paths.  
+- Define bugs, and specify their **Iteration** and **Area** paths.  
   
--   Update the **State** of each bug as it is fixed, verified, and then closed.  
+- Update the **State** of each bug as it is fixed, verified, and then closed.  
   
--   Specify the **Priority** and **Severity** of each bug during triage.  
+- Specify the **Priority** and **Severity** of each bug during triage.  
   
- You can use the Triage workbook to quickly update the iteration, area, state, priority, and severity of bugs. For more information, see [Workbooks](../sharepoint-dashboards/workbooks.md).  
+  You can use the Triage workbook to quickly update the iteration, area, state, priority, and severity of bugs. For more information, see [Workbooks](/previous-versions/azure/devops/report/sharepoint-dashboards/workbooks).  
   
 ##  <a name="Duration"></a> Setting the Duration of the Sprint or Iteration  
  To understand the bug trends for your current iteration, the start and end dates for the report must match those of your current iteration cycle.  
@@ -91,18 +89,18 @@ You can use the Bug Trends report to help track the rate at which your team is d
 ### Unhealthy Version of Report  
  An unhealthy Bug Trends report might show that the team is finding bugs more quickly as the ship date approaches and resolving bugs more slowly. In this situation, the team's bug backlog is growing because bugs are not getting fixed, and you might want to investigate the causes. The following illustration shows a report for a team that is finding many bugs, resolving fewer bugs than it finds, and closing fewer bugs than it resolves.  
   
- ![Unhealthy version of Bug Trends Report](_img/procguid_bugtrends_dataunhealthy.png "ProcGuid_BugTrends_DataUnhealthy")  
+ ![Unhealthy version of Bug Trends Report](media/procguid_bugtrends_dataunhealthy.png "ProcGuid_BugTrends_DataUnhealthy")  
   
 ##  <a name="Changing"></a> Filtering the Report and Changing the Display  
  You can filter the Bug Trends report or change its display in the following ways:  
   
--   Change the start and end dates for the report.  
+- Change the start and end dates for the report.  
   
--   Filter the bugs that are counted in the report by specifying iteration and area paths, state, priority, or severity.  
+- Filter the bugs that are counted in the report by specifying iteration and area paths, state, priority, or severity.  
   
- The following illustration shows the available filters.  
+  The following illustration shows the available filters.  
   
- ![Filters for Bug Trends report](_img/procguid_bugtrendsfilters.png "ProcGuid_BugTrendsFilters")  
+  ![Filters for Bug Trends report](media/procguid_bugtrendsfilters.png "ProcGuid_BugTrendsFilters")  
   
 #### To filter the bugs that are counted in the report  
   
@@ -115,8 +113,8 @@ You can use the Bug Trends report to help track the rate at which your team is d
 2.  Click **View Report**.  
   
 ## Related notes  
- [Bugs](../sharepoint-dashboards/bugs-dashboard-agile-cmmi.md)   
- [Workbooks](../sharepoint-dashboards/workbooks.md)   
+ [Bugs](/previous-versions/azure/devops/report/sharepoint-dashboards/bugs-dashboard-agile-cmmi)   
+ [Workbooks](/previous-versions/azure/devops/report/sharepoint-dashboards/workbooks)   
  [Bug Status](bug-status-report.md)   
  [Reactivations](reactivations-report.md)   
  [Reporting Services Reports](reporting-services-reports.md)

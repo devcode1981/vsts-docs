@@ -1,469 +1,418 @@
 ---
 title: Get started with Stakeholder access 
-titleSuffix: Azure DevOps & TFS  
-description: Add & update work items, approve releases, view work tracking progress with Stakeholder access
-ms.technology: devops-new-user
-ms.prod: devops
+titleSuffix: Azure DevOps 
+description: Add & update work items, view work tracking progress with Stakeholder access
+ms.technology: devops-agile
 ms.assetid: D76507F1-3154-4EE5-A23A-9179C2F5A365
-ms.manager: douge
 ms.author: kaelli
 author: KathrynEE
 ms.topic: tutorial
-monikerRange: '>= tfs-2013'
-ms.date: 11/19/2018
+monikerRange: '<= azure-devops'
+ms.date: 09/10/2020
 ---
 
 # Get started as a Stakeholder
 
-[!INCLUDE [temp](../../_shared/version-vsts-tfs-all-versions.md)]
+[!INCLUDE [version-all](../../includes/version-all.md)]
 
-::: moniker range="vsts" 
-With Stakeholder access, you can add and modify work items, manage build and release pipelines, and view dashboards. You can check project status and provide direction, feedback, feature ideas, and business alignment to a team. Stakeholder access is one of several supported access levels. To understand the full set of features Stakeholders have access to, see [About access levels](access-levels.md#stakeholder-access).
+::: moniker range="azure-devops" 
+
+Stakeholders are users with free but limited access to Azure DevOps features and functions. With Stakeholder access, you can add and modify work items, manage build and release pipelines, and view dashboards. You can check project status and provide direction, feedback, feature ideas, and business alignment to a team. For a quick overview of the features available to Stakeholders, see the [Features and functions available to Stakeholders](#features) later in this article.
 
 > [!NOTE]   
-> For public projects, Stakeholder access gives users greater access to work tracking features. To learn more, see [Default roles and access for public projects](../public/default-roles-access-public.md#pipelinesbuild-and-release).
+> For public projects, Stakeholder access gives users greater access to features. To learn more, see [Default roles and access for public projects](../public/default-roles-access-public.md#pipelinesbuild-and-release). For information about working with pipelines, see these articles: [Build your GitHub repository](../../pipelines/create-first-pipeline.md) and [Build OSS repositories](../../pipelines/repos/index.md).
+
 ::: moniker-end  
 
-::: moniker range=">= tfs-2017 <= tfs-2018 || azdevserver-2019"
-With Stakeholder access, you can add and modify work items, view and approve pipelines, and view dashboards. You can check project status and provide direction, feedback, feature ideas, and business alignment to a team. Stakeholder access is one of several supported access levels. To understand the full set of features Stakeholders have access to, see [About access levels](access-levels.md#stakeholder-access).
+::: moniker range=">= tfs-2017 < azure-devops"
+
+Stakeholders are users with free but limited access to Azure DevOps features and functions. With Stakeholder access, you can add and modify work items, view and approve pipelines, and view dashboards. You can check project status and provide direction, feedback, feature ideas, and business alignment to a team. 
 ::: moniker-end  
 
 ::: moniker range=">= tfs-2013 <= tfs-2015"
-With Stakeholder access, you can add and modify work items. You can check project status and provide direction, feedback, feature ideas, and business alignment to a team. Stakeholder access is one of several supported access levels. To understand the full set of features Stakeholders have access to, see [About access levels](access-levels.md#stakeholder-access).
+
+Stakeholders are users with free but limited access to Azure DevOps features and functions. With Stakeholder access, you can add and modify work items. You can check project status and provide direction, feedback, feature ideas, and business alignment to a team. 
+
+::: moniker-end  
+
+::: moniker range="azure-devops"
+
+Stakeholder access is one of several supported access levels as described in [About access levels](access-levels.md#stakeholder-access). To get access as a Stakeholder, ask your organization owner or Project Collection Administrator to [add you to a project with Stakeholder access](../accounts/add-organization-users.md). 
+
+::: moniker-end  
+
+::: moniker range="< azure-devops"
+
+Stakeholder access is one of several supported access levels as described in [About access levels](access-levels.md#stakeholder-access). To get access as a Stakeholder, ask your server administrator to [add you to a security group that has Stakeholder access](change-access-levels.md). 
 
 ::: moniker-end  
 
 
+> [!NOTE]   
+> Azure Boards supports several Agile methods such as Kanban and Scrum. Depending on what methods your team uses, you'll want to become familiar with other tools that Azure Boards supports. This article focuses on getting familiar with work items and the Kanban board. For additional information, see [Related articles](#related-articles) at the end of this article.
 
-Use this topic to learn:
+Use this tutorial to learn how to do the following tasks:
 
 > [!div class="checklist"]
-> * How to sign-in to a project
-> * How to add a work item
-> * How to view the product backlog and add new work to it
-> * How to view work in progress on the Kanban board
+> * Sign in to a project
+> * Understand which work item types are available to your project
+> * Open the Kanban board and open a work item
+> * Add details, tags, or comments to a work item
+> * View the product backlog 
 > * Find work assigned to you, or query for other work items
-
-For information about working with pipelines, see these articles: 
-- [Build your GitHub repository](../../pipelines/get-started-yaml.md)
-- [Build OSS repositories](../../pipelines/build/ci-public.md)
+> * Understand what features are and aren't available to users with Stakeholder access
 
 
-## First time signing in
 
-::: moniker range=">= tfs-2013"
+## Connect to the web portal of a project 
+
+You must have been added to the Azure DevOps project and been granted Stakeholder or higher access level. 
 
 1. Choose the link provided in the email invitation you should have received. Or, open a browser window and enter the URL for the web portal.
-	::: moniker range="vsts"  
-	`http://dev.azure.com/OrganizationName/ProjectName`
+	::: moniker range="azure-devops"  
+	`https://dev.azure.com/OrganizationName/ProjectName`
 	::: moniker-end
-	::: moniker range="<= azdevserver-2019"
+	::: moniker range="< azure-devops"
   	`http://ServerName:8080/tfs/DefaultCollection/ProjectName`  	
-  	For example, to connect to the server named *FabrikamPrime* and project named *Contoso*, type ```http://FabrikamPrime:8080/tfs/DefaultCollection/Contoso```.
+  	For example, to connect to the server named *FabrikamPrime* and project named *Contoso*, enter ```http://FabrikamPrime:8080/tfs/DefaultCollection/Contoso```.
 	::: moniker-end
 
-2.  Enter your credentials. If you aren't able to sign in, ask the organization owner or project administrator to add you as a member of the project with Stakeholder access. 
+2. Enter your credentials. If you can't sign in, ask the organization owner or Project Administrator to add you as a member of the project with Stakeholder access. 
 
-::: moniker-end
 
 <a id="create-work-item">  </a>
 
+## Understand work items and work item types
+
+Work items support planning and tracking work. Each work item represents an object stored in the work item data store. Each work item is based on a work item type and is assigned an identifier which is unique within an organization or project collection.  Different work items are used to track different types of work as described in [About work items](../../boards/work-items/about-work-items.md). The work item types available to you are based on the [process used when your project was created](../../boards/work-items/guidance/choose-process.md)&mdash;Agile, Basic, Scrum, or CMMI&mdash;as illustrated in the following images.  
+
+[!INCLUDE [temp](../../boards/includes/work-item-types.md)]
 
 
-## View and add work items
-You can start viewing and adding work items once you connect to a project. 
+## Open your Kanban board from the web portal
 
-<a id="browser" /> 
+You can start viewing work items once you connect to a project.
 
-[!INCLUDE [temp](../../_shared/new-navigation.md)] 
+::: moniker range="azure-devops"
 
-# [New navigation](#tab/new-nav)
-::: moniker range=">= azdevserver-2019"
-0. (1) Check that you have selected the right project, then (2) choose **Boards>Work Items**. 
+1. Check that you selected the right project, and select **Boards** > **Boards**. Then select the correct team from the team selector menu. 
 
-	> [!div class="mx-imgBorder"]
-	> ![Open Boards>Work Items, new navigation](../../boards/work-items/_img/view-add/open-work-items-agile.png)
+	> [!div class="mx-imgBorder"]  
+	> ![Screenshot of Open your Kanban board, cloud version.](/azure/devops/boards/boards/media/quickstart/open-kanban-board-agile-s155.png)  
 
-0. Using the drop-down menu, you can focus on relevant items inside a project using one of the seven pivots as described next.  
-	<table>
-	<tbody valign="top">
-	<tr>
-	<td>
-	![Boards>Work Items ](../../boards/work-items/_img/view-add/view-menu.png)
-	</td>
-	<td>
-	<ul>
-	<li>**Assigned to me**: lists all work items assigned to you in the project in the order they were last updated. To open or update a work item, simply click its title.</li>
-	<li>**Following**: lists work items that you've elected to [follow](../../boards/work-items/follow-work-items.md). </li>
-	<li>**Mentioned**: lists work items in which you've been mentioned in the last 30 days. </li>
-	<li>**My activity**: lists work items that you have recently viewed or updated.</li>
-	<li>**Recently updated**: lists work items recently updated in the project. </li>
-	<li>**Recently completed**: lists work items completed or closed in the project.</li>
-	<li>**Recently created**: lists work items created within the last 30 days in the project.</li>
-	</ul>
-	</td>
-	</tr>
-	</tbody>
-	</table>
+	To select another team's board, open the selector. Then select a different team, or select the ![home icon](/azure/devops/media/icons/home-icon.png) **Browse all team boards** option. Or, you can enter a keyword in the search box to filter the list of team backlogs for the project.
 
-0. To add a work item, simply choose the work item type from the **New Work Item** drop down menu.  
+	> [!div class="mx-imgBorder"]  
+	> ![Screenshot of Select another team's board.](/azure/devops/boards/boards/media/quickstart/select-kanban-team-board.png) 
 
-	For example, here we choose User Story. 
+	> [!TIP]    
+	> Select the :::image type="icon" source="/azure/devops/media/icons/icon-favorite-star.png" border="false"::: star icon to make a team board a favorite. Favorite artifacts (:::image type="icon" source="/azure/devops/media/icons/icon-favorited.png" border="false"::: favorite icon) appear at the top of the team selector list.
 
-	> [!div class="mx-imgBorder"]
-	> ![Boards>Work Items, Add a work item ](../../boards/work-items/_img/view-add/work-items-hub-new.png)
+1. Check that you selected **Stories** for Agile, **Issues** for Basic, **Backlog items** for Scrum, or **Requirements** for CMMI as the backlog level. 
 
-0.	Enter a title and then save the work item. Before you can change the State from its initial default, you must save it. 
+	> [!div class="mx-imgBorder"]  
+	> ![Screenshot of menu to select product backlog level, Backlog items, Stories, or Requirements.](/azure/devops/boards/sprints/media/assign-items-sprint/select-product-backlog-agile.png) 
 
-	![Agile process, User story work item form](../../boards/backlogs/_img/add-new-work-item-vsts-user-story.png)
-
-> [!NOTE]  
-> A caution icon on a tab indicates values that violate validation rules. You must correct information on that tab in order to save the work item.   
 ::: moniker-end
 
-::: moniker range=">= tfs-2013 <= tfs-2018"
-[!INCLUDE [temp](../../_shared/new-navigation-not-supported.md)] 
+
+::: moniker range="azure-devops-2019 || azure-devops-2020"
+
+1. Check that you selected the right project, and select **Boards** > **Boards**. Then select the correct team from the team selector menu. 
+
+	![Screenshot of Open your Kanban board, on-premises versions.](/azure/devops/boards/boards/media/quickstart/open-kanban-board-agile.png)  
+
+	To select another team's board, open the selector. Then select a different team, or select the ![home icon](/azure/devops/media/icons/home-icon.png) **Browse all team boards** option. Or, you can enter a keyword in the search box to filter the list of team backlogs for the project.
+
+	> [!div class="mx-imgBorder"]  
+	> ![Screenshot of select another team's board, on-premises versions.](/azure/devops/boards/boards/media/quickstart/select-kanban-team-board.png) 
+
+	> [!TIP]    
+	> Select the :::image type="icon" source="/azure/devops/media/icons/icon-favorite-star.png" border="false"::: star icon to make a team board a favorite. Favorite artifacts (:::image type="icon" source="/azure/devops/media/icons/icon-favorited.png" border="false"::: favorite icon) appear at the top of the team selector list.
+
+1. Check that you selected **Stories** for Agile, **Issues** for Basic, **Backlog items** for Scrum, or **Requirements** for CMMI as the backlog level. 
+	Here we have selected **Backlog Items** for the Scrum process.
+
+	> [!div class="mx-imgBorder"]  
+	> ![Screenshot of select product backlog level, Backlog items, Stories, or Requirements, on-premises versions.](/azure/devops/boards/sprints/media/assign-items-sprint/select-product-backlog-agile.png) 
+
 ::: moniker-end
 
-# [Previous navigation](#tab/previous-nav)
 
-::: moniker range="vsts"
-Open a browser window, choose **Work**, and then **Work Items**. 
+::: moniker range=">= tfs-2017 <= tfs-2018"
 
-> [!div class="mx-imgBorder"]
-> ![Boards>Work Items ](../../boards/work-items/_img/view-add/work-items-hub.png)
+1. To view your Kanban board, open your project from a web browser. Select **Work** > **Backlogs** > **Stories**, and then select **Board**. 
 
+	![Open Portfolio Kanban board, features](/azure/devops/boards/boards/media/quickstart/open-kanban-board.png)
 
-0. Using the drop-down menu, you can focus on relevant items inside a project using one of the seven pivots as described next. 
+	If you don't see **Work**, your screen size might be reduced. Select the three dots (:::image type="icon" source="/azure/devops/media/ellipses-reduced-screen-size.png" border="false":::) icon. Then select **Work** > **Backlogs** > **Board**.   
 
-<table>
-<tbody valign="top">
-<tr>
-<td>
-![Boards>Work Items ](../../boards/work-items/_img/view-add/view-menu.png)
-</td>
-<td>
-<ul>
-<li>**Assigned to me**: lists all work items assigned to you in the project in the order they were last updated. To open or update a work item, simply click its title.</li>
-<li>**Following**: lists work items that you've elected to [follow](../../boards/work-items/follow-work-items.md). </li>
-<li>**Mentioned**: lists work items in which you've been mentioned in the last 30 days. </li>
-<li>**My activity**: lists work items that you have recently viewed or updated.</li>
-<li>**Recently updated**: lists work items recently updated in the project. </li>
-<li>**Recently completed**: lists work items completed or closed in the project.</li>
-<li>**Recently created**: lists work items created within the last 30 days in the project.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
+	![Open Work when screen size is reduced](/azure/devops/boards/boards/media/kanban-quickstart-reduced-screensize.png)   
 
-0. To add a work item, simply choose the work item type from the **New Work Item** drop down menu.  
+1. To select another team, open the project and team selector. Select a different team, or select the **Browse** option.  
 
-	For example, here we choose User Story. 
+   > [!div class="mx-imgBorder"]  
+   > ![Select another team](/azure/devops/boards/sprints/media/assign-items-sprint/team-selector-backlogs-standard.png)  
 
-	> [!div class="mx-imgBorder"]
-	> ![Boards>Work Items, Add a work item ](../../boards/work-items/_img/view-add/work-items-hub-new.png)
+   Your Kanban board appears. 
+	  
+   ![Kanban board, Agile template](/azure/devops/boards/boards/media/kanban-basics-intro.png)   
 
-0.	Enter a title and then save the work item. Before you can change the State from its initial default, you must save it. 
-
-	![Agile process, User story work item form](../../boards/backlogs/_img/add-new-work-item-vsts-user-story.png)
-
-	> [!NOTE]  
-	> A caution icon on a tab indicates values that violate validation rules. You must correct information on that tab in order to save the work item.   
-::: moniker-end
-
-::: moniker range="tfs-2017 || tfs-2018"
-
-0. Choose **Work**, choose a work item, for example User Story, from the New Work Item list of options. Choose the ![pin icon](../../boards/_img/icons/pin-icon.png) pin icon to have it show up within the **Work** drop down menu.   
-
-	![Work, Add a work item](../../boards/backlogs/_img/add-work-items-choose-user-story.png)
-
-0. Enter a title and then save the work item. Before you can change the State from its initial default, you must save it. 
-
-	![Agile process, User story work item form](../../boards/backlogs/_img/add-new-work-item-vsts-user-story.png)
-
-	> [!NOTE]  
-	> A caution icon on a tab indicates values that violate validation rules. You must correct information on that tab in order to save the work item. 
-	
-	Work items you add are automatically scoped to your [team's area and iteration paths](../settings/set-team-defaults.md). To change the team context, see [Switch project or team focus](../../project/navigation/go-to-project-repo.md#switch-team-context).  
-::: moniker-end
+::: moniker-end   
 
 ::: moniker range="<= tfs-2015"
 
-0. Choose **Work>Queries**, choose a work item from the **New** drop down menu.
+1. To view your Kanban board, open your project from a web browser. Select **Work** > **Backlogs** > **Stories**, and then select **Board**. 
 
-	![TFS 2015, TFS 2013-Queries page, Add a work item](_img/stakholder-add-work-item-tfs-queries-page.png)  
+	![Open Portfolio Kanban board, features](/azure/devops/boards/boards/media/quickstart/open-kanban-board.png)
 
-0. Enter a title and then save the work item. Before you can change the State from its initial default, you must save it. 
+	If you don't see **Work**, your screen size might be reduced. Select the three dots (:::image type="icon" source="/azure/devops/media/ellipses-reduced-screen-size.png" border="false":::) icon. Then select **Work** > **Backlogs** > **Board**.   
 
-	Work items you add are automatically scoped to your [team's area and iteration paths](../settings/set-team-defaults.md). To change the team context, see [Switch project or team focus](../../project/navigation/go-to-project-repo.md#switch-team-context).
+	![Open Work when screen size is reduced](/azure/devops/boards/boards/media/kanban-quickstart-reduced-screensize.png)   
+
+1. To select another team, open the project and team selector. Select a different team, or select the **Browse** option.  
+
+   ![Select another team from the project menu](/azure/devops/boards/sprints/media/capacity/vso-team-selector.png)  
+
+   Your Kanban board appears. 
+	 
+   > [!div class="mx-imgBorder"]  
+   > ![TFS 2015, Kanban board, Agile template](/azure/devops/boards/boards/media/overview/kanban-basics-intro-tfs.png)  
+
+::: moniker-end   
+
+
+## Add work items 
+
+::: moniker range="azure-devops"
+
+From the Kanban board, you can add work items, open them, and modify them. To add work items, open the backlog by choosing the **Backlog** link. To add a work item, select the :::image type="icon" source="../../media/icons/add-icon.png" border="false"::: plus sign, enter a title, and then press Enter.  
+
+> [!div class="mx-imgBorder"]  
+> ![Add a new item on Kanban board, new nav](../../boards/boards/media/quickstart/add-new-item-agile-s155.png) 
+
+Or, you can add work items to the bottom of the product backlog. Open the backlog by choosing the **Backlog** link.  
+
+::: moniker-end  
+
+::: moniker range="<= azure-devops-2020"
+
+From the Kanban board, you can't add work items, but you can open them and annotate them. To add work items, open the backlog by choosing the **Backlog** link. Also, you can't update the status of a work item by drag-and-drop to a different column or reorder cards within a column. 
+
+::: moniker-end  
+
+<a id="update-status">  </a> 
+
+::: moniker range="azure-devops"
+
+## Update status of work items 
+
+As work completes in one stage, update the status of an item by dragging it to a downstream stage. 
+
+![Screenshot of Kanban board, Agile template, update status of work item.](../../boards/boards/media/ALM_CC_MoveCard.png)  
+
+::: moniker-end  
+
+## Add details to a work item
+
+::: moniker range=">= tfs-2017" 
+
+To add information to a work item, open it by double-clicking the title or by selecting it and then typing Enter. Change one or more field values, add a description, [add a tag](#tag), or add a comment in the [**Discussion** section](#discussion). You can also choose the ![attachments icon](../../boards/media/icons/icon-attachments-tab-wi.png) **Attachments** tab and drag-and-drop or upload a file to share with others.  
+
 ::: moniker-end
 
-::: moniker range="azdevserver-2019"
-[!INCLUDE [temp](../../_shared/previous-navigation-not-supported-azd.md)] 
+::: moniker range="<= tfs-2015" 
+
+To add information to a work item, open it by double-clicking the title or by selecting it and then typing Enter. Add a description, change one or more field values, or [add a tag](#tag). You can also choose the ![attachments icon](../../boards/media/icons/icon-attachments-tab-wi.png) **Attachments** tab and upload a file to the work item to share with others.  
+
 ::: moniker-end
 
----
+You can only assign work to a user who has been added to the project. 
 
-For descriptions of each field, see [Work item field index](../../boards/work-items/guidance/work-item-field.md). 
+> [!NOTE]  
+> The work item form you see may differ from those shown in the following images. The basic functionality is the same, however, changes have been made with different versions of Azure DevOps. 
+ 
+#### [Agile process](#tab/agile-process) 
 
-You can [add existing tags to any work item to support filter backlogs and queries](../../boards/queries/add-tags-to-work-items.md).
+For example, here we assign the story to Raisa Pokrovskaya and we add a discussion note, at-mentioning Raisa. Choose **Save & Close** when done. 
 
-> [!NOTE]    
-> Depending on the process chosen when the project was created, the types of work items you can create will differ. For example, backlog items may be called user stories ([Agile](../../boards/work-items/guidance/agile-process-workflow.md)), product backlog items ([Scrum](../../boards/work-items/guidance/scrum-process-workflow.md)), or requirements ([CMMI](../../boards/work-items/guidance/cmmi-process-workflow.md)). All three are similar&mdash;they describe the customer value to deliver and the work to be performed. For an overview of all three processes, see [Choose a process](../../boards/work-items/guidance/choose-process.md). 
+> [!div class="mx-imgBorder"]
+> ![Screenshot of User Story work item form, add details.](../../boards/get-started/media/plan-track-work/user-story-form-add-details.png)
+
+
+#### [Basic process](#tab/basic-process) 
+
+For example, here we assign the issue to Raisa Pokrovskaya and we add a discussion note, at-mentioning Raisa. Choose **Save & Close** when done. 
+
+> [!div class="mx-imgBorder"]
+> ![Screenshot of Issues work item form, add details](../../boards/get-started/media/track-issues/issue-form-add-details.png)
+
+
+#### [Scrum process](#tab/scrum-process) 
+
+For example, here we assign the Product Backlog Item to Jamal Hartnett and add a description and tags. Choose **Save & Close** when done. 
+
+> [!div class="mx-imgBorder"]
+> ![Screenshot of Scrum Product Backlog work item form, add details.](../../boards/media/pbi-form-cloud.png)
+
+
+
+#### [CMMI process](#tab/cmmi-process) 
+
+For example, here we assign the Requirement to Jamal Hartnett. Choose **Save & Close** when done. 
+
+> [!div class="mx-imgBorder"]  
+> ![Screenshot of Requirement work item form](../../boards/media/requirement-form-cloud.png) 
+
+#### CMMI-specific field descriptions
+
+[!INCLUDE [temp](../../boards/includes/section-cmmi-field-descriptions.md)] 
+
+***
+
+### Field descriptions
+
+
+
+[!INCLUDE [temp](../../boards/includes/section-basic-field-descriptions.md)] 
+
+
+<a id="tag" /> 
+
+## Add tags to a work item
+
+Tags are useful for filtering backlogs, boards, and queries. As a Stakeholder, you can add existing tags to a work item, however, you can't add new tags. 
+
+From the web portal, open a work item and choose **Add tag** and type a keyword of an existing tag. Or, select from the list of previously assigned tags.  
+
+::: moniker range=">= tfs-2017"
+
+> [!div class="mx-imgBorder"]
+> ![Screenshot of work item form, Add one or more tags to a work item.](../../boards/queries/media/add-tags/add-tag-vsts.png)
+::: moniker-end
+
+::: moniker range=">= tfs-2013 <= tfs-2015"
+
+![Screenshot of work item form, Add one or more tags to a work item, TFS 2015 version](../../boards/queries/media/add-tags-to-work-items-vso-tfs.png)  
+::: moniker-end
+
+Tags that appear in the tag bar are already assigned to the work item. To unassign a tag, choose the x on the tag,![Delete a tag assigned to a work item](../../boards/queries/media/add-tags/unassign-a-tag.png).   
+
+::: moniker range="azure-devops"
+
+> [!NOTE]   
+> By default, all Contributors and Stakeholders of public projects are granted permissions to add new and existing 
+> tags. Stakeholders in private projects can add tags that are already defined, but not add 
+> new tags. To grant or restrict permissions to create new tags, you set 
+> the permission **Create tag definition** at the project-level. To learn
+> more, see [Add administrators, set permissions at the project-level or project collection-level](../security/set-project-collection-level-permissions.md).
+
+::: moniker-end	
+
+
+[!INCLUDE [temp](../../boards/includes/discussion-tip.md)]
 
 
 <a id="check-backlog">  </a> 
-## Check the backlog, add work items to the backlog 
 
-Work appears in the backlog in priority order. Work item types may include bugs depending on the settings made for the team. 
+## Check the backlog and prioritized work  
 
-# [New navigation](#tab/new-nav)
+You can check the product backlog to see how the team has prioritized work. Backlog items appear in priority order. Work item types may include bugs depending on the settings made for the team. 
 
-::: moniker range=">= azdevserver-2019"
+::: moniker range="azure-devops"
 
-0. (1) Check that you have selected the right project, (2) choose **Boards>Backlogs**, and then (3) select the correct team from the team selector menu. 
+From the Kanban board, choose **View as backlog**.  
 
-	![Open Boards>Backlogs, for a team](../../boards/sprints/_img/assign-items-sprint/open-work-backlogs-agile.png)
-
-	To choose another team, open the selector and select a different team or choose the ![home-icon](../../_img/icons/home-icon.png) **Browse all sprints** option. Or, you can enter a keyword in the search box to filter the list of team backlogs for the project.
-
-	> [!div class="mx-imgBorder"]  
-	> ![Choose another team](../../boards/sprints/_img/assign-items-sprint/team-selector-backlogs-agile.png) 
-
-	> [!TIP]    
-	> Choose the ![ ](../../_img/icons/icon-favorite-star.png) star icon to favorite a team backlog. Favorited artifacts (![ ](../../_img/icons/icon-favorited.png) favorited icon) appear at the top of the team selector list. 
-
-0. Check that you have selected **Backlog items** (for Scrum), **Stories** (for Agile), or **Requirements** (for CMMI) as the backlog level. 
-
-	> [!div class="mx-imgBorder"]  
-	> ![Choose product backlog level, Backlog items, Stories, or Requirements](../../boards/sprints/_img/assign-items-sprint/select-product-backlog-agile.png) 
-
-0. (Optional) To choose which columns should display and in what order, choose the ![ ](../../_img/icons/actions-icon.png) actions icon and select **Column options**. To learn more, see [Change column options](../../boards/backlogs/set-column-options.md). 
-
-	> [!div class="mx-imgBorder"]  
-	> ![Open Column Options](../../boards/sprints/_img/assign-items-sprint/open-work-backlogs-column-options-agile.png) 
-
-0. To view or edit a work item, select it and choose **Enter**.
-
-0. To add a work item, choose the ![plus-icon](../../_img/icons/blue-add-icon.png)**New Work Item**, enter a title and then press the Enter key or choose **Add to top**. 
-
-	> [!div class="mx-imgBorder"]
-	> ![Add a product backlog item](../../boards/backlogs/_img/create-backlog/add-new-items-agile.png) 
-
-	Repeat this step to capture all your ideas as work items.  
-::: moniker-end
-
-::: moniker range=">= tfs-2013 <= tfs-2018"
-
-[!INCLUDE [temp](../../_shared/new-navigation-not-supported.md)] 
+> [!div class="mx-imgBorder"]  
+> ![Screenshot of link to view Backlog, cloud version.](../../boards/media/switch-to-backlog-cloud.png) 
 
 ::: moniker-end
 
+::: moniker range="azure-devops-2019 || azure-devops-2020"
 
-# [Previous navigation](#tab/previous-nav)
+From the Kanban board, choose **View as backlog**.  
 
-::: moniker range=">= tfs-2017 <= tfs-2018 || vsts"
-
-0. From your web browser, open your team's product backlog. (1) Select the team from the project/team selector, choose (2) **Work**, (3) **Backlogs**, and then (4) the product backlog, which is **Backlog items** (for Scrum), **Stories** (for Agile), or **Requirements** (for CMMI). 
-
-	> [!div class="mx-imgBorder"]
-	> ![Open the Boards>Backlogs page](../../boards/sprints/_img/assign-items-sprint/open-work-backlogs-standard.png) 
-
-	To choose another team, open the project/team selector and select a different team or choose the **Browse** option. 
-
-	> [!div class="mx-imgBorder"]  
-	> ![Choose another team](../../boards/sprints/_img/assign-items-sprint/team-selector-backlogs-standard.png) 
-
-0. To view or edit a work item, select it and choose **Enter**.
-
-0. Add a work item to your backlog by entering a title and choosing **Add**. If you don't see the **Add** link, choose **New** to open the quick add panel. Repeat this step until you've captured all your main ideas. 
-
-	![Add work items to the backlog](../../boards/backlogs/_img/create-backlog/add-new-items-standard.png) 
+> [!div class="mx-imgBorder"]  
+> ![Screenshot of link to view Backlog, on-premises version.](../../boards/media/switch-to-backlog-2019.png) 
 
 ::: moniker-end
-::: moniker range=">= tfs-2013 <= tfs-2015"
 
-0. From your web browser, open your team's product backlog. Select **Boards>Backlogs**. 
-
-	![Boards>backlogs, TFS 2015, 2013 web portal](../../boards/backlogs/_img/backlogs-boards-plans/open-backlog-tfs-2015.png)
-
-0. To view or edit a work item, select it and choose **Enter**.
-
-0. To add a work item to your backlog, enter a title and choose **Add**. If you don't see the **Add** link, choose **New** to open the quick add panel. Your items are added to the bottom of the list.  
-
-	![Add work items to the backlog](../../boards/backlogs/_img/create-backlog/add-new-items-standard.png) 
-
-	Repeat this step until you've captured all your main ideas. 
-::: moniker-end
-
-::: moniker range="azdevserver-2019"
-[!INCLUDE [temp](../../_shared/previous-navigation-not-supported-azd.md)] 
-::: moniker-end
-
----
-
-<!---
-::: moniker range=">= tfs-2017"
-> [!TIP]    
-> If you don't see the team or project you want, choose the ![ ](../../_img/icons/project-icon.png) Azure DevOps logo to [browse all projects](../../project/navigation/work-across-projects.md). 
-::: moniker-end
-
-To add a new item, select the type and then name it. Your items are added to the bottom of the list.  
-
-![Add work items to the backlog](../../boards/backlogs/_img/create-backlog-add-new-items-ts.png)  
-
--->
-
-## Check work in progress
-
-To view the team's progress, open the Kanban board. To view or edit a work item, choose a title and press **Enter**, or double-click the title. 
-
-# [New navigation](#tab/new-nav)
-
-::: moniker range=">= azdevserver-2019"
-
-0. (1) Check that you have selected the right project, (2) choose **Boards>Boards**, and then (3) select the correct team from the team selector menu. 
-
-	![Open your Kanban board](../../boards/boards/_img/quickstart/open-kanban-board-agile.png)  
-
-	To choose another team's board, open the selector and select a different team or choose the ![home-icon](../../_img/icons/home-icon.png) **Browse all team boards** option. Or, you can enter a keyword in the search box to filter the list of team backlogs for the project.
-
-	> [!div class="mx-imgBorder"]  
-	> ![Choose another team's board](../../boards/boards/_img/quickstart/select-kanban-team-board.png) 
-
-	> [!TIP]    
-	> Choose the ![ ](../../_img/icons/icon-favorite-star.png) star icon to favorite a team board. Favorited artifacts (![ ](../../_img/icons/icon-favorited.png) favorited icon) appear at the top of the team selector list.
-
-0. Check that you have selected **Backlog items** (for Scrum), **Stories** (for Agile), or **Requirements** (for CMMI) as the backlog level. 
-
-	> [!div class="mx-imgBorder"]  
-	> ![Choose product backlog level, Backlog items, Stories, or Requirements](../../boards/sprints/_img/assign-items-sprint/select-product-backlog-agile.png) 
-
-::: moniker-end
 
 ::: moniker range="<= tfs-2018"
 
-[!INCLUDE [temp](../../_shared/new-navigation-not-supported.md)] 
+From the Kanban board, choose **Backlog**.  
+
+> [!div class="mx-imgBorder"]  
+> ![Screenshot of link to view Backlog, TFDS 2018 and earlier versions.](../../boards/media/switch-to-backlog-2015.png) 
 
 ::: moniker-end
 
-# [Previous navigation](#tab/previous-nav)
+You should see the list of backlog items listed in priority order. You can add a backlog item which will be placed at the bottom of the list. With Stakeholder access, you can't re-prioritize work. 
 
-::: moniker range=">= tfs-2017 <= tfs-2018 || vsts"
+To view or edit a work item, select it and choose **Enter**.
 
-0. To view your Kanban board, open your (1) project from a web browser and choose (2) **Work**, (3) **Backlogs**, (4) **Stories**, and then (5) **Board**. 
-
-	![Open Portfolio Kanban board, Features](../../boards/boards/_img/quickstart/open-kanban-board.png)
-
-	If you don't see **Work**, your screen size may be reduced. Choose the three dots (![ ](../../_shared/_img/ellipses-reduced-screen-size.png)), then choose **Work**, **Backlogs**, and then **Board**.   
-
-	![Open Work when screen size is reduced](../../boards/boards/_img/kanban-quickstart-reduced-screensize.png)   
-
-0.	To choose another team, open the project/team selector and select a different team or choose the **Browse** option.  
-	
-	> [!div class="mx-imgBorder"]  
-	> ![Choose another team](../../boards/sprints/_img/assign-items-sprint/team-selector-backlogs-standard.png)  
-
-0. Your Kanban board displays. 
-	
-	![Kanban board, Agile template](../../boards/boards/_img/kanban-basics-intro.png)   
-
-::: moniker-end   
-
-::: moniker range="<= tfs-2015"
-
-0. To view your Kanban board, open your (1) project from a web browser and choose (2) **Work**, (3) **Backlogs**, (4) **Stories**, and then (5) **Board**. 
-
-	![Open Portfolio Kanban board, Features](../../boards/boards/_img/quickstart/open-kanban-board.png)
-
-	If you don't see **Work**, your screen size may be reduced. Choose the three dots (![ ](../../_shared/_img/ellipses-reduced-screen-size.png)), then choose **Work**, **Backlogs**, and then **Board**.   
-	![Open Work when screen size is reduced](../../boards/boards/_img/kanban-quickstart-reduced-screensize.png)   
-
-0.	To choose another team, open the project/team selector and select a different team or choose the **Browse** option.  
-
-	![Choose another team from the project menu](../../boards/sprints/_img/capacity/vso-team-selector.png)
-	
-0. Your Kanban board displays. 
-	 
-	> [!div class="mx-imgBorder"]  
-	> ![TFS 2015, Kanban board, Agile template](../../boards/boards/_img/overview/kanban-basics-intro-tfs.png)       
-	
-::: moniker-end   
-
-::: moniker range="azdevserver-2019"
-[!INCLUDE [temp](../../_shared/previous-navigation-not-supported-azd.md)] 
-::: moniker-end
-
----
 
 <a id="query">  </a>
 
 ## Find work assigned to you, or query for other work items 
 
-# [New navigation](#tab/new-nav)
+::: moniker range=">= azure-devops-2019"
 
-::: moniker range=">= azdevserver-2019"
-
-0. Choose **Boards>Work Items**, and then select **Assigned to me**. 
+1. Choose **Boards>Work Items**, and then select **Assigned to me**. 
 
 	> [!div class="mx-imgBorder"]
-	> ![Work, Work Items page, Choose Assigned to Me](_img/stakeholder/work-items-assigned-to-me.png)
+	> ![Work, Work Items page, Choose Assigned to Me](media/stakeholder/work-items-assigned-to-me.png)
 
 	You can focus on relevant items inside a project using one of the seven pivots as described next. Additionally, you can filter and sort each pivot view. For details, see [View and add work items using the Work Items page](../../boards/work-items/view-add-work-items.md).
 
-0. To query for work items, see [View, run, or email a work item query](../../boards/queries/view-run-query.md).
-::: moniker-end  
-
-::: moniker range="<= tfs-2018"  
-[!INCLUDE [temp](../../_shared/new-navigation-not-supported.md)]  
-::: moniker-end  
-
-
-# [Previous navigation](#tab/previous-nav)
-
-::: moniker range="vsts"
-
-0. Choose **Work>Work Items**, and then select **Assigned to me**. 
-
-	> [!div class="mx-imgBorder"]
-	> ![Work, Work Items page, Choose Assigned to Me](_img/stakeholder/work-items-assigned-to-me.png)
-
-	You can focus on relevant items inside a project using one of the seven pivots as described next. Additionally, you can filter and sort each pivot view. For details, see [View and add work items using the Work Items page](../../boards/work-items/view-add-work-items.md).
-
-0. To query for work items, see [View, run, or email a work item query](../../boards/queries/view-run-query.md).  
-::: moniker-end  
+1. To query for work items, see [View, run, or email a work item query](../../boards/queries/view-run-query.md).
+   ::: moniker-end    
 
 ::: moniker range="<= tfs-2018"
 
-0. Open **Work>Queries** and select **Assigned to me** to see the list of work items assigned to you.  
+1. Open **Work>Queries** and select **Assigned to me** to see the list of work items assigned to you.  
 
-	![Queries page, items assigned to you](_img/work-as-a-stakeholder-query.png)  
+	![Queries page, items assigned to you](media/work-as-a-stakeholder-query.png)  
 
-0. Or, open any of the queries defined in the Shared Queries folder.  
+1. Or, open any of the queries defined in the Shared Queries folder.  
 
-	![Run a shared query](_img/work-as-a-stakeholder-open-shared-query.png)   
+	![Run a shared query](media/work-as-a-stakeholder-open-shared-query.png)   
 
-0. And, you can [create new queries or edit existing queries](../../boards/queries/using-queries.md) and save them under My Queries folder.  
+2. And, you can [create new queries or edit existing queries](../../boards/queries/using-queries.md) and save them under My Queries folder.  
 
-	![Query Editor](_img/work-as-a-stakeholder-edit-query.png)  
+	![Query Editor](media/work-as-a-stakeholder-edit-query.png)  
 
 ::: moniker-end
 
-::: moniker range="azdevserver-2019"
-[!INCLUDE [temp](../../_shared/previous-navigation-not-supported-azd.md)] 
+<a id="features" /> 
+
+## Features and functions available to Stakeholders
+
+With Stakeholder access, users can create and modify work items and create and save queries. They have limited access to many of the Azure Boards features. They also can view and approve release pipelines and perform administrative tasks when granted administrative permissions or added to an administrative group. 
+ 
+> [!NOTE]
+> Stakeholders that choose a feature that's not available to them may in some instances receive an error message indicating that they don't have permissions to complete a task.
+
+::: moniker range="azure-devops"
+
+### Public versus private feature access
+
+Stakeholder access grants access to features differently depending on whether you're working from a private or a public project. To learn more about public projects, see [What is a public project?](../public/about-public-projects.md).  
+
+[!INCLUDE [temp](../../includes/stakeholder-access-table.md)]
+
 ::: moniker-end
 
----
+[!INCLUDE [temp](../../includes/features-not-available-stakeholder.md)]
 
+<a id="related-articles" /> 
 
 ## Related articles
 
-For a comparison chart of Stakeholder vs Basic access, see this [feature matrix](https://visualstudio.microsoft.com/team-services/compare-features/). See also these quickstart guides: 
+For a comparison chart of Stakeholder versus Basic access, see this [feature matrix](https://azure.microsoft.com/services/devops/compare-features/). See also these quickstart guides: 
 
 - [Add work items](../../boards/backlogs/add-work-items.md)  
 - [Create your backlog](../../boards/backlogs/create-your-backlog.md)
 - [Kanban quickstart](../../boards/boards/kanban-quickstart.md) 
-- [Provide Stakeholders access to edit build and release pipelines](provide-stakeholder-pipeline-access.md) 
-
-If you want to provide a group of users access to provide feedback, then you don't need to give them Stakeholder access. Instead, simply [give reviewers permissions to provide feedback](../../project/feedback/give-permissions-feedback.md). 
+- [Access levels](access-levels.md)
+- [Change access levels](change-access-levels.md)
